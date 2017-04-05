@@ -1,0 +1,117 @@
+
+@media only screen and (max-width: 420px) {
+    .bordered td input {
+        width: 100px;
+        padding: 5px;
+        border-radius: 4px;
+        border: 1px solid gray;
+    }
+    h1{
+        font-size: 20px;
+    }
+}
+@media only screen and (max-width: 440px) {
+
+    td{
+        font-size: 12px;
+    }
+}
+@media only screen and (min-width: 440px) {
+    #bottom {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 97%;
+        margin: 8px;
+    }
+}
+@media only screen and (min-width: 680px) {
+    #bottom {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 98%;
+        margin: 8px;
+    }
+}
+@media only screen and (min-width: 1250px) {
+    #bottom {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 99%;
+        margin: 8px;
+    }
+}
+
+table{
+    text-align: center;
+    margin: auto;
+}
+tr{
+    padding: 5px;
+    margin: 5px;
+}
+td{
+    color: #F2F2F2;
+    padding: 5px;
+    margin: 5px;
+}
+td input{
+    width: 150px;
+    padding: 5px;
+}
+h3{
+    color: red;
+    margin-left: 10px;
+    text-align: center;
+}
+
+.bordered td input{
+    width: 150px;
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid gray;
+}
+.bordered input:valid{
+    border: 1px solid green;
+}
+.bordered input:invalid{
+    border: 2px solid red;
+}
+.submit td{
+    align: center;
+}
+.error{
+    visibility: hidden;
+    padding: 5px;
+    background: rgba(0,0,0,0.3);
+    font-size: 15px;
+    text-align: center;
+    color: red;
+    border-radius: 3px;
+}
+.addCode{
+    color: #F2F2F2;
+    opacity: 0.6;
+    border-bottom: 1px dashed;
+    text-decoration: none;
+}
+.addCode:active {
+    opacity: 1.0;
+}
+.addCode:hover{
+    opacity: 1.0;
+}
+.contract{
+    font-size:10px;
+    margin: 3px;
+}
+.contract a{
+    color: #F2F2F2;
+    text-decoration-style: wavy;
+}
+
+
+
+

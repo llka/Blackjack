@@ -1,0 +1,198 @@
+@media only screen and (max-width: 750px) {
+    .button {
+        border-radius: 2px;
+        background-color: #009f6d;
+        font-size: 10px;
+        padding: 5px;
+        width: 4em;
+        margin: 5px;
+    }
+    .description .container img{
+        width: 100px;
+        height: 100px;
+        border-radius: 3px;
+    }
+    .container form input {
+        width: 71px;
+    }
+    .description h3 {
+        font-size: 13px;
+        margin: auto;
+        font-weight: 300;
+    }
+    .row .col-3 {
+        width: 75%;
+        margin-left: 12%;
+        margin-right: 12%;
+    }
+    .row .col-7 {
+        width: 75%;
+        margin-left: 12%;
+        margin-right: 12%;
+    }
+}
+#buttonPassword{
+    width: auto;
+}
+
+.description div{
+  display: inline-block;
+}
+ h3{
+  color: #F2F2F2;
+  padding: 10px;
+  text-align: center;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-weight: 300;
+}
+ form table h3{
+     color: red;
+     margin-left: 10px;
+ }
+.container {
+    width: 100%;
+    text-align: center;
+}
+.container ::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+.container img{
+    width: 300px;
+    height: 300px;
+    border-radius: 5px;
+}
+.container form{
+  text-align: center;
+}
+.container form input{
+  width: 110px;
+}
+.newImg{
+  margin: 10px;
+}
+.info{
+  width: 100%;
+}
+.info table{
+  width: 100%;
+}
+.info form{
+  vertical-align: top;
+}
+.fullInput{
+    width: 100%;
+}
+.fullInput input{
+    width: 80%;
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid gray;
+}
+.inf td{
+    font-size: 14px;
+    vertical-align: middle;
+    width: 80%;
+    text-align: left;
+    color: #F2F2F2;
+    padding: 1px;
+}
+.infTitle{
+    margin-left: 10%;
+}
+
+form table {
+  margin: auto;
+  text-align: center;
+}
+td{
+  text-align: center;
+}
+.settings{
+  color: #F2F2F2;
+}
+.statistics {
+  width: 100%;
+    margin-bottom: 15px;
+}
+.statistics table{
+  border: 1px solid black;
+  border-collapse: collapse;
+  width: 70%;
+  color: #F2F2F2;
+  font-size: 15px;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+.statistics table tr{
+  border: 1px solid black;
+  border-collapse: collapse;
+  margin: 15px;
+}
+.statistics table tr td{
+  border: 1px solid black;
+  border-collapse: collapse;
+  text-align: left;
+  width: 40%;
+  padding: 5px;
+}
+.bal{
+    margin-top: 15px;
+}
+.balance input{
+    padding: 5px;
+    border-radius: 4px;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 10px;
+    border: 1px solid gray;
+}
+#amountText{
+    margin-left: 3%;
+}
+.balance input:valid{
+    border: 1px solid green;
+}
+.balance input:invalid{
+    border: 2px solid red;
+}
+
+.bordered input:valid{
+    border: 1px solid green;
+}
+.bordered input:invalid{
+    border: 2px solid red;
+}
+.submit{
+    text-align:center;
+    width: 100%;
+}
+.successMessage{
+    font-size: 10px;
+    color: #2bf2ff;
+    /*color: #47ff33;*/
+}
+.errorMessage{
+    font-size: 12px;
+    color: red;
+    padding: 3px;
+}
+.error{
+    color: red;
+}
+.PasswordMessage{
+    font-size: 14px;
+    color: #18ffe1;
+    padding: 3px;
+    margin-left: 10%;
+}
+.ErrorPasswordMessage{
+    font-size: 14px;
+    color: red;
+    padding: 3px;
+    margin-left: 10%;
+}

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema     xmlns:xs="http://www.w3.org/2001/XMLSchema"
+               targetNamespace="http://www.example.com/papers"
+               xmlns="http://www.example.com/papers">
+
+  <xs:element name="publication" type="PublicationType" abstract="true"></xs:element>
+
+  <xs:element name="newspaper" type="NewspaperType" substitutionGroup="publication"></xs:element>
+
+  <xs:element name="magazine" type="MagazineType" substitutionGroup="publication"></xs:element>
+
+  <xs:element name="papers">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="publication" minOccurs="1" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+	<xs:complexType name="PublicationType">
+      <xs:sequence>
+        <xs:element name="period" type="Period"></xs:element>
+        <xs:element name="pages" type="xs:int"></xs:element>
+        <xs:element name="color" type="Color" default="blackAndWhite"></xs:element>
+        <xs:element name="issn" type="ISSN"></xs:element>
+        <xs:element name="number" type="Number"></xs:element>
+      </xs:sequence>
+      <xs:attribute name="title" type="xs:string" use="required"/>
+      <xs:attribute name="topic" use="optional" default="SPORTS">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="FASHION"></xs:enumeration>
+            <xs:enumeration value="WILDLIFE"></xs:enumeration>
+            <xs:enumeration value="RELIGION"></xs:enumeration>
+            <xs:enumeration value="SPORTS"></xs:enumeration>
+            <xs:enumeration value="SHOWBIZ"></xs:enumeration>
+            <xs:enumeration value="COOKING"></xs:enumeration>
+            <xs:enumeration value="CULTURE"></xs:enumeration>
+            <xs:enumeration value="LITERATURE"></xs:enumeration>
+            <xs:enumeration value="POLITICS"></xs:enumeration>
+            <xs:enumeration value="EDUCATION"></xs:enumeration>
+            <xs:enumeration value="CRIME"></xs:enumeration>
+            <xs:enumeration value="SCIENCE"></xs:enumeration>
+            <xs:enumeration value="AUTO"></xs:enumeration>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+	</xs:complexType>
+
+  <xs:complexType name="NewspaperType">
+    <xs:complexContent>
+      <xs:extension base="PublicationType">
+        <xs:sequence>
+          <xs:element name="geographic" type="GeographicalScope" default="national"></xs:element>
+          <xs:element name="index" type="xs:int"></xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="MagazineType">
+    <xs:complexContent>
+      <xs:extension base="PublicationType">
+        <xs:sequence>
+          <xs:element name="paper" type="PaperType" default="matt"></xs:element>
+          <xs:element name="cover" type="CoverType" default="paperBack"></xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:simpleType name="Period">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="daily"></xs:enumeration>
+      <xs:enumeration value="weekly"></xs:enumeration>
+      <xs:enumeration value="monthly"></xs:enumeration>
+      <xs:enumeration value="twiceYearly"></xs:enumeration>
+      <xs:enumeration value="yearly"></xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="Color">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="colored"></xs:enumeration>
+      <xs:enumeration value="blackAndWhite"></xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="ISSN">
+    <xs:restriction base="xs:ID">
+      <xs:pattern value="([A-Z][0-9]{4})(-)([0-9]{4})"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="Number">
+    <xs:sequence>
+      <xs:element name="overall" type="xs:int" />
+      <xs:element name="current" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="GeographicalScope">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="local"></xs:enumeration>
+      <xs:enumeration value="national"></xs:enumeration>
+      <xs:enumeration value="international"></xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="CoverType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="hardBack"></xs:enumeration>
+      <xs:enumeration value="paperBack"></xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="PaperType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="matt"></xs:enumeration>
+      <xs:enumeration value="glossy"></xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>

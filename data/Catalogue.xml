@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<papers 	xmlns="http://www.example.com/papers"
+	 		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	  		xsi:schemaLocation="http://www.example.com/papers Catalogue.xsd ">
+	<newspaper title="Pressball" topic="SPORTS">
+		<period>weekly</period>
+		<pages>20</pages>
+		<color>blackAndWhite</color>
+		<issn>1111-3333</issn>
+		<number>
+			<overall>3991</overall>
+			<current>5</current>
+		</number>
+		<geographic>local</geographic>
+		<index>152073</index>
+	</newspaper>
+
+	<magazine title="EuroFutball" topic="SPORTS">
+		<period>monthly</period>
+		<pages>120</pages>
+		<color>colored</color>
+		<issn>1121-3333</issn>
+		<number>
+			<overall>114</overall>
+			<current>2</current>
+		</number>
+		<paper>glossy</paper>
+		<cover>hardBack</cover>
+	</magazine>
+
+	<magazine title= "Popular Mechanics" topic="SCIENCE">
+		<period>monthly</period>
+		<pages>125</pages>
+		<color>colored</color>
+		<issn>1131-3333</issn>
+		<number>
+			<overall>159</overall>
+			<current>2</current>
+		</number>
+		<paper>matt</paper>
+		<cover>paperBack</cover>
+	</magazine>
+
+	<magazine title= "All Football">
+		<period>monthly</period>
+		<pages>95</pages>
+		<color>colored</color>
+		<issn>1141-3333</issn>
+		<number>
+			<overall>74</overall>
+			<current>1</current>
+		</number>
+		<paper>glossy</paper>
+		<cover>paperBack</cover>
+	</magazine>
+
+	<magazine title= "Total Football">
+		<period>monthly</period>
+		<pages>140</pages>
+		<color>colored</color>
+		<issn>1151-3333</issn>
+		<number>
+			<overall>36</overall>
+			<current>11</current>
+		</number>
+		<paper>glossy</paper>
+		<cover>hardBack</cover>
+	</magazine>
+
+	<magazine title= "BASSMASTER" topic="WILDLIFE">
+		<period>monthly</period>
+		<pages>103</pages>
+		<color>colored</color>
+		<issn>1161-3333</issn>
+		<number>
+			<overall>104</overall>
+			<current>1</current>
+		</number>
+		<paper>glossy</paper>
+		<cover>paperBack</cover>
+	</magazine>
+
+	<magazine title="Top Gear" topic="AUTO">
+		<period>monthly</period>
+		<pages>140</pages>
+		<color>colored</color>
+		<issn>7111-3333</issn>
+		<number>
+			<overall>81</overall>
+			<current>10</current>
+		</number>
+		<paper>glossy</paper>
+		<cover>hardBack</cover>
+	</magazine>
+
+	<newspaper title="WORLD FISHING AND AQUACULTURE" topic="WILDLIFE">
+		<period>weekly</period>
+		<pages>32</pages>
+		<color>colored</color>
+		<issn>8113-9333</issn>
+		<number>
+			<overall>2712</overall>
+			<current>2</current>
+		</number>
+		<geographic>international</geographic>
+		<index>152474</index>
+	</newspaper>
+
+	<magazine title="Рыбачьте с нами" topic="WILDLIFE">
+		<period>monthly</period>
+		<pages>144</pages>
+		<color>colored</color>
+		<issn>9156-3333</issn>
+		<number>
+			<overall>187</overall>
+			<current>2</current>
+		</number>
+		<paper>glossy</paper>
+		<cover>hardBack</cover>
+	</magazine>
+
+	<magazine title= "Expert Fishing" topic="WILDLIFE">
+		<period>monthly</period>
+		<pages>80</pages>
+		<color>colored</color>
+		<issn>1026-3333</issn>
+		<number>
+			<overall>53</overall>
+			<current>2</current>
+		</number>
+		<paper>matt</paper>
+		<cover>paperBack</cover>
+	</magazine>
+
+	<newspaper title= "KP" topic="POLITICS">
+		<period>daily</period>
+		<pages>24</pages>
+		<color>colored</color>
+		<issn>1131-3378</issn>
+		<number>
+			<overall>7432</overall>
+			<current>38</current>
+		</number>
+		<geographic>national</geographic>
+		<index>152187</index>
+	</newspaper>
+
+	<magazine title= "Полымя" topic="LITERATURE">
+		<period>twiceYearly</period>
+		<pages>80</pages>
+		<color>blackAndWhite</color>
+		<issn>1226-3333</issn>
+		<number>
+			<overall>114</overall>
+			<current>1</current>
+		</number>
+		<paper>matt</paper>
+		<cover>paperBack</cover>
+	</magazine>
+
+	<newspaper title= "Наша нива" topic="LITERATURE">
+		<period>weekly</period>
+		<pages>20</pages>
+		<color>blackAndWhite</color>
+		<issn>1326-3333</issn>
+		<number>
+			<overall>1882</overall>
+			<current>6</current>
+		</number>
+		<geographic>national</geographic>
+		<index>153218</index>
+	</newspaper>
+
+	<magazine title= "Hot Rod Magazine" topic="AUTO">
+		<period>monthly</period>
+		<pages>100</pages>
+		<color>colored</color>
+		<issn>1421-3333</issn>
+		<number>
+			<overall>104</overall>
+			<current>2</current>
+		</number>
+		<paper>matt</paper>
+		<cover>hardBack</cover>
+	</magazine>
+
+	<magazine title= "Autoweek" topic="AUTO">
+		<period>weekly</period>
+		<pages>50</pages>
+		<color>colored</color>
+		<issn>1521-3333</issn>
+		<number>
+			<overall>164</overall>
+			<current>6</current>
+		</number>
+		<paper>matt</paper>
+		<cover>paperBack</cover>
+	</magazine>
+
+	<magazine title= "Classic Cars" topic="AUTO">
+		<period>monthly</period>
+		<pages>130</pages>
+		<color>colored</color>
+		<issn>1621-3333</issn>
+		<number>
+			<overall>344</overall>
+			<current>2</current>
+		</number>
+		<paper>glossy</paper>
+		<cover>hardBack</cover>
+	</magazine>
+
+</papers>

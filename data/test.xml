@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<papers 	xmlns="http://www.example.com/papers"
+	 		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	  		xsi:schemaLocation="http://www.example.com/papers Catalogue.xsd ">
+	<newspaper title="1" topic="WILDLIFE">
+		<period>daily</period>
+		<pages>1</pages>
+		<color>colored</color>
+		<issn>O111-1111</issn>
+		<number>
+			<overall>1</overall>
+			<current>1</current>
+		</number>
+		<geographic>international</geographic>
+		<index>111111</index>
+	</newspaper>
+
+	<magazine title="2" topic="SPORTS">
+		<period>monthly</period>
+		<pages>1</pages>
+		<color>colored</color>
+		<issn>O111-2222</issn>
+		<number>
+			<overall>1</overall>
+			<current>1</current>
+		</number>
+		<paper>glossy</paper>
+		<cover>hardBack</cover>
+	</magazine>
+
+	<magazine title="3">
+		<period>monthly</period>
+		<pages>1</pages>
+		<color>colored</color>
+		<issn>O111-3333</issn>
+		<number>
+			<overall>1</overall>
+			<current>1</current>
+		</number>
+		<paper>glossy</paper>
+		<cover>hardBack</cover>
+	</magazine>
+</papers>
