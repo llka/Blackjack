@@ -36,7 +36,7 @@ public class LogOutCommand implements ActionCommand {
         ConcurrentHashMap<Long,Account> onlineUsers = (ConcurrentHashMap<Long,Account>) servletContext.getAttribute(ONLINE_USERS_KEY);
         onlineUsers.remove(account.getAccountId());
         servletContext.setAttribute(ONLINE_USERS_KEY,onlineUsers);
-        logger.debug("LogOut - session died " + account.getLogin() + " is offline now");
+        logger.debug("LogOut - " + account.getLogin() + " is offline now");
         logger.debug("Online users : " + onlineUsers);
 
         session.removeAttribute(ACCOUNT_KEY);

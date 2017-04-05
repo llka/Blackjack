@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class AllUsersTag extends TagSupport {
     static Logger logger = LogManager.getLogger(AllUsersTag.class);
-
+    private final static String JUVE_INVITE = "JUVE-TOP1";
     private List<Account> accounts;
 
     public void setAccounts(List<Account> accounts) {
@@ -34,7 +34,7 @@ public class AllUsersTag extends TagSupport {
                 out.write("<td>" + account.getAccountId() + "</td>");
                 out.write("<td>" + account.getLogin() + "</td>");
                 out.write("<td>");
-                if(account.getInviteCode() != null) {
+                if(JUVE_INVITE.equals(account.getInviteCode())) {
                     out.write("+");
                 }
                 else {
