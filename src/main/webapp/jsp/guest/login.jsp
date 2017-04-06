@@ -48,6 +48,9 @@
                             </td>
                         </tr>
                         <h3>${errorLoginPassMessage}</h3>
+                        <c:if test="${visitor.sessionLost == true}">
+                            <h3>Session time is out, cause you were inactive more then 3 min</h3>
+                        </c:if>
                     </table>
                 </form>
             </div>

@@ -134,6 +134,7 @@ public class RegisterCommand implements ActionCommand {
                 visitor.setRole(Visitor.Role.USER);
                 visitor.setCurrentPage(PAGE_MAIN);
                 visitor.setName(account.getLogin());
+                visitor.setSessionLost(false);
                 session.setAttribute(VISITOR_KEY,visitor);
                 session.setAttribute(ACCOUNT_KEY,account);
 

@@ -15,14 +15,17 @@ public class Visitor {
     private String previousPage;
     private String currentPage;
     private String name;
+    private boolean sessionLost;
 
     public Visitor() {
+        this.sessionLost = false;
     }
 
     public Visitor(Role role, Locale locale, String currentPage) {
         this.role = role;
         this.locale = locale;
         this.currentPage = currentPage;
+        this.sessionLost = false;
     }
 
     public String getPreviousPage() {
@@ -63,6 +66,14 @@ public class Visitor {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public boolean isSessionLost() {
+        return sessionLost;
+    }
+
+    public void setSessionLost(boolean sessionLost) {
+        this.sessionLost = sessionLost;
     }
 
     @Override

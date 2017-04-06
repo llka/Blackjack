@@ -3,6 +3,7 @@ package ru.ilka.listener;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.ilka.entity.Account;
+import ru.ilka.entity.Visitor;
 
 import javax.servlet.ServletContext;
 
@@ -14,6 +15,7 @@ import java.util.concurrent.ConcurrentSkipListSet;
 
 import static ru.ilka.controller.ControllerConstants.ACCOUNT_KEY;
 import static ru.ilka.controller.ControllerConstants.ONLINE_USERS_KEY;
+import static ru.ilka.controller.ControllerConstants.VISITOR_KEY;
 
 /**
  * Here could be your advertisement +375 29 3880490
@@ -30,6 +32,8 @@ public class SessionDieListener implements HttpSessionListener {
     @Override
     public void sessionDestroyed(HttpSessionEvent event) {
         HttpSession session = event.getSession();
+        Visitor visitor = (Visitor) session.getAttribute(VISITOR_KEY);
+        visitor.setSessionLost(true);
         Account account = (Account) session.getAttribute(ACCOUNT_KEY);
         ServletContext servletContext = event.getSession().getServletContext();
         ConcurrentHashMap<Long,Account> onlineUsers = (ConcurrentHashMap<Long,Account>) servletContext.getAttribute(ONLINE_USERS_KEY);

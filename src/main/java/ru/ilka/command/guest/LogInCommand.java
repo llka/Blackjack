@@ -71,6 +71,7 @@ public class LogInCommand implements ActionCommand {
                 }
                 visitor.setName(account.getLogin());
                 visitor.setCurrentPage(page);
+                visitor.setSessionLost(false);
                 session.setAttribute(VISITOR_KEY,visitor);
                 session.setAttribute(ACCOUNT_KEY,account);
 

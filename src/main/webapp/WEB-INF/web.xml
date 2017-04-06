@@ -8,7 +8,7 @@
 
     <!--Session timeout in min., setMaxInactiveInterval - in sec. -->
     <session-config>
-        <session-timeout>5</session-timeout>
+        <session-timeout>3</session-timeout>
     </session-config>
 
     <welcome-file-list>
