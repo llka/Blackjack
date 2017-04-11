@@ -15,7 +15,7 @@
     <link type="text/css" rel="stylesheet" href="${context}/css/profilepage.css"/>
     <%-- icon --%>
     <link rel="shortcut icon" href="${context}/image/bj_icon.ico"/>
-    <script src="${context}/js/mainpage_scr.js"></script>
+    <script src="${context}/js/common_scr.js"></script>
     <script src="${context}/js/profile_scr.js"></script>
 </head>
 

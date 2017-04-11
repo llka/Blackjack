@@ -14,12 +14,12 @@
     <link type="text/css" rel="stylesheet" href="${context}/css/common.css"/>
     <link type="text/css" rel="stylesheet" href="${context}/css/startpage.css"/>
     <link rel="shortcut icon" href="${context}/image/bj_icon.ico"/>
-    <script src="${context}/js/common_scr.js"></script>
+    <script src="${context}/js/startpage_scr.js"></script>
     <script src="${context}/js/register_scr.js"></script>
 </head>
 
 <body>
-    <div class="header">
+    <div class="header" id="topnavStart">
         <div class="title">
             <a href="/jsp/guest/start.jsp"><fmt:message key="application.title"/></a>
         </div>

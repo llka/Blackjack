@@ -15,6 +15,7 @@
     <%-- icon --%>
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/image/bj_icon.ico"/>
     <script src="${context}/js/game_scr.js"></script>
+    <script src="${context}/js/common_scr.js"></script>
 </head>
 <body>
     <c:choose>

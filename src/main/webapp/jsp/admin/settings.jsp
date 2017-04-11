@@ -63,7 +63,7 @@
     </div>
 
     <%-- Footer --%>
-    <div class="row">
+    <div class="row" id="bottom">
         <c:set var="path" value="path.page.settings" scope="session"/>
         <c:import url="${context}/WEB-INF/jspf/footer.jsp"/>
     </div>

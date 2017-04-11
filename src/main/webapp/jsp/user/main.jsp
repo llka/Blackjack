@@ -13,7 +13,7 @@
     <link type="text/css" rel="stylesheet" href="${context}/css/mainpage.css"/>
     <%-- icon --%>
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/image/bj_icon.ico"/>
-    <script src="${context}/js/mainpage_scr.js"></script>
+    <script src="${context}/js/common_scr.js"></script>
 </head>
 <body>
     <c:choose>
