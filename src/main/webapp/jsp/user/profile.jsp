@@ -66,7 +66,7 @@
                                 </tr>
                                 <tr class="bordered">
                                     <td class="fullInput">
-                                        <input type="text" name="firstName" value="${account.firstName}" required maxlength=50>
+                                        <input type="text" name="firstName" value="${account.firstName}" pattern="[a-zA-Z]+" required maxlength=50>
                                     </td>
                                 </tr>
 
@@ -78,7 +78,7 @@
                                 </tr>
                                 <tr class="bordered">
                                     <td class="fullInput">
-                                        <input type="text" name="lastName" value="${account.lastName}" required maxlength=50>
+                                        <input type="text" name="lastName" value="${account.lastName}" pattern="[a-zA-Z]+" required maxlength=50>
                                     </td>
                                 </tr>
 
@@ -91,7 +91,7 @@
                                 </tr>
                                 <tr class="bordered">
                                     <td class="fullInput">
-                                        <input type="email" name="email" value="${account.email}" pattern="[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)"  title="<fmt:message key="register.email.title"/>" required  maxlength=50>
+                                        <input type="email" name="email" value="${account.email}" pattern="^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$"  title="<fmt:message key="register.email.title"/>" required  maxlength=50>
                                     </td>
                                 </tr>
 

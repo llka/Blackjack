@@ -38,6 +38,9 @@ public class ChangeSettingsCommand implements ActionCommand {
             SettingsLogic settingsLogic = new SettingsLogic();
             try {
                 settingsLogic.changeBetLimits(minBet,maxBet);
+                settings.setMinBet(minBet);
+                settings.setMaxBet(maxBet);
+                servletContext.setAttribute(SETTINGS_KEY,settings);
             } catch (LogicException e) {
                 throw new CommandException("Can't change bet limits ", e);
             }

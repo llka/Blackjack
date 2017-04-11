@@ -4,7 +4,7 @@
 <%@ taglib uri="bjtags" prefix="bjtag" %>
 <fmt:setLocale value="${visitor.locale}" scope="session"/>
 <fmt:setBundle basename="properties.content"/>
-<jsp:useBean id="accounts" class="ru.ilka.entity.Account" scope="page"/>
+<jsp:useBean id="settings" class="ru.ilka.entity.GameSettings" scope="application"/>
 <c:set var="context" scope="page" value="${pageContext.request.contextPath}"/>
 
 <html>
@@ -41,13 +41,13 @@
                         <tr class="bordered">
                             <td><fmt:message key="settings.minBet"/></td>
                             <td>
-                                <input type="number" name="minBet" pattern="[1-9]+[0-9}?" min="1" autofocus required title="<fmt:message key="settings.minBet.title"/>" maxlength=50>
+                                <input type="number" name="minBet" pattern="[1-9]+[0-9}?" min="1" value="${settings.minBet}" autofocus required title="<fmt:message key="settings.minBet.title"/>">
                             </td>
                         </tr>
                         <tr class="bordered">
                             <td><fmt:message key="settings.maxBet"/></td>
                             <td>
-                                <input type="number" name="maxBet" pattern="[1-9]+[0-9}?" min="1" required title="<fmt:message key="settings.maxBet.title"/>" maxlength=50>
+                                <input type="number" name="maxBet" pattern="[1-9]+[0-9}?" min="1" value="${settings.maxBet}" required title="<fmt:message key="settings.maxBet.title"/>">
                             </td>
                         </tr>
                         <tr class ="submit">

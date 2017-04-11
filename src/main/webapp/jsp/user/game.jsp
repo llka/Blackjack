@@ -3,6 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <fmt:setLocale value="${visitor.locale}" scope="session"/>
 <fmt:setBundle basename="properties.content"/>
+<jsp:useBean id="settings" class="ru.ilka.entity.GameSettings" scope="application"/>
 <c:set var="context" scope="page" value="${pageContext.request.contextPath}"/>
 
 <html>
@@ -50,13 +51,13 @@
                     <input type="hidden" name="command" value="DealFirstCards"/>
                     <div class="bets">
                         <div class="bet">
-                            <input type="number" name="bet1" min="0" max="100" step="5" value="0">
+                            <input type="number" name="bet1" min="0" max="${settings.maxBet}" step="${settings.minBet}" value="0">
                         </div>
                         <div class="bet">
-                            <input type="number" name="bet2" min="0" max="100" step="5" value="0">
+                            <input type="number" name="bet2" min="0" max="${settings.maxBet}" step="${settings.minBet * 2}" value="0">
                         </div>
                         <div class="bet">
-                            <input type="number" name="bet3" min="0" max="100" step="5" value="0">
+                            <input type="number" name="bet3" min="0" max="${settings.maxBet}" step="${settings.minBet * 3}" value="0">
                         </div>
                     </div>
                     <div class="error"><span id="errorEmptyBets"></span></div>
