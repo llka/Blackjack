@@ -96,6 +96,12 @@ public enum CommandType {
             this.command = new BanUsersCommand();
             this.role = EnumSet.of(Visitor.Role.ADMIN);
         }
+    },
+    CHANGESETTINGS{
+        {
+            this.command = new ChangeSettingsCommand();
+            this.role = EnumSet.of(Visitor.Role.ADMIN);
+        }
     };
 
     public ActionCommand command;

@@ -36,7 +36,7 @@
         <div class="col-10">
             <div class = "description">
                 <form name="adminSettingsForm" method="POST" action="/controller" autocomplete="on">
-                    <input type="hidden" name="command" value="AdminSettings"/>
+                    <input type="hidden" name="command" value="ChangeSettings"/>
                     <table>
                         <tr class="bordered">
                             <td><fmt:message key="settings.minBet"/></td>
