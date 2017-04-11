@@ -1,0 +1,218 @@
+@media screen and (max-width: 600px) {
+    .description .table {
+        height: 233px;
+    }
+    .description .button {
+        border-radius: 2px;
+        font-size: 10px;
+        padding: 5px;
+        width: auto;
+        margin: 5px;
+    }
+    .description .bet input{
+        width: 35px;
+        border-radius: 3px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .description .card1{
+        left: 29%;
+        top: 62%;
+        height: 54px;
+        width: 36px;
+    }
+    .description .card2{
+        left: 47%;
+        top: 66%;
+        height: 54px;
+        width: 36px;
+    }
+    .description .card3{
+        left: 65%;
+        top: 62%;
+        height: 54px;
+        width: 36px;
+    }
+    .description .cardNumber {
+        font-size: 12px;
+    }
+    .description .cardNumberDown {
+        font-size: 12px;
+    }
+    .description .cardSuit .spades {
+        height: 20px;
+    }
+    .description .cardSuit .clubs{
+        height: 20px;
+    }
+    .description .cardSuit .hearts{
+        height: 20px;
+    }
+    .description .cardSuit .diamonds{
+        height: 20px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .description .table {
+        height: 150px;
+    }
+    .description .card1{
+        left: 28%;
+        top: 56%;
+        height: 54px;
+        width: 36px;
+    }
+    .description .card2{
+        left: 45%;
+        top: 60%;
+        height: 54px;
+        width: 36px;
+    }
+    .description .card3{
+        left: 62%;
+        top: 56%;
+        height: 54px;
+        width: 36px;
+    }
+    .description .cardNumber {
+        font-size: 12px;
+    }
+    .description .cardNumberDown {
+        font-size: 12px;
+    }
+    .description .cardSuit .spades {
+        height: 20px;
+    }
+    .description .cardSuit .clubs{
+        height: 20px;
+    }
+    .description .cardSuit .hearts{
+        height: 20px;
+    }
+    .description .cardSuit .diamonds{
+        height: 20px;
+    }
+}
+@media screen and (max-width: 330px) {
+    .description .card1{
+        left: 28%;
+        top: 66%;
+    }
+    .description .card2{
+        left: 45%;
+        top: 69%;
+    }
+    .description .card3{
+        left: 62%;
+        top: 66%;
+    }
+}
+
+.table{
+    height: 461px;
+    background: url(../image/blackjack_table_3.png) center no-repeat;
+    background-size: contain;
+    z-index: 1;
+}
+
+.card1{
+    position: absolute;
+    left: 31%;
+    top: 91%;
+    z-index: 5;
+    background: white;
+    height: 70px;
+    width: 47px;
+    border-radius: 3px;
+    padding: 3px;
+}
+.card2{
+    position: absolute;
+    left: 48%;
+    top: 103%;
+    z-index: 5;
+    background: white;
+    height: 70px;
+    width: 47px;
+    border-radius: 3px;
+    padding: 3px;
+}
+.card3{
+    position: absolute;
+    left: 67%;
+    top: 91%;
+    z-index: 5;
+    background: white;
+    height: 70px;
+    width: 47px;
+    border-radius: 3px;
+    padding: 3px;
+}
+
+.cardNumber{
+    color: black;
+    font-size: 16px;
+}
+.cardSuit{
+    text-align: center;
+    height: 43%;
+    vertical-align: middle;
+}
+.clubs{
+    height: 28px;
+    background: url("../image/clubs.png") center no-repeat;
+    background-size: contain;
+}
+.spades{
+    height: 28px;
+    background: url("../image/spades.png") center no-repeat;
+    background-size: contain;
+}
+.hearts{
+    height: 28px;
+    background: url("../image/hearts.png") center no-repeat;
+    background-size: contain;
+}
+.diamonds{
+    height: 30px;
+    background: url("../image/diamonds.png") center no-repeat;
+    background-size: contain;
+}
+.cardNumberDown{
+    color: black;
+    font-size: 16px;
+    text-align: right;
+}
+
+.bets{
+    display: flex;
+    justify-content: space-between;
+    z-index: 3;
+    width: 64%;
+    margin: auto;
+}
+.bet{
+    display: flex;
+    justify-content: space-between;
+}
+.bet input{
+    width: 45px;
+    border-radius: 5px;
+}
+.betForm{
+    margin-top: 10px;
+    width: 100%;
+}
+.error{
+    margin-top: 5px;
+    text-align: center;
+    color: #ff0b0b;
+    font-weight: 500;
+}
+.submit{
+    width: 70%;
+    margin: auto;
+    text-align: center;
+}

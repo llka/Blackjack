@@ -11,6 +11,11 @@
     text-align: center;
     margin-bottom: 2%;
 }
+.buttonCenter a{
+    text-decoration: none;
+    display: block;
+    margin: auto;
+}
 
 .description h2{
     padding: 10px;

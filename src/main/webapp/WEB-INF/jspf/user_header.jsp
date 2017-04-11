@@ -14,7 +14,7 @@
         <a href="/jsp/user/profile.jsp" >${visitor.name}</a>
         <bjtag:admin-nav role="${visitor.role}">
             <a href="/jsp/admin/users.jsp"><fmt:message key="header.manageUsers"/></a>
-            <a href="#news"><fmt:message key="header.refreshNews"/></a>
+            <a href="/jsp/admin/settings.jsp"><fmt:message key="header.settings"/></a>
         </bjtag:admin-nav>
         <a href="/jsp/user/profile.jsp"><fmt:message key="header.profile"/></a>
         <a href="/jsp/user/about.jsp"><fmt:message key="header.about"/></a>

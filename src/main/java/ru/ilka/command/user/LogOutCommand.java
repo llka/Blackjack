@@ -11,9 +11,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.HashSet;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentSkipListSet;
 
 import static ru.ilka.controller.ControllerConstants.ACCOUNT_KEY;
 import static ru.ilka.controller.ControllerConstants.ONLINE_USERS_KEY;

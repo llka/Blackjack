@@ -30,7 +30,8 @@
         <div class="col-1"></div>
         <div class="col-10">
             <div class="buttonCenter">
-                <button class="button"><fmt:message key="main.button.play"/></button>
+                <a class="button" href="/jsp/user/game.jsp"><fmt:message key="main.button.play"/></a>
+                <%--<button class="button"><fmt:message key="main.button.play"/></button>--%>
             </div>
             <div class = "description">
                 <div>
