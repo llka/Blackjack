@@ -3,16 +3,16 @@ package ru.ilka.entity;
 /**
  * Here could be your advertisement +375 29 3880490
  */
-public class Settings {
+public class GameSettings {
     private int minBet;
     private int maxBet;
 
-    public Settings(int minBet, int maxBet) {
+    public GameSettings(int minBet, int maxBet) {
         this.minBet = minBet;
         this.maxBet = maxBet;
     }
 
-    public Settings() {
+    public GameSettings() {
     }
 
     public int getMinBet() {
@@ -36,7 +36,7 @@ public class Settings {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Settings settings = (Settings) o;
+        GameSettings settings = (GameSettings) o;
 
         if (minBet != settings.minBet) return false;
         return maxBet == settings.maxBet;

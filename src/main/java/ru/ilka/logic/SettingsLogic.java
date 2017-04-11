@@ -3,7 +3,7 @@ package ru.ilka.logic;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.ilka.dao.SettingsDao;
-import ru.ilka.entity.Settings;
+import ru.ilka.entity.GameSettings;
 import ru.ilka.exception.DBException;
 import ru.ilka.exception.LogicException;
 
@@ -26,13 +26,14 @@ public class SettingsLogic {
         }
     }
 
-    public Settings getSettings() throws LogicException {
+    public GameSettings getSettings(){
         SettingsDao settingsDao = new SettingsDao();
+        GameSettings settings;
         try {
-            Settings settings = settingsDao.getBetLimits();
-            return settings;
+            settings = settingsDao.getBetLimits();
         } catch (DBException e) {
-            throw new LogicException("Error while getting settings - bet limits " + e);
+            settings = new GameSettings(1,100);
         }
+        return settings;
     }
 }

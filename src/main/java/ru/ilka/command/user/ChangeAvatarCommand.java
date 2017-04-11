@@ -24,8 +24,8 @@ import static ru.ilka.controller.ControllerConstants.AVATAR_DIRECTORY_STATIC;
 /**
  * Here could be your advertisement +375 29 3880490
  */
-public class ChangeAvatar implements ActionCommand {
-    static Logger logger = LogManager.getLogger(ChangeAvatar.class);
+public class ChangeAvatarCommand implements ActionCommand {
+    static Logger logger = LogManager.getLogger(ChangeAvatarCommand.class);
 
     private static final String PARAM_AVATAR = "avatar";
     private static final String PAGE_PROFILE = "path.page.profile";

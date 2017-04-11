@@ -2,7 +2,9 @@ package ru.ilka.filter;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import ru.ilka.entity.GameSettings;
 import ru.ilka.entity.Visitor;
+import ru.ilka.logic.SettingsLogic;
 import ru.ilka.manager.ConfigurationManager;
 
 import javax.servlet.*;
@@ -12,9 +14,7 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
-import static ru.ilka.controller.ControllerConstants.DEFAULT_LOCALE;
-import static ru.ilka.controller.ControllerConstants.ONLINE_USERS_KEY;
-import static ru.ilka.controller.ControllerConstants.VISITOR_KEY;
+import static ru.ilka.controller.ControllerConstants.*;
 
 /**
  * Here could be your advertisement +375 29 3880490

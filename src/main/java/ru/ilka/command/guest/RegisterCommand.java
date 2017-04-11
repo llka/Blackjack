@@ -4,11 +4,13 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.ilka.command.ActionCommand;
 import ru.ilka.entity.Account;
+import ru.ilka.entity.GameSettings;
 import ru.ilka.entity.Visitor;
 import ru.ilka.exception.CommandException;
 import ru.ilka.exception.LogicException;
 import ru.ilka.logic.AccountLogic;
 import ru.ilka.logic.LogicResult;
+import ru.ilka.logic.SettingsLogic;
 import ru.ilka.manager.ConfigurationManager;
 import ru.ilka.manager.MessageManager;
 
@@ -71,6 +73,7 @@ public class RegisterCommand implements ActionCommand {
         HttpSession session = request.getSession();
         Visitor visitor = (Visitor) session.getAttribute(VISITOR_KEY);
         AccountLogic accountLogic = new AccountLogic();
+        SettingsLogic settingsLogic = new SettingsLogic();
         LogicResult registerResult = null;
 
         Part img = null;
@@ -145,6 +148,11 @@ public class RegisterCommand implements ActionCommand {
                 onlineUsers.put(account.getAccountId(),account);
                 servletContext.setAttribute(ONLINE_USERS_KEY,onlineUsers);
                 logger.debug("Online users : " + onlineUsers);
+                GameSettings settings = (GameSettings) servletContext.getAttribute(SETTINGS_KEY);
+                if(settings == null) {
+                    settings = settingsLogic.getSettings();
+                    servletContext.setAttribute(SETTINGS_KEY, settings);
+                }
                 break;
             default:
                 throw new CommandException("Unknown Logic Result");

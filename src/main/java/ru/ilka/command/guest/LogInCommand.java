@@ -4,9 +4,11 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.ilka.command.ActionCommand;
 import ru.ilka.entity.Account;
+import ru.ilka.entity.GameSettings;
 import ru.ilka.entity.Visitor;
 import ru.ilka.exception.LogicException;
 import ru.ilka.logic.AccountLogic;
+import ru.ilka.logic.SettingsLogic;
 import ru.ilka.manager.ConfigurationManager;
 import ru.ilka.manager.MessageManager;
 
@@ -21,9 +23,7 @@ import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentSkipListSet;
 
-import static ru.ilka.controller.ControllerConstants.ACCOUNT_KEY;
-import static ru.ilka.controller.ControllerConstants.ONLINE_USERS_KEY;
-import static ru.ilka.controller.ControllerConstants.VISITOR_KEY;
+import static ru.ilka.controller.ControllerConstants.*;
 
 /**
  * Here could be your advertisement +375 29 3880490
@@ -46,6 +46,7 @@ public class LogInCommand implements ActionCommand {
         String password = request.getParameter(PARAM_PASSWORD);
 
         AccountLogic accountLogic = new AccountLogic();
+        SettingsLogic settingsLogic = new SettingsLogic();
         ServletContext servletContext = request.getServletContext();
         HttpSession session = request.getSession();
         Visitor visitor = (Visitor) session.getAttribute(VISITOR_KEY);
@@ -82,6 +83,11 @@ public class LogInCommand implements ActionCommand {
                 onlineUsers.put(account.getAccountId(),account);
                 servletContext.setAttribute(ONLINE_USERS_KEY,onlineUsers);
                 logger.debug("Online users : " + onlineUsers);
+                GameSettings settings = (GameSettings) servletContext.getAttribute(SETTINGS_KEY);
+                if(settings == null) {
+                    settings = settingsLogic.getSettings();
+                    servletContext.setAttribute(SETTINGS_KEY, settings);
+                }
             } else {
                 visitor.setRole(Visitor.Role.GUEST);
                 visitor.setCurrentPage(page);

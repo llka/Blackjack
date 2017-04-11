@@ -3,7 +3,7 @@ package ru.ilka.dao;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.ilka.datebase.ConnectionPool;
-import ru.ilka.entity.Settings;
+import ru.ilka.entity.GameSettings;
 import ru.ilka.exception.DBException;
 
 import java.sql.*;
@@ -36,11 +36,11 @@ public class SettingsDao {
         }
     }
 
-    public Settings getBetLimits() throws DBException {
+    public GameSettings getBetLimits() throws DBException {
         try(Connection connection = ConnectionPool.getInstance().getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(FIND_BET_LIMITS)) {
             ResultSet resultSet = preparedStatement.executeQuery();
-            Settings settings = new Settings();
+            GameSettings settings = new GameSettings();
             if(resultSet.next()){
                 settings.setMinBet(resultSet.getInt(COLUMN_MIN_BET));
                 settings.setMaxBet(resultSet.getInt(COLUMN_MAX_BET));

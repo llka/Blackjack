@@ -45,7 +45,7 @@ public enum CommandType {
     },
     CHANGEAVATAR{
         {
-            this.command = new ChangeAvatar();
+            this.command = new ChangeAvatarCommand();
             this.role = EnumSet.of(Visitor.Role.ADMIN, Visitor.Role.USER);
         }
     },
