@@ -12,12 +12,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 /**
  * Here could be your advertisement +375 29 3880490
  */
-@WebServlet(urlPatterns = "/AjaxController", name = "AjaxController")
+@WebServlet(urlPatterns = "/Ajax", name = "AjaxController")
 public class AjaxController extends HttpServlet {
     static Logger logger = LogManager.getLogger(AjaxController.class);
 
@@ -42,9 +41,5 @@ public class AjaxController extends HttpServlet {
         } catch (CommandException e) {
             logger.error("Error in command layer " + e);
         }
-
-        /*if(result != null){
-            response.setContentType("text/html");
-        }*/
     }
 }

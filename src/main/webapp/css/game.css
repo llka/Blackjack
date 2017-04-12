@@ -22,14 +22,50 @@
         height: 54px;
         width: 36px;
     }
+    .description .card12{
+        left: 30%;
+        top: 62%;
+        height: 54px;
+        width: 36px;
+    }
+    .description .card13{
+        left: 31%;
+        top: 62%;
+        height: 54px;
+        width: 36px;
+    }
     .description .card2{
+        left: 46%;
+        top: 66%;
+        height: 54px;
+        width: 36px;
+    }
+    .description .card22{
         left: 47%;
         top: 66%;
         height: 54px;
         width: 36px;
     }
+    .description .card23{
+        left: 48%;
+        top: 66%;
+        height: 54px;
+        width: 36px;
+    }
     .description .card3{
+        left: 64%;
+        top: 62%;
+        height: 54px;
+        width: 36px;
+    }
+    .description .card32{
         left: 65%;
+        top: 62%;
+        height: 54px;
+        width: 36px;
+    }
+    .description .card33{
+        left: 66%;
         top: 62%;
         height: 54px;
         width: 36px;
@@ -100,7 +136,23 @@
         left: 28%;
         top: 66%;
     }
+    .description .card12{
+        left: 28%;
+        top: 66%;
+    }
+    .description .card13{
+        left: 28%;
+        top: 66%;
+    }
     .description .card2{
+        left: 45%;
+        top: 69%;
+    }
+    .description .card22{
+        left: 45%;
+        top: 69%;
+    }
+    .description .card23{
         left: 45%;
         top: 69%;
     }
@@ -108,18 +160,26 @@
         left: 62%;
         top: 66%;
     }
+    .description .card32{
+        left: 62%;
+        top: 66%;
+    }
+    .description .card33{
+        left: 62%;
+        top: 66%;
+    }
 }
 
 .table{
     height: 461px;
-    background: url(../image/blackjack_table.png) center no-repeat;
+    background: url(../image/blackjack_table_dark.png) center no-repeat;
     background-size: contain;
     z-index: 1;
 }
 
 .card1{
     position: absolute;
-    left: 31%;
+    left: 29%;
     top: 91%;
     z-index: 5;
     background: white;
@@ -127,10 +187,59 @@
     width: 47px;
     border-radius: 3px;
     padding: 3px;
+    border: 1px solid rgba(0, 0, 0, 0.53);
+}
+.card12{
+    position: absolute;
+    left: 31%;
+    top: 91.5%;
+    z-index: 5;
+    background: white;
+    height: 70px;
+    width: 47px;
+    border-radius: 3px;
+    padding: 3px;
+    border: 1px solid rgba(0, 0, 0, 0.53);
+}
+.card13{
+    position: absolute;
+    left: 33%;
+    top: 92%;
+    z-index: 5;
+    background: white;
+    height: 70px;
+    width: 47px;
+    border-radius: 3px;
+    padding: 3px;
+    border: 1px solid rgba(0, 0, 0, 0.53);
 }
 .card2{
     position: absolute;
+    left: 46%;
+    top: 102%;
+    z-index: 5;
+    background: white;
+    height: 70px;
+    width: 47px;
+    border-radius: 3px;
+    padding: 3px;
+    border: 1px solid rgba(0, 0, 0, 0.53);
+}
+.card22{
+    position: absolute;
     left: 48%;
+    top: 102.5%;
+    z-index: 5;
+    background: white;
+    height: 70px;
+    width: 47px;
+    border-radius: 3px;
+    padding: 3px;
+    border: 1px solid rgba(0, 0, 0, 0.53);
+}
+.card23{
+    position: absolute;
+    left: 50%;
     top: 103%;
     z-index: 5;
     background: white;
@@ -138,10 +247,11 @@
     width: 47px;
     border-radius: 3px;
     padding: 3px;
+    border: 1px solid rgba(0, 0, 0, 0.53);
 }
 .card3{
     position: absolute;
-    left: 67%;
+    left: 63%;
     top: 91%;
     z-index: 5;
     background: white;
@@ -149,6 +259,68 @@
     width: 47px;
     border-radius: 3px;
     padding: 3px;
+    border: 1px solid rgba(0, 0, 0, 0.53);
+}
+.card32{
+    position: absolute;
+    left: 65%;
+    top: 91.5%;
+    z-index: 5;
+    background: white;
+    height: 70px;
+    width: 47px;
+    border-radius: 3px;
+    padding: 3px;
+    border: 1px solid rgba(0, 0, 0, 0.53);
+}
+.card33{
+    position: absolute;
+    left: 67%;
+    top: 92%;
+    z-index: 5;
+    background: white;
+    height: 70px;
+    width: 47px;
+    border-radius: 3px;
+    padding: 3px;
+    border: 1px solid rgba(0, 0, 0, 0.53);
+}
+
+.DealerCard1{
+    position: absolute;
+    left: 46%;
+    top: 80.5%;
+    z-index: 5;
+    background: white;
+    height: 70px;
+    width: 47px;
+    border-radius: 3px;
+    padding: 3px;
+    border: 1px solid rgba(0, 0, 0, 0.53);
+}
+.DealerCard2{
+    position: absolute;
+    left: 48%;
+    top: 81%;
+    z-index: 5;
+    background: white;
+    height: 70px;
+    width: 47px;
+    border-radius: 3px;
+    padding: 3px;
+    border: 1px solid rgba(0, 0, 0, 0.53);
+}
+.DealerCard3{
+    position: absolute;
+    left: 50%;
+    top: 81.5%;
+    z-index: 5;
+    background: white;
+    height: 70px;
+    width: 47px;
+    border-radius: 3px;
+    padding: 3px;
+    border: 1px solid rgba(0, 0, 0, 0.53);
 }
 
 .cardNumber{

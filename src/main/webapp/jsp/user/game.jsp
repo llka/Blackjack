@@ -15,11 +15,12 @@
     <%-- icon --%>
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/image/bj_icon.ico"/>
 
-    <script src="http://code.jquery.com/jquery-1.10.2.js"
-            type="text/javascript"></script>
+    <%--<script src="http://code.jquery.com/jquery-1.10.2.js"--%>
+            <%--type="text/javascript"></script>--%>
+    <script src="${context}/js/jquery-1.10.2.js"></script>
     <script src="${context}/js/game_scr.js" type="text/javascript"></script>
     <script src="${context}/js/common_scr.js"></script>
-    <%--<script src="${context}/js/jquery-1.10.2.js"></script>--%>
+    <script src="${context}/js/jquery-1.10.2.js"></script>
 
 </head>
 <body>
@@ -38,17 +39,67 @@
         <div class="col-10">
             <div class = "description">
                 <div class="table"></div>
-                <div class="card1" id="responseCard1">
-                </div>
-                <div class="card2" id="responseCard2">
-                    <div class="cardNumber">K</div>
-                    <div class="cardSuit"><div class="clubs"></div></div>
-                    <div class="cardNumberDown">K</div>
-                </div>
-                <div class="card3" id="responseCard3">
-                    <div class="cardNumber">8</div>
-                    <div class="cardSuit"><div class="diamonds"></div></div>
-                    <div class="cardNumberDown">8</div>
+                <div id = "cards">
+                    <div class="DealerCard1">
+                        <div class="cardNumber">A</div>
+                        <div class="cardSuit"><div class="clubs"></div></div>
+                        <div class="cardNumberDown">A</div>
+                    </div>
+                    <div class="DealerCard2">
+                        <div class="cardNumber">A</div>
+                        <div class="cardSuit"><div class="clubs"></div></div>
+                        <div class="cardNumberDown">A</div>
+                    </div>
+                    <div class="DealerCard3">
+                        <div class="cardNumber">A</div>
+                        <div class="cardSuit"><div class="clubs"></div></div>
+                        <div class="cardNumberDown">A</div>
+                    </div>
+                    <%--<div class="card1">--%>
+                        <%--<div class="cardNumber">K</div>--%>
+                        <%--<div class="cardSuit"><div class="clubs"></div></div>--%>
+                        <%--<div class="cardNumberDown">K</div>--%>
+                    <%--</div>--%>
+                    <%--<div class="card12">--%>
+                        <%--<div class="cardNumber">K</div>--%>
+                        <%--<div class="cardSuit"><div class="clubs"></div></div>--%>
+                        <%--<div class="cardNumberDown">K</div>--%>
+                    <%--</div>--%>
+                    <%--<div class="card13">--%>
+                        <%--<div class="cardNumber">K</div>--%>
+                        <%--<div class="cardSuit"><div class="clubs"></div></div>--%>
+                        <%--<div class="cardNumberDown">K</div>--%>
+                    <%--</div>--%>
+                    <%--<div class="card2">--%>
+                        <%--<div class="cardNumber">K</div>--%>
+                        <%--<div class="cardSuit"><div class="clubs"></div></div>--%>
+                        <%--<div class="cardNumberDown">K</div>--%>
+                    <%--</div>--%>
+                    <%--<div class="card22">--%>
+                        <%--<div class="cardNumber">K</div>--%>
+                        <%--<div class="cardSuit"><div class="clubs"></div></div>--%>
+                        <%--<div class="cardNumberDown">K</div>--%>
+                    <%--</div>--%>
+                    <%--<div class="card23">--%>
+                        <%--<div class="cardNumber">K</div>--%>
+                        <%--<div class="cardSuit"><div class="clubs"></div></div>--%>
+                        <%--<div class="cardNumberDown">K</div>--%>
+                    <%--</div>--%>
+                    <%--<div class="card3">--%>
+                        <%--<div class="cardNumber">8</div>--%>
+                        <%--<div class="cardSuit"><div class="diamonds"></div></div>--%>
+                        <%--<div class="cardNumberDown">8</div>--%>
+                    <%--</div>--%>
+                    <%--<div class="card32">--%>
+                        <%--<div class="cardNumber">8</div>--%>
+                        <%--<div class="cardSuit"><div class="diamonds"></div></div>--%>
+                        <%--<div class="cardNumberDown">8</div>--%>
+                    <%--</div>--%>
+                    <%--<div class="card33">--%>
+                        <%--<div class="cardNumber">8</div>--%>
+                        <%--<div class="cardSuit"><div class="diamonds"></div></div>--%>
+                        <%--<div class="cardNumberDown">8</div>--%>
+                    <%--</div>--%>
                 </div>
                 <form class="betForm" name="betForm">
                     <input id="command" type="hidden" name="command" value="DealCards"/>

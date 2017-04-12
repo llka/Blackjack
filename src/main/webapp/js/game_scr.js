@@ -21,7 +21,7 @@ function validateBetForm() {
 $(document).ready(function() {
     $('#dealBtn').blur(function() {
         $.ajax({
-            url : '/AjaxController',
+            url : '/Ajax',
             data : {
                 command : $('#command').val(),
                 bet1 : $('#bet1input').val(),
@@ -29,7 +29,7 @@ $(document).ready(function() {
                 bet3 : $('#bet3input').val()
             },
             success : function(responseText) {
-                $('#responseCard1').html(responseText);
+                $('#cards').html(responseText);
             }
         });
     });
