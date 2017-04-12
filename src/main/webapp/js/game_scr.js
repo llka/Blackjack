@@ -17,3 +17,20 @@ function validateBetForm() {
   }
   return result;
 }
+
+$(document).ready(function() {
+    $('#dealBtn').blur(function() {
+        $.ajax({
+            url : '/AjaxController',
+            data : {
+                command : $('#command').val(),
+                bet1 : $('#bet1input').val(),
+                bet2 : $('#bet2input').val(),
+                bet3 : $('#bet3input').val()
+            },
+            success : function(responseText) {
+                $('#responseCard1').html(responseText);
+            }
+        });
+    });
+});

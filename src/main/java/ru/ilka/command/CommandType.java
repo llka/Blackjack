@@ -102,6 +102,12 @@ public enum CommandType {
             this.command = new ChangeSettingsCommand();
             this.role = EnumSet.of(Visitor.Role.ADMIN);
         }
+    },
+    DEALCARDS{
+        {
+            this.command = new DealCardsCommand();
+            this.role = EnumSet.of(Visitor.Role.ADMIN, Visitor.Role.USER);
+        }
     };
 
     public ActionCommand command;

@@ -14,8 +14,13 @@
     <link type="text/css" rel="stylesheet" href="${context}/css/game.css"/>
     <%-- icon --%>
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/image/bj_icon.ico"/>
-    <script src="${context}/js/game_scr.js"></script>
+
+    <script src="http://code.jquery.com/jquery-1.10.2.js"
+            type="text/javascript"></script>
+    <script src="${context}/js/game_scr.js" type="text/javascript"></script>
     <script src="${context}/js/common_scr.js"></script>
+    <%--<script src="${context}/js/jquery-1.10.2.js"></script>--%>
+
 </head>
 <body>
     <c:choose>
@@ -33,37 +38,34 @@
         <div class="col-10">
             <div class = "description">
                 <div class="table"></div>
-                <div class="card1">
-                    <div class="cardNumber">A</div>
-                    <div class="cardSuit"><div class="spades"></div></div>
-                    <div class="cardNumberDown">A</div>
+                <div class="card1" id="responseCard1">
                 </div>
-                <div class="card2">
+                <div class="card2" id="responseCard2">
                     <div class="cardNumber">K</div>
                     <div class="cardSuit"><div class="clubs"></div></div>
                     <div class="cardNumberDown">K</div>
                 </div>
-                <div class="card3">
+                <div class="card3" id="responseCard3">
                     <div class="cardNumber">8</div>
                     <div class="cardSuit"><div class="diamonds"></div></div>
                     <div class="cardNumberDown">8</div>
                 </div>
-                <form class="betForm" onsubmit="return validateBetForm()"  name="betForm"  method="POST">
-                    <input type="hidden" name="command" value="DealFirstCards"/>
+                <form class="betForm" name="betForm">
+                    <input id="command" type="hidden" name="command" value="DealCards"/>
                     <div class="bets">
                         <div class="bet">
-                            <input type="number" name="bet1" min="0" max="${settings.maxBet}" step="${settings.minBet}" value="0">
+                            <input type="number" name="bet1" id="bet1input" min="0" max="${settings.maxBet}" step="${settings.minBet}" value="0">
                         </div>
                         <div class="bet">
-                            <input type="number" name="bet2" min="0" max="${settings.maxBet}" step="${settings.minBet * 2}" value="0">
+                            <input type="number" name="bet2" id="bet2input" min="0" max="${settings.maxBet}" step="${settings.minBet * 2}" value="0">
                         </div>
                         <div class="bet">
-                            <input type="number" name="bet3" min="0" max="${settings.maxBet}" step="${settings.minBet * 3}" value="0">
+                            <input type="number" name="bet3" id="bet3input" min="0" max="${settings.maxBet}" step="${settings.minBet * 3}" value="0">
                         </div>
                     </div>
                     <div class="error"><span id="errorEmptyBets"></span></div>
                     <div class="submit">
-                        <input class="button" type="submit" value="deal">
+                        <input class="button" type="button" onclick="return validateBetForm()" id="dealBtn" value="Deal">
                     </div>
                 </form>
             </div>

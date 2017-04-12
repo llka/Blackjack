@@ -112,7 +112,7 @@
 
 .table{
     height: 461px;
-    background: url(../image/blackjack_table_3.png) center no-repeat;
+    background: url(../image/blackjack_table.png) center no-repeat;
     background-size: contain;
     z-index: 1;
 }
