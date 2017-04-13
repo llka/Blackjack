@@ -16,7 +16,7 @@
 }
 
 @media screen and (max-width: 800px) {
-    .description .card1{
+    .description .card11{
         left: 29%;
         top: 62%;
         height: 54px;
@@ -34,7 +34,7 @@
         height: 54px;
         width: 36px;
     }
-    .description .card2{
+    .description .card21{
         left: 46%;
         top: 66%;
         height: 54px;
@@ -52,7 +52,7 @@
         height: 54px;
         width: 36px;
     }
-    .description .card3{
+    .description .card31{
         left: 64%;
         top: 62%;
         height: 54px;
@@ -94,19 +94,19 @@
     .description .table {
         height: 150px;
     }
-    .description .card1{
+    .description .card11{
         left: 28%;
         top: 56%;
         height: 54px;
         width: 36px;
     }
-    .description .card2{
+    .description .card21{
         left: 45%;
         top: 60%;
         height: 54px;
         width: 36px;
     }
-    .description .card3{
+    .description .card31{
         left: 62%;
         top: 56%;
         height: 54px;
@@ -132,7 +132,7 @@
     }
 }
 @media screen and (max-width: 330px) {
-    .description .card1{
+    .description .card11{
         left: 28%;
         top: 66%;
     }
@@ -144,7 +144,7 @@
         left: 28%;
         top: 66%;
     }
-    .description .card2{
+    .description .card21{
         left: 45%;
         top: 69%;
     }
@@ -156,7 +156,7 @@
         left: 45%;
         top: 69%;
     }
-    .description .card3{
+    .description .card31{
         left: 62%;
         top: 66%;
     }
@@ -177,7 +177,7 @@
     z-index: 1;
 }
 
-.card1{
+.card11{
     position: absolute;
     left: 29%;
     top: 91%;
@@ -213,7 +213,7 @@
     padding: 3px;
     border: 1px solid rgba(0, 0, 0, 0.53);
 }
-.card2{
+.card21{
     position: absolute;
     left: 46%;
     top: 102%;
@@ -249,7 +249,7 @@
     padding: 3px;
     border: 1px solid rgba(0, 0, 0, 0.53);
 }
-.card3{
+.card31{
     position: absolute;
     left: 63%;
     top: 91%;
@@ -356,6 +356,13 @@
     color: black;
     font-size: 16px;
     text-align: right;
+}
+.cardBack{
+    height: 100%;
+    width: 100%;
+    /*background: url(blue_back.png) center no-repeat;*/
+    background: url("/image/red_bycicle_back.png") center no-repeat;
+    background-size: 100% 100%;
 }
 
 .bets{

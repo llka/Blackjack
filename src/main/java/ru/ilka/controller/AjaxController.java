@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 /**
  * Here could be your advertisement +375 29 3880490
@@ -37,7 +38,19 @@ public class AjaxController extends HttpServlet {
         ActionCommand command = actionFactory.defineCommand(request);
 
         try {
-            command.execute(request,response);
+            response.setContentType("text/html");
+            PrintWriter printWriter;
+            try {
+                printWriter = response.getWriter();
+                String result = command.execute(request,response);
+                if(!result.isEmpty()) {
+                    printWriter.println(result);
+                }else {
+                    logger.info("place your bets");
+                }
+            } catch (IOException e) {
+                logger.error("Can't write new card in ajax controller " + e);
+            }
         } catch (CommandException e) {
             logger.error("Error in command layer " + e);
         }
