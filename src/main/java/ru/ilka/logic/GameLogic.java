@@ -4,7 +4,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -13,22 +12,77 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public class GameLogic {
     static Logger logger = LogManager.getLogger(GameLogic.class);
+
     private static final int CARDS_QUANTITY = 52;
+    private static final int DECKS_QUANTITY = 6;
 
     public GameLogic() {}
 
-    public List<LogicResult> dealFirstCards(int hands, int decks){
-        int FIRST_CARDS_QNT = hands*2 + 2;
-        ArrayList<LogicResult> result = new ArrayList<>(FIRST_CARDS_QNT);
-        for (int i = 0; i < FIRST_CARDS_QNT ; i++) {
-            int card = ThreadLocalRandom.current().nextInt(CARDS_QUANTITY*decks);
-            if(decks > 1 && card > CARDS_QUANTITY){
-                card %= CARDS_QUANTITY;
+    public ArrayList<ArrayList<LogicResult>> dealCards(int hands){
+
+        ArrayList<ArrayList<LogicResult>> cards = new ArrayList<>(hands + 1);
+        ArrayList<Integer> usedCards = new ArrayList<>();
+
+        for (int i = 0; i < hands + 1; i++) {
+            ArrayList<LogicResult> hand = new ArrayList<>(4);
+            for (int j = 0; j < 2 ; j++) {
+                int card = ThreadLocalRandom.current().nextInt(CARDS_QUANTITY * DECKS_QUANTITY);
+                if (!usedCards.isEmpty()) {
+                    for (int k = 0; k < usedCards.size(); k++) {
+                        if (card == usedCards.get(k)) {
+                            card = ThreadLocalRandom.current().nextInt(CARDS_QUANTITY * DECKS_QUANTITY);
+                            k = 0;
+                        }
+                    }
+                }
+                usedCards.add(card);
+                if(card > CARDS_QUANTITY){
+                    card %= CARDS_QUANTITY;
+                }
+                hand.add(getCard(card));
             }
-            result.add(getCard(card));
+            cards.add(hand);
         }
-        logger.debug(result);
-        return Collections.unmodifiableList(result);
+        logger.debug("used cards " + usedCards);
+        logger.debug("cards " + cards);
+        return cards;
+    }
+
+    public void writeCard(LogicResult resultCard, StringBuilder writer){
+        String card = resultCard.toString();
+        char suit = card.charAt(card.length()-1);
+        String suitClass;
+        String number;
+        if(card.length() == 9){
+            number = "10";
+        }else {
+            number = String.valueOf(card.charAt(card.length()-3));
+        }
+        switch (suit){
+            case 'H':
+                suitClass = "<div class=\"hearts\"></div>";
+                break;
+            case 'C':
+                suitClass = "<div class=\"clubs\"></div>";
+                break;
+            case 'D':
+                suitClass = "<div class=\"diamonds\"></div>";
+                break;
+            case 'S':
+                suitClass = "<div class=\"spades\"></div>";
+                break;
+            default:
+                suitClass = "<div class=\"spades\"></div>";
+        }
+        writer.append("<div class=\"cardNumber\">");
+        writer.append(number);
+        writer.append("</div>\n");
+        writer.append("<div class=\"cardSuit\">");
+        writer.append(suitClass);
+        writer.append("</div>\n");
+        writer.append("<div class=\"cardNumberDown\">");
+        writer.append(number);
+        writer.append("</div>\n");
     }
 
     private LogicResult getCard(int number){

@@ -62,7 +62,7 @@ public class ChangeAvatarCommand implements ActionCommand {
         }
 
         try {
-            accountLogic.changeAvatar((int)account.getAccountId(),fileName);
+            accountLogic.changeAvatar(account.getAccountId(),fileName);
             account.setAvatar(fileName);
             logger.debug("New avatar - " + fileName);
         } catch (LogicException e) {

@@ -32,7 +32,7 @@ public class SortByBanStatusCommand implements ActionCommand {
 
         List<Account> accounts;
         try {
-            accounts = accountLogic.getAllAccounts((int)selfAccount.getAccountId());
+            accounts = accountLogic.getAllAccounts(selfAccount.getAccountId());
             accountLogic.sortByBanStatus(accounts);
         } catch (LogicException e) {
             throw new CommandException("Can't get all accounts " + e);

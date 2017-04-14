@@ -38,16 +38,10 @@
             <div class = "description">
                 <div class="table"></div>
                 <div id = "cards">
-                    <div class="DealerCard1">
-                        <div class="cardBack"></div>
-                    </div>
-                    <div class="DealerCard2">
-                        <div class="cardNumber">A</div>
-                        <div class="cardSuit"><div class="clubs"></div></div>
-                        <div class="cardNumberDown">A</div>
-                    </div>
                 </div>
-                <form class="betForm" name="betForm">
+
+                <script>showBetForm()</script>
+                <form id="betForm" class="betForm" name="betForm">
                     <input id="command" type="hidden" name="command" value="DealCards"/>
                     <div class="bets">
                         <div class="bet">

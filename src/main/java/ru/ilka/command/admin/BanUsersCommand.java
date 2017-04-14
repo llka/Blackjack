@@ -34,23 +34,23 @@ public class BanUsersCommand implements ActionCommand {
         Account selfAccount = (Account) session.getAttribute(ACCOUNT_KEY);
         AccountLogic accountLogic = new AccountLogic();
         try {
-            List<Account> accounts = accountLogic.getAllAccounts((int)selfAccount.getAccountId());
+            List<Account> accounts = accountLogic.getAllAccounts(selfAccount.getAccountId());
             for (Account account : accounts) {
                 if(BAN_CHECKBOX.equals(request.getParameter(String.valueOf(account.getAccountId()))) && !account.isBan()){
-                    accountLogic.banAccount((int)account.getAccountId(),true);
+                    accountLogic.banAccount(account.getAccountId(),true);
                     account.setBan(true);
                 }else if(!BAN_CHECKBOX.equals(request.getParameter(String.valueOf(account.getAccountId()))) && account.isBan()){
-                    accountLogic.banAccount((int)account.getAccountId(),false);
+                    accountLogic.banAccount(account.getAccountId(),false);
                     account.setBan(false);
                 }
 
                 if(ADMIN_CHECKBOX.equals(request.getParameter(ADMIN_CHECKBOX + String.valueOf(account.getAccountId())))
                         && !account.isAdmin()){
-                    accountLogic.setAdminRole((int)account.getAccountId(),true);
+                    accountLogic.setAdminRole(account.getAccountId(),true);
                     account.setAdmin(true);
                 }else if (!ADMIN_CHECKBOX.equals(request.getParameter(ADMIN_CHECKBOX + String.valueOf(account.getAccountId())))
                         && account.isAdmin()){
-                    accountLogic.setAdminRole((int)account.getAccountId(),false);
+                    accountLogic.setAdminRole(account.getAccountId(),false);
                     account.setAdmin(false);
                 }
             }

@@ -52,7 +52,7 @@ public class CheckPayCardCommand implements ActionCommand {
             case OK:
                 BigDecimal amount = (BigDecimal) session.getAttribute(ATTRIBUTE_AMOUNT_TO_ADD);
                 try {
-                    accountLogic.addToBalance((int)account.getAccountId(),amount);
+                    accountLogic.addToBalance(account.getAccountId(),amount);
                     account.setBalance(account.getBalance().add(amount));
                 } catch (LogicException e) {
                     logger.error("Can't add money to balance " + e);

@@ -1,3 +1,5 @@
+var inGame = false;
+
 function validateBetForm() {
   var result = true;
   var NO_BETS = "Place your bets, please";
@@ -30,7 +32,18 @@ $(document).ready(function() {
             },
             success : function(responseText) {
                 $('#cards').html(responseText);
+                inGame = true;
+                showBetForm();
             }
         });
     });
 });
+
+function showBetForm() {
+    var betForm =  document.getElementById("betForm");
+    if(inGame){
+        betForm.style.visibility = "hidden";
+    }else {
+        betForm.style.visibility = "visible";
+    }
+}

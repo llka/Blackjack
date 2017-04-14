@@ -152,7 +152,7 @@ public class AccountDao {
             ResultSet resultSet = preparedStatement.executeQuery();
             if(resultSet.next()){
                Account account = new Account();
-               account.setAccountId((long)resultSet.getInt(COLUMN_ACCOUNT_ID));
+               account.setAccountId(resultSet.getInt(COLUMN_ACCOUNT_ID));
                account.setFirstName(resultSet.getString(COLUMN_FIRST_NAME));
                account.setLastName(resultSet.getString(COLUMN_LAST_NAME));
                account.setEmail(resultSet.getString(COLUMN_EMAIL));
@@ -222,7 +222,7 @@ public class AccountDao {
             ResultSet resultSet = preparedStatement.executeQuery();
             if(resultSet.next()){
                 Account account = new Account();
-                account.setAccountId((long)resultSet.getInt(COLUMN_ACCOUNT_ID));
+                account.setAccountId(resultSet.getInt(COLUMN_ACCOUNT_ID));
                 account.setFirstName(resultSet.getString(COLUMN_FIRST_NAME));
                 account.setLastName(resultSet.getString(COLUMN_LAST_NAME));
                 account.setEmail(resultSet.getString(COLUMN_EMAIL));

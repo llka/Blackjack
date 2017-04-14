@@ -36,7 +36,7 @@ public class SessionDieListener implements HttpSessionListener {
         visitor.setSessionLost(true);
         Account account = (Account) session.getAttribute(ACCOUNT_KEY);
         ServletContext servletContext = event.getSession().getServletContext();
-        ConcurrentHashMap<Long,Account> onlineUsers = (ConcurrentHashMap<Long,Account>) servletContext.getAttribute(ONLINE_USERS_KEY);
+        ConcurrentHashMap<Integer,Account> onlineUsers = (ConcurrentHashMap<Integer,Account>) servletContext.getAttribute(ONLINE_USERS_KEY);
         onlineUsers.remove(account.getAccountId());
         servletContext.setAttribute(ONLINE_USERS_KEY,onlineUsers);
         logger.debug("SessionDieListener " + account.getLogin() + " is offline now");

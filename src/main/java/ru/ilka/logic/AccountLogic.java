@@ -256,7 +256,7 @@ public class AccountLogic {
             BigDecimal profit = account.getMoneySpend().subtract(account.getMoneyWon());
             if(profit.doubleValue() < 0){
                 try {
-                    accountDao.updateBanStatus((int) account.getAccountId(),true);
+                    accountDao.updateBanStatus(account.getAccountId(),true);
                     account.setBan(true);
                 } catch (DBException e) {
                     throw new LogicException("Error while banning user " + e);

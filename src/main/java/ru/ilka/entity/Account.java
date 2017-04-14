@@ -7,7 +7,7 @@ import java.util.Date;
  * Here could be your advertisement +375 29 3880490
  */
 public class Account {
-    private long accountId;
+    private int accountId;
     private String firstName;
     private String lastName;
     private String email;
@@ -30,7 +30,7 @@ public class Account {
 
     }
 
-    public Account(long accountId, String firstName, String lastName, String email, String login, Date birthDate, GenderType gender,
+    public Account(int accountId, String firstName, String lastName, String email, String login, Date birthDate, GenderType gender,
                    String avatar, String inviteCode, boolean admin, boolean ban, BigDecimal balance,String password,
                    int handsPlayed, int handsWon, BigDecimal moneySpend, BigDecimal moneyWon, int rating) {
         this.accountId = accountId;
@@ -58,7 +58,7 @@ public class Account {
         this.rating = rating;
     }
 
-    public Account(long accountId, String firstName, String lastName, String email, String login, String password,
+    public Account(int accountId, String firstName, String lastName, String email, String login, String password,
                    Date birthDate, GenderType gender, String avatar, String inviteCode) {
         this.accountId = accountId;
         this.firstName = firstName;
@@ -83,11 +83,11 @@ public class Account {
         this.rating = 0;
     }
 
-    public long getAccountId() {
+    public int getAccountId() {
         return accountId;
     }
 
-    public void setAccountId(long accountId) {
+    public void setAccountId(int accountId) {
         this.accountId = accountId;
     }
 

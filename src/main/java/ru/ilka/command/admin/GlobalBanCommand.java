@@ -31,7 +31,7 @@ public class GlobalBanCommand implements ActionCommand {
         AccountLogic accountLogic = new AccountLogic();
 
         try {
-            List<Account> accounts = accountLogic.getAllAccounts((int) selfAccount.getAccountId());
+            List<Account> accounts = accountLogic.getAllAccounts(selfAccount.getAccountId());
             accountLogic.globalBan(accounts);
             accountLogic.sortByProfit(accounts);
             request.setAttribute(ATTRIBUTE_ACCOUNTS,accounts);

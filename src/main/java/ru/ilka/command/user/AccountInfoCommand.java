@@ -64,7 +64,7 @@ public class AccountInfoCommand implements ActionCommand {
         LogicResult logicResult = LogicResult.FAILED;
         if(!account.getFirstName().equals(firstName)){
             try {
-                accountLogic.changeFirstName((int)account.getAccountId(),firstName);
+                accountLogic.changeFirstName(account.getAccountId(),firstName);
             } catch (LogicException e) {
                 logger.error("Can't change first name " + e);
             }
@@ -73,7 +73,7 @@ public class AccountInfoCommand implements ActionCommand {
         }
         if(!account.getLastName().equals(lastName)){
             try {
-                accountLogic.changeLastName((int)account.getAccountId(),lastName);
+                accountLogic.changeLastName(account.getAccountId(),lastName);
             } catch (LogicException e) {
                 logger.error("Can't change last name " + e);
             }
@@ -82,7 +82,7 @@ public class AccountInfoCommand implements ActionCommand {
         }
         if(!account.getLogin().equals(login)){
             try {
-                logicResult = accountLogic.changeLogin((int)account.getAccountId(),login);
+                logicResult = accountLogic.changeLogin(account.getAccountId(),login);
             } catch (LogicException e) {
                 logger.error("Can't change login " + e);
             }
@@ -104,7 +104,7 @@ public class AccountInfoCommand implements ActionCommand {
         }
         if(!account.getEmail().equals(email)){
             try {
-                logicResult = accountLogic.changeEmail((int)account.getAccountId(),email);
+                logicResult = accountLogic.changeEmail(account.getAccountId(),email);
             } catch (LogicException e) {
                 logger.error("Can't change e-mail " + e);
             }
@@ -126,7 +126,7 @@ public class AccountInfoCommand implements ActionCommand {
         if(password != null) {
             if (!account.getPassword().equals(password) && password != null) {
                 try {
-                    logicResult = accountLogic.changePassword((int) account.getAccountId(), password);
+                    logicResult = accountLogic.changePassword(account.getAccountId(), password);
                 } catch (LogicException e) {
                     logger.error("Can't change password " + e);
                 }

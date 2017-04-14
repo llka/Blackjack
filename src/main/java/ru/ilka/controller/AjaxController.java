@@ -22,6 +22,7 @@ public class AjaxController extends HttpServlet {
     static Logger logger = LogManager.getLogger(AjaxController.class);
 
     private static final long serialVersionUID = 905242440943999308L;
+    private static final String CONTENT_TYPE = "text/html";
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
@@ -38,7 +39,7 @@ public class AjaxController extends HttpServlet {
         ActionCommand command = actionFactory.defineCommand(request);
 
         try {
-            response.setContentType("text/html");
+            response.setContentType(CONTENT_TYPE);
             PrintWriter printWriter;
             try {
                 printWriter = response.getWriter();

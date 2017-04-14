@@ -76,7 +76,7 @@ public class LogInCommand implements ActionCommand {
                 session.setAttribute(VISITOR_KEY,visitor);
                 session.setAttribute(ACCOUNT_KEY,account);
 
-                ConcurrentHashMap<Long,Account> onlineUsers = (ConcurrentHashMap<Long,Account>) servletContext.getAttribute(ONLINE_USERS_KEY);
+                ConcurrentHashMap<Integer,Account> onlineUsers = (ConcurrentHashMap<Integer,Account>) servletContext.getAttribute(ONLINE_USERS_KEY);
                 if(onlineUsers == null){
                     onlineUsers = new ConcurrentHashMap<>();
                 }
