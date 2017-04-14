@@ -1,6 +1,7 @@
 package ru.ilka.entity;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 
 /**
@@ -14,6 +15,7 @@ public class Game {
     private double winCoefficient;
     private boolean playerIsDealer;
     private LocalDateTime time;
+    private ArrayList<Integer> poins;
 
     public Game() {
     }
@@ -82,6 +84,14 @@ public class Game {
 
     public void setTime(LocalDateTime time) {
         this.time = time;
+    }
+
+    public ArrayList<Integer> getPoins() {
+        return poins;
+    }
+
+    public void setPoins(ArrayList<Integer> poins) {
+        this.poins = poins;
     }
 
     @Override

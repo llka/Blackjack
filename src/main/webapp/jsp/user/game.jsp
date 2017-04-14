@@ -3,8 +3,11 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <fmt:setLocale value="${visitor.locale}" scope="session"/>
 <fmt:setBundle basename="properties.content"/>
+<jsp:useBean id="account" class="ru.ilka.entity.Account" scope="session" />
 <jsp:useBean id="settings" class="ru.ilka.entity.GameSettings" scope="application"/>
 <c:set var="context" scope="page" value="${pageContext.request.contextPath}"/>
+<c:set var="balance" scope="page" value="${account.balance}"/>
+<c:set var="betLimit" scope="page" value="${settings.maxBet}"/>
 
 <html>
 <head>
@@ -19,12 +22,22 @@
     <script src="${context}/js/game_scr.js" type="text/javascript"></script>
     <script src="${context}/js/common_scr.js"></script>
     <script src="${context}/js/jquery-1.10.2.js"></script>
+    <script>balanceModal = document.getElementById('modalNoMoney');</script>
 
 </head>
 <body>
     <c:choose>
         <c:when test="${visitor.role eq 'GUEST'}">
             <jsp:forward page="/jsp/guest/start.jsp"/>
+        </c:when>
+        <c:when test="${account.balance < settings.minBet * 3 }">
+            <div id="modalNoMoney" class="mask" style="display: block">
+                <div class="modal animate">
+                    <div class="noMoney">
+                        <a class="buttonError" href="/jsp/user/profile.jsp#notEnoughMoney"><fmt:message key="main.button.play.noMoney"/></a>
+                    </div>
+                </div>
+            </div>
         </c:when>
     </c:choose>
 
@@ -40,21 +53,23 @@
                 <div id = "cards">
                 </div>
 
-                <script>showBetForm()</script>
                 <form id="betForm" class="betForm" name="betForm">
                     <input id="command" type="hidden" name="command" value="DealCards"/>
                     <div class="bets">
+                        <c:if test="${balance < settings.maxBet}">
+                            <c:set var="betLimit" scope="page" value="${balance}"/>
+                        </c:if>
                         <div class="bet">
-                            <input type="number" name="bet1" id="bet1input" min="0" max="${settings.maxBet}" step="${settings.minBet}" value="0">
+                            <input type="number" name="bet1" id="bet1input" min="0" max="${betLimit}" step="${settings.minBet}" value="0">
                         </div>
                         <div class="bet">
-                            <input type="number" name="bet2" id="bet2input" min="0" max="${settings.maxBet}" step="${settings.minBet * 2}" value="0">
+                            <input type="number" name="bet2" id="bet2input" min="0" max="${betLimit}" step="${settings.minBet * 2}" value="0">
                         </div>
                         <div class="bet">
-                            <input type="number" name="bet3" id="bet3input" min="0" max="${settings.maxBet}" step="${settings.minBet * 3}" value="0">
+                            <input type="number" name="bet3" id="bet3input" min="0" max="${betLimit}" step="${settings.minBet * 3}" value="0">
                         </div>
                     </div>
-                    <div class="error"><span id="errorEmptyBets"></span></div>
+                    <div class="error"><span id="betsError"></span></div>
                     <div class="submit">
                         <input class="button" type="button" onclick="return validateBetForm()" id="dealBtn" value="Deal">
                     </div>

@@ -227,6 +227,7 @@
             </div>
 
             <div class="description bal">
+                <a name="notEnoughMoney"></a>
                 <h3><fmt:message key="profile.balance"/></h3>
                 <form  name="balanceForm"  method="POST" action="/controller">
                     <input type="hidden" name="command" value="AddBalance"/>

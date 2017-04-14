@@ -365,6 +365,12 @@
     background-size: 100% 100%;
 }
 
+.points{
+    text-align: center;
+    font-size: 12px;
+    padding-top: 7px;
+}
+
 .bets{
     display: flex;
     justify-content: space-between;
@@ -394,4 +400,11 @@
     width: 70%;
     margin: auto;
     text-align: center;
+}
+.noMoney{
+    width: 100%;
+    text-align: center;
+}
+.noMoney a{
+    text-decoration: none;
 }

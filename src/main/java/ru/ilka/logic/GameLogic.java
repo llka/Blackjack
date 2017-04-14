@@ -1,7 +1,9 @@
 package ru.ilka.logic;
 
+import javafx.fxml.LoadException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import ru.ilka.exception.LogicException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,34 +20,57 @@ public class GameLogic {
 
     public GameLogic() {}
 
-    public ArrayList<ArrayList<LogicResult>> dealCards(int hands){
+    public ArrayList<ArrayList<LogicResult>> dealCards(boolean[] hands){
 
-        ArrayList<ArrayList<LogicResult>> cards = new ArrayList<>(hands + 1);
+        ArrayList<ArrayList<LogicResult>> cards = new ArrayList<>(hands.length);
         ArrayList<Integer> usedCards = new ArrayList<>();
 
-        for (int i = 0; i < hands + 1; i++) {
+        for (int i = 0; i < hands.length; i++) {
             ArrayList<LogicResult> hand = new ArrayList<>(4);
-            for (int j = 0; j < 2 ; j++) {
-                int card = ThreadLocalRandom.current().nextInt(CARDS_QUANTITY * DECKS_QUANTITY);
-                if (!usedCards.isEmpty()) {
-                    for (int k = 0; k < usedCards.size(); k++) {
-                        if (card == usedCards.get(k)) {
-                            card = ThreadLocalRandom.current().nextInt(CARDS_QUANTITY * DECKS_QUANTITY);
-                            k = 0;
+            if(hands[i]) {
+                for (int j = 0; j < 2; j++) {
+                    int card = ThreadLocalRandom.current().nextInt(CARDS_QUANTITY * DECKS_QUANTITY);
+                    if (!usedCards.isEmpty()) {
+                        for (int k = 0; k < usedCards.size(); k++) {
+                            if (card == usedCards.get(k)) {
+                                card = ThreadLocalRandom.current().nextInt(CARDS_QUANTITY * DECKS_QUANTITY);
+                                k = 0;
+                            }
                         }
                     }
+                    usedCards.add(card);
+                    if (card > CARDS_QUANTITY) {
+                        card %= CARDS_QUANTITY;
+                    }
+                    hand.add(getCard(card));
                 }
-                usedCards.add(card);
-                if(card > CARDS_QUANTITY){
-                    card %= CARDS_QUANTITY;
-                }
-                hand.add(getCard(card));
             }
             cards.add(hand);
         }
         logger.debug("used cards " + usedCards);
         logger.debug("cards " + cards);
         return cards;
+    }
+
+    public ArrayList<Integer> countPoints(ArrayList<ArrayList<LogicResult>> cards){
+        ArrayList<Integer> points = new ArrayList<>(cards.size());
+        for (int i = 0; i < cards.size(); i++) {
+            int handPoints = 0;
+            for (int j = 0; j < cards.get(i).size() ; j++) {
+                try {
+                    int cardRank = findCardRank(cards.get(i).get(j));
+                    if (cardRank == 11 && ((handPoints + 11) > 21) ){
+                        handPoints += 1;
+                    }else {
+                        handPoints += cardRank;
+                    }
+                } catch (LogicException e) {
+                   logger.error("Error while counting points " + e);
+                }
+            }
+            points.add(handPoints);
+        }
+        return points;
     }
 
     public void writeCard(LogicResult resultCard, StringBuilder writer){
@@ -83,6 +108,36 @@ public class GameLogic {
         writer.append("<div class=\"cardNumberDown\">");
         writer.append(number);
         writer.append("</div>\n");
+    }
+
+    public void writePoints(int points, StringBuilder writer){
+        writer.append("<div class=\"points\">");
+        writer.append(points);
+        writer.append("</div>\n");
+    }
+
+    private int findCardRank(LogicResult resultCard) throws LogicException {
+        String card = resultCard.toString();
+        if(card.length() == 9){
+            return 10;
+        }else {
+            String realRank = String.valueOf(card.charAt(card.length()-3));
+            try{
+                int rank = Integer.parseInt(realRank);
+                return rank;
+            }catch(NumberFormatException e){
+                switch (realRank){
+                    case "J":
+                    case "Q":
+                    case "K":
+                        return 10;
+                    case "A":
+                        return 11;
+                    default:
+                        throw new LogicException("Can't find card rank in " + resultCard);
+                }
+            }
+        }
     }
 
     private LogicResult getCard(int number){

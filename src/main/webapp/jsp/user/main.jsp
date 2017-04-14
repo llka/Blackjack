@@ -3,6 +3,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <fmt:setLocale value="${visitor.locale}" scope="session"/>
 <fmt:setBundle basename="properties.content"/>
+<jsp:useBean id="account" class="ru.ilka.entity.Account" scope="session" />
+<jsp:useBean id="settings" class="ru.ilka.entity.GameSettings" scope="application"/>
 <c:set var="context" scope="page" value="${pageContext.request.contextPath}"/>
 
 <html>
@@ -30,8 +32,14 @@
         <div class="col-1"></div>
         <div class="col-10">
             <div class="buttonCenter">
-                <a class="button" href="/jsp/user/game.jsp"><fmt:message key="main.button.play"/></a>
-                <%--<button class="button"><fmt:message key="main.button.play"/></button>--%>
+                <c:choose>
+                    <c:when test="${account.balance < settings.minBet * 3 }">
+                        <a class="buttonError" href="/jsp/user/profile.jsp#notEnoughMoney"><fmt:message key="main.button.play.noMoney"/></a>
+                    </c:when>
+                    <c:when test="${account.balance >= settings.minBet * 3 }">
+                        <a class="button" href="/jsp/user/game.jsp"><fmt:message key="main.button.play"/></a>
+                    </c:when>
+                </c:choose>
             </div>
             <div class = "description">
                 <div>
