@@ -33,10 +33,10 @@
         <div class="col-10">
             <div class="buttonCenter">
                 <c:choose>
-                    <c:when test="${account.balance < settings.minBet * 3 }">
-                        <a class="buttonError" href="/jsp/user/profile.jsp#notEnoughMoney"><fmt:message key="main.button.play.noMoney"/></a>
+                    <c:when test="${account.balance < settings.minBet * 6 }">
+                        <a class="button" style="width: 22em;" href="/jsp/user/profile.jsp#notEnoughMoney"><fmt:message key="main.button.play.noMoney"/></a>
                     </c:when>
-                    <c:when test="${account.balance >= settings.minBet * 3 }">
+                    <c:when test="${account.balance >= settings.minBet * 6 }">
                         <a class="button" href="/jsp/user/game.jsp"><fmt:message key="main.button.play"/></a>
                     </c:when>
                 </c:choose>

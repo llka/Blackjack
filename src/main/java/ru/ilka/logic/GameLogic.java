@@ -42,7 +42,11 @@ public class GameLogic {
                     if (card > CARDS_QUANTITY) {
                         card %= CARDS_QUANTITY;
                     }
-                    hand.add(getCard(card));
+                    try {
+                        hand.add(getCard(card));
+                    } catch (LogicException e) {
+                        logger.error("Error while dealing cards " + e);
+                    }
                 }
             }
             cards.add(hand);
@@ -140,7 +144,7 @@ public class GameLogic {
         }
     }
 
-    private LogicResult getCard(int number){
+    private LogicResult getCard(int number) throws LogicException {
         switch (number){
             case 1:
                 return LogicResult.CARD_2_H;
@@ -245,9 +249,10 @@ public class GameLogic {
             case 51:
                 return LogicResult.CARD_A_D;
             case 52:
+            case 0:
                 return LogicResult.CARD_A_S;
             default:
-                return LogicResult.FAILED;
+                throw new LogicException("Can't get card " + number);
         }
     }
 }

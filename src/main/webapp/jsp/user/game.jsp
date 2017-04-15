@@ -6,8 +6,23 @@
 <jsp:useBean id="account" class="ru.ilka.entity.Account" scope="session" />
 <jsp:useBean id="settings" class="ru.ilka.entity.GameSettings" scope="application"/>
 <c:set var="context" scope="page" value="${pageContext.request.contextPath}"/>
-<c:set var="balance" scope="page" value="${account.balance}"/>
-<c:set var="betLimit" scope="page" value="${settings.maxBet}"/>
+<c:choose>
+    <c:when test="${account.balance < settings.maxBet}">
+        <c:set var="betLimit1" scope="page" value="${account.balance / 6}"/>
+        <c:set var="betLimit2" scope="page" value="${account.balance / 3}"/>
+        <c:set var="betLimit3" scope="page" value="${account.balance / 2}"/>
+    </c:when>
+    <c:when test="${account.balance >= settings.maxBet && account.balance < settings.maxBet * 3}">
+        <c:set var="betLimit1" scope="page" value="${settings.maxBet / 6}"/>
+        <c:set var="betLimit2" scope="page" value="${settings.maxBet / 3}"/>
+        <c:set var="betLimit3" scope="page" value="${settings.maxBet / 2}"/>
+    </c:when>
+    <c:when test="${account.balance >= settings.maxBet * 3}">
+        <c:set var="betLimit1" scope="page" value="${settings.maxBet}"/>
+        <c:set var="betLimit2" scope="page" value="${settings.maxBet}"/>
+        <c:set var="betLimit3" scope="page" value="${settings.maxBet}"/>
+    </c:when>
+</c:choose>
 
 <html>
 <head>
@@ -30,7 +45,7 @@
         <c:when test="${visitor.role eq 'GUEST'}">
             <jsp:forward page="/jsp/guest/start.jsp"/>
         </c:when>
-        <c:when test="${account.balance < settings.minBet * 3 }">
+        <c:when test="${account.balance < settings.minBet * 6 }">
             <div id="modalNoMoney" class="mask" style="display: block">
                 <div class="modal animate">
                     <div class="noMoney">
@@ -55,23 +70,21 @@
 
                 <form id="betForm" class="betForm" name="betForm">
                     <input id="command" type="hidden" name="command" value="DealCards"/>
+                    <input id="balance" type="hidden" name="actualBalance" value="${account.balance}"/>
                     <div class="bets">
-                        <c:if test="${balance < settings.maxBet}">
-                            <c:set var="betLimit" scope="page" value="${balance}"/>
-                        </c:if>
                         <div class="bet">
-                            <input type="number" name="bet1" id="bet1input" min="0" max="${betLimit}" step="${settings.minBet}" value="0">
+                            <input type="number" name="bet1" id="bet1input" min="0" max="${betLimit1}" step="${settings.minBet}" value="0">
                         </div>
                         <div class="bet">
-                            <input type="number" name="bet2" id="bet2input" min="0" max="${betLimit}" step="${settings.minBet * 2}" value="0">
+                            <input type="number" name="bet2" id="bet2input" min="0" max="${betLimit2}" step="${settings.minBet * 2}" value="0">
                         </div>
                         <div class="bet">
-                            <input type="number" name="bet3" id="bet3input" min="0" max="${betLimit}" step="${settings.minBet * 3}" value="0">
+                            <input type="number" name="bet3" id="bet3input" min="0" max="${betLimit3}" step="${settings.minBet * 3}" value="0">
                         </div>
                     </div>
                     <div class="error"><span id="betsError"></span></div>
                     <div class="submit">
-                        <input class="button" type="button" onclick="return validateBetForm()" id="dealBtn" value="Deal">
+                        <input class="button" type="button" onclick="validateBetForm()" id="dealBtn" value="Deal">
                     </div>
                 </form>
             </div>

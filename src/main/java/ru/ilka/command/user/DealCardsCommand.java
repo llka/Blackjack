@@ -10,11 +10,13 @@ import ru.ilka.entity.Visitor;
 import ru.ilka.exception.CommandException;
 import ru.ilka.logic.GameLogic;
 import ru.ilka.logic.LogicResult;
+import ru.ilka.manager.MessageManager;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import static ru.ilka.controller.ControllerConstants.ACCOUNT_KEY;
@@ -48,39 +50,45 @@ public class DealCardsCommand implements ActionCommand {
         bets.add(Integer.parseInt(request.getParameter(PARAM_BET_2)));
         bets.add(Integer.parseInt(request.getParameter(PARAM_BET_3)));
 
+        int betSumm = 0;
         boolean[] hands = new boolean[PLACES_FOR_BETS_QNT + 1];
         hands[DEALER_HAND] = true;
         for (int i = 0; i < bets.size(); i++) {
-            hands[i+1] = bets.get(i) > settings.getMinBet();
+            hands[i+1] = bets.get(i) >= settings.getMinBet();
+            betSumm += bets.get(i);
         }
-
-        ArrayList<ArrayList<LogicResult>> cards = gameLogic.dealCards(hands);
-        ArrayList<Integer> points = gameLogic.countPoints(cards);
 
         StringBuilder result = new StringBuilder();
+        if(betSumm == 0){
+            result.append("");
+        }else if(account.getBalance().compareTo(BigDecimal.valueOf(betSumm)) >= 0) {
+            ArrayList<ArrayList<LogicResult>> cards = gameLogic.dealCards(hands);
+            ArrayList<Integer> points = gameLogic.countPoints(cards);
 
-        result.append("<div class=\"DealerCard1\">\n");
-        result.append("<div class=\"cardBack\">");
-        result.append("</div>\n");
-        result.append("</div>\n");
+            result.append("<div class=\"DealerCard1\">\n");
+            result.append("<div class=\"cardBack\">");
+            result.append("</div>\n");
+            result.append("</div>\n");
 
-        result.append("<div class=\"DealerCard2\">\n");
-        gameLogic.writeCard(cards.get(DEALER_HAND).get(1),result);
-        result.append("</div>");
+            result.append("<div class=\"DealerCard2\">\n");
+            gameLogic.writeCard(cards.get(DEALER_HAND).get(1), result);
+            result.append("</div>");
 
-        for (int i = 1; i < cards.size(); i++) {
-            if(!cards.get(i).isEmpty()){
-                for (int j = 1; j < 3; j++) {
-                    result.append("<div class=\"card" + i + j + "\">\n");
-                    gameLogic.writeCard(cards.get(i).get(j-1),result);
-                    if(j == 2){
-                        gameLogic.writePoints(points.get(i),result);
+            for (int i = 1; i < cards.size(); i++) {
+                if (!cards.get(i).isEmpty()) {
+                    for (int j = 1; j < 3; j++) {
+                        result.append("<div class=\"card" + i + j + "\">\n");
+                        gameLogic.writeCard(cards.get(i).get(j - 1), result);
+                        if (j == 2) {
+                            gameLogic.writePoints(points.get(i), result);
+                        }
+                        result.append("</div>");
                     }
-                    result.append("</div>");
                 }
             }
+        }else {
+            result.append("<div class=\"error\">Bets are bigger than your balance, try bet less!</div>");
         }
-
         return result.toString();
     }
 }

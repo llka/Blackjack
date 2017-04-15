@@ -4,6 +4,7 @@
 <fmt:setLocale value="${visitor.locale}" scope="session"/>
 <fmt:setBundle basename="properties.content"/>
 <c:set var="context" scope="page" value="${pageContext.request.contextPath}"/>
+<jsp:useBean id="settings" class="ru.ilka.entity.GameSettings" scope="application"/>
 
 <html>
 <head>
@@ -34,21 +35,27 @@
                     <h2><fmt:message key="about.FAQ"/></h2>
                     <ul>
                         <li>
-                            <h3>How to change login or e-mail?</h3>
+                            <h3><fmt:message key="about.FAQ.1q"/></h3>
                             <ul>
-                                <li>Click Profile in navigation bar and type new data in appropriate field, than click Save button.</li>
+                                <li><fmt:message key="about.FAQ.1a1"/> ${settings.minBet * 6} <fmt:message key="about.FAQ.1a2"/></li>
                             </ul>
                         </li>
                         <li>
-                            <h3>How can I add money to balance?</h3>
+                            <h3><fmt:message key="about.FAQ.2q"/></h3>
                             <ul>
-                                <li>Click Profile in navigation bar on the right you'll find balance panel, click Add button.</li>
+                                <li><fmt:message key="about.FAQ.2a"/></li>
                             </ul>
                         </li>
                         <li>
-                            <h3>How to change password?</h3>
+                            <h3><fmt:message key="about.FAQ.3q"/></h3>
                             <ul>
-                                <li>Click Profile in navigation bar, click Change Password button, type new password, than click Save button.</li>
+                                <li><fmt:message key="about.FAQ.3a"/></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h3><fmt:message key="about.FAQ.4q"/></h3>
+                            <ul>
+                                <li><fmt:message key="about.FAQ.4a"/></li>
                             </ul>
                         </li>
                     </ul>
