@@ -3,8 +3,13 @@ package ru.ilka.logic;
 import javafx.fxml.LoadException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import ru.ilka.entity.Account;
+import ru.ilka.entity.Deal;
+import ru.ilka.entity.Game;
 import ru.ilka.exception.LogicException;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
@@ -17,7 +22,7 @@ public class GameLogic {
 
     private static final int CARDS_QUANTITY = 52;
     private static final int DECKS_QUANTITY = 6;
-
+    private static final String DATE_TIME_REGEX = "dd-MM-yyyy HH:mm:ss";
     public GameLogic() {}
 
     public ArrayList<ArrayList<LogicResult>> dealCards(boolean[] hands){
@@ -56,25 +61,137 @@ public class GameLogic {
         return cards;
     }
 
+    public void hitCard(int betPlace, Deal deal, StringBuilder writer){
+        int card = ThreadLocalRandom.current().nextInt(CARDS_QUANTITY * DECKS_QUANTITY);
+        if (card > CARDS_QUANTITY) {
+            card %= CARDS_QUANTITY;
+        }
+        try {
+            deal.getCards().get(betPlace).add(getCard(card));
+            deal.setPoints(countPoints(deal.getCards()));
+            writer.append("<div class=\"card" + betPlace + deal.getCards().get(betPlace).size() + "\">\n");
+            writeCard(getCard(card),writer);
+            writePoints(deal.getPoints().get(betPlace),betPlace,writer);
+            writer.append("</div>");
+        } catch (LogicException e) {
+            logger.error("Error while hitting new card " + e);
+        }
+    }
+
     public ArrayList<Integer> countPoints(ArrayList<ArrayList<LogicResult>> cards){
         ArrayList<Integer> points = new ArrayList<>(cards.size());
         for (int i = 0; i < cards.size(); i++) {
             int handPoints = 0;
+            int aces = 0;
             for (int j = 0; j < cards.get(i).size() ; j++) {
                 try {
                     int cardRank = findCardRank(cards.get(i).get(j));
-                    if (cardRank == 11 && ((handPoints + 11) > 21) ){
-                        handPoints += 1;
-                    }else {
-                        handPoints += cardRank;
+                    if(cardRank == 11){
+                        aces++;
                     }
+                    handPoints += cardRank;
                 } catch (LogicException e) {
                    logger.error("Error while counting points " + e);
                 }
             }
+
+            while (handPoints > 21 && aces > 0){
+                handPoints -= 10;
+                --aces;
+            }
+
             points.add(handPoints);
         }
         return points;
+    }
+
+    public void checkForBust(int betPlace, Deal deal, Account account){
+        if(deal.getPoints().get(betPlace) > 21){
+            try {
+                concludeGame(betPlace, LogicResult.BUST, deal, account);
+            } catch (LogicException e) {
+                logger.error("Error while checking for Bust "+ e);
+            }
+        }
+    }
+
+    public void concludeGame(int betPlace, LogicResult result, Deal deal, Account account) throws LogicException {
+
+        Game game = new Game();
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter format = DateTimeFormatter.ofPattern(DATE_TIME_REGEX);
+        String currentTime = now.format(format);
+        game.setTime(currentTime);
+        game.setBet(deal.getBets().get(betPlace));
+        game.setPoints(deal.getPoints().get(betPlace));
+        game.setPlayerAccountId(account.getAccountId());
+        game.setPlayerIsDealer(false);
+        switch (result){
+            case BUST:
+                game.setWinCoefficient(-1);
+                game.setPlayerWin(false);
+                break;
+            case LOOSE:
+                break;
+            case WIN:
+                break;
+            case BJ_WIN:
+                break;
+            default:
+                throw new LogicException("Unknown game result");
+        }
+    }
+
+    public void checkForInsurance(Deal deal, StringBuilder writer){
+        ArrayList<ArrayList<LogicResult>> cards = deal.getCards();
+        ArrayList<Integer> bets = deal.getBets();
+        try {
+            if(findCardRank(cards.get(0).get(1)) == 11) {
+                suggestInsurance(bets,writer);
+            }else {
+                suggestActionButtons(deal,writer);
+            }
+        } catch (LogicException e) {
+            logger.error("Error while checking if dealer has black jack " + e);
+        }
+    }
+
+    public void suggestInsurance(ArrayList<Integer> bets, StringBuilder writer){
+        writer.append("<div class=\"insuranceButtons\" id = \"insuranceButtons\">\n");
+        for (int i = 0; i < bets.size() ; i++) {
+            if(bets.get(i) > 0){
+                writer.append("<div class=\"actionButtons\">\n");
+                writer.append("<button class=\"gameButton\" onclick=\"insure("+ i +")\" id=\"insure" + i + "\">Insure</button>\n");
+                writer.append("<button class=\"gameButton\" onclick=\"insureNot("+ i +")\" id=\"insureNot" + i + "\">Do not</button>\n");
+            }else {
+                writer.append("<div class=\"actionButtons\" style=\"visibility: hidden\">\n");
+                writer.append("<button class=\"gameButton\" style=\"visibility: hidden\" id=\"insure" + i + "\">Insure</button>\n");
+                writer.append("<button class=\"gameButton\" style=\"visibility: hidden\" id=\"insureNot" + i + "\">Do not</button>\n");
+            }
+            writer.append("</div>\n");
+        }
+        writer.append("</div>\n");
+    }
+
+    public void suggestActionButtons(Deal deal, StringBuilder writer){
+        ArrayList<Integer> points = deal.getPoints();
+        writer.append("<div class=\"actionButtonsRow\">\n");
+        for (int i = 1; i < points.size(); i++) {
+            if(points.get(i) > 0 && points.get(i) < 21){
+                writer.append("<div class=\"actionButtons\"  id=\"actionButtons"+ i +"\">\n");
+                writer.append("<button class=\"gameButton\" onclick=\"hit(" + i + ")\" id=\"hit"+ i +"\">Hit</button>\n");
+                writer.append("<button class=\"gameButton\" onclick=\"stand(" + i + ")\" id=\"stand"+ i +"\">Stand</button>\n");
+                writer.append("</div>\n");
+            }else if(points.get(i) == 21){
+                writer.append("<div class=\"actionButtons\" id=\"actionButtons"+ i +"\">\n");
+                writer.append("<button class=\"gameButton\" onclick=\"immediateBjWin(" + i + ")\" id=\"insuredBjWin"+ i +"\">Insured Win 1/1</button>\n");
+                writer.append("<button class=\"gameButton\" onclick=\"waitBjWin(" + i + ")\" id=\"waitBjWin"+ i +"\">Wait for Win 3/2</button>\n");
+                writer.append("</div>\n");
+            }else {
+                writer.append("<div class=\"actionButtons\" style=\"visibility: hidden\" id=\"actionButtons"+ i +"\">\n");
+                writer.append("</div>\n");
+            }
+        }
     }
 
     public void writeCard(LogicResult resultCard, StringBuilder writer){
@@ -114,8 +231,8 @@ public class GameLogic {
         writer.append("</div>\n");
     }
 
-    public void writePoints(int points, StringBuilder writer){
-        writer.append("<div class=\"points\">");
+    public void writePoints(int points,int betPlace, StringBuilder writer){
+        writer.append("<div class=\"points\" id=\"points" + betPlace + "\">");
         writer.append(points);
         writer.append("</div>\n");
     }

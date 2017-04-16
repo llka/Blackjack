@@ -5,6 +5,7 @@
 <fmt:setBundle basename="properties.content"/>
 <jsp:useBean id="account" class="ru.ilka.entity.Account" scope="session" />
 <jsp:useBean id="settings" class="ru.ilka.entity.GameSettings" scope="application"/>
+
 <c:set var="context" scope="page" value="${pageContext.request.contextPath}"/>
 <c:choose>
     <c:when test="${account.balance < settings.maxBet}">
@@ -65,8 +66,7 @@
         <div class="col-10">
             <div class = "description">
                 <div class="table"></div>
-                <div id = "cards">
-                </div>
+                <div id = "cards"></div>
 
                 <form id="betForm" class="betForm" name="betForm">
                     <input id="command" type="hidden" name="command" value="DealCards"/>
@@ -84,9 +84,11 @@
                     </div>
                     <div class="error"><span id="betsError"></span></div>
                     <div class="submit">
-                        <input class="button" type="button" onclick="validateBetForm()" id="dealBtn" value="Deal">
+                        <input class="button" type="button" onclick="validateBetForm()" id="dealBtn" value="<fmt:message key="game.deal"/>">
                     </div>
                 </form>
+                <div class="gameButtons" id="gameButtons">
+                </div>
             </div>
         </div>
         <div class="col-1"></div>

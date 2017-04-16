@@ -16,6 +16,11 @@ public enum LogicResult {
     INVALID_EMAIL,
     INVALID_LOGIN,
 
+    BUST,
+    LOOSE,
+    WIN,
+    BJ_WIN,
+
     CARD_2_H, //hearts
     CARD_2_C, //clubs
     CARD_2_D, //diamonds

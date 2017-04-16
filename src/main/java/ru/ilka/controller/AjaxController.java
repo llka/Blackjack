@@ -46,8 +46,6 @@ public class AjaxController extends HttpServlet {
                 String result = command.execute(request,response);
                 if(!result.isEmpty()) {
                     printWriter.println(result);
-                }else {
-                    logger.info("place your bets");
                 }
             } catch (IOException e) {
                 logger.error("Can't write new card in ajax controller " + e);

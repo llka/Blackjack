@@ -1,10 +1,10 @@
 var inGame = false;
 var resultA = true;
+var hands = 0;
 
 function validateBetForm() {
   var NO_BETS = "Place your bets, please";
   var NOT_ENOUGH_MONEY = "Bets are bigger than your balance, try bet less";
-    var result = true;
 
   var err =  document.getElementById("betsError");
   err.style.visibility = "hidden";
@@ -15,15 +15,22 @@ function validateBetForm() {
         bet2 = +document.forms["betForm"]["bet2"].value;
     var balance = +document.forms["betForm"]["balance"].value;
 
+    if(bet1>0){
+        hands++;
+    }
+    if(bet2>0){
+        hands++;
+    }
+    if(bet3>0){
+        hands++;
+    }
   if (bet1 < 1 && bet2 < 1 && bet3 < 1) {
       err.style.visibility = "visible";
       err.innerHTML = NO_BETS;
-      result = false;
       resultA = false;
   }else if (bet1+bet2+bet3 > balance){
       err.style.visibility = "visible";
       err.innerHTML = NOT_ENOUGH_MONEY;
-      result = false;
       resultA = false;
   }
   else {
@@ -40,21 +47,35 @@ function validateBetForm() {
                   success: function (responseText) {
                       $('#cards').html(responseText);
                       inGame = true;
-                      showDealButton()
+                      showDealButton();
+                      checkForInsurance();
                   }
               });
-         //});
       });
   }
+}
+
+function checkForInsurance() {
+    $(document).ready(function () {
+        $.ajax({
+            url: '/Ajax',
+            data: {
+                command: "CheckForInsurance"
+            },
+            success: function (responseText) {
+                $('#gameButtons').html(responseText);
+            }
+        });
+    });
 }
 
 function showDealButton() {
     var dealBtn =  document.getElementById("dealBtn");
     if(inGame){
-        dealBtn.style.visibility = "hidden";
+        dealBtn.style.display = "none";
         disableBets();
     }else {
-        dealBtn.style.visibility = "visible";
+        dealBtn.style.display = "block";
         enableBets();
     }
 }
@@ -72,4 +93,123 @@ function enableBets() {
     document.getElementById("bet1input").readOnly = false;
     document.getElementById("bet2input").readOnly = false;
     document.getElementById("bet3input").readOnly = false;
+}
+
+var insureTimes = 0;
+function insure(handId) {
+    insureTimes++;
+    $(document).ready(function () {
+        $.ajax({
+            url: '/Ajax',
+            data: {
+                command: "InsureBet",
+                betPlace: handId
+            },
+            success: function () {
+                var insureButton =  document.getElementById("insure" + handId);
+                insureButton.style.visibility = "hidden";
+                var insureButtonNot =  document.getElementById("insureNot" + handId);
+                insureButtonNot.style.visibility = "hidden";
+
+                if(insureTimes == hands){
+                    var insureButtonsRow =  document.getElementById("insuranceButtons");
+                    insureButtonsRow.style.display = "none";
+                    insureTimes = 0;
+                    showActionButtons();
+                }
+            }
+        });
+    });
+}
+
+function insureNot(handId) {
+    insureTimes++;
+    var insureButton =  document.getElementById("insure" + handId);
+    insureButton.style.visibility = "hidden";
+    var insureButtonNot =  document.getElementById("insureNot" + handId);
+    insureButtonNot.style.visibility = "hidden";
+
+    if(insureTimes == hands){
+        var insureButtonsRow =  document.getElementById("insuranceButtons");
+        insureButtonsRow.style.display = "none";
+        insureTimes = 0;
+        showActionButtons();
+    }
+}
+
+function showActionButtons() {
+    $(document).ready(function () {
+        $.ajax({
+            url: '/Ajax',
+            data: {
+                command: "ShowActionBtn",
+            },
+            success: function (responseText) {
+                $('#gameButtons').html(responseText);
+            }
+        });
+    });
+}
+
+function hit(handId) {
+    var points =  document.getElementById("points" + handId);
+    points.style.display = "none";
+
+    $(document).ready(function () {
+        $.ajax({
+            url: '/Ajax',
+            data: {
+                command: "HitCard",
+                betPlace: handId
+            },
+            success: function (responseText) {
+                $('#cards').append(responseText);
+                showActionButtons();
+            }
+        });
+    });
+}
+
+function stand(handId) {
+    $(document).ready(function () {
+        $.ajax({
+            url: '/Ajax',
+            data: {
+                command: "Stand",
+                betPlace: handId
+            },
+            success: function (responseText) {
+            }
+        });
+    });
+}
+
+function immediateBjWin(handId) {
+    $(document).ready(function () {
+        $.ajax({
+            url: '/Ajax',
+            data: {
+                command: "ImmediateBjWin",
+                betPlace: handId
+            },
+            success: function (responseText) {
+
+            }
+        });
+    });
+}
+
+function waitBjWin(handId) {
+    $(document).ready(function () {
+        $.ajax({
+            url: '/Ajax',
+            data: {
+                command: "WaitForBjWin",
+                betPlace: handId
+            },
+            success: function (responseText) {
+
+            }
+        });
+    });
 }

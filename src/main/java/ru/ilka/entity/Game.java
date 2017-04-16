@@ -1,8 +1,5 @@
 package ru.ilka.entity;
-
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-
 
 /**
  * Here could be your advertisement +375 29 3880490
@@ -14,13 +11,13 @@ public class Game {
     private boolean playerWin;
     private double winCoefficient;
     private boolean playerIsDealer;
-    private LocalDateTime time;
-    private ArrayList<Integer> poins;
+    private String time;
+    private int points;
 
     public Game() {
     }
 
-    public Game(int gameId, int bet, int playerAccountId, boolean playerWin, double winCoefficient, boolean playerIsDealer, LocalDateTime time) {
+    public Game(int gameId, int bet, int playerAccountId, boolean playerWin, double winCoefficient, boolean playerIsDealer, String time, int points) {
         this.gameId = gameId;
         this.bet = bet;
         this.playerAccountId = playerAccountId;
@@ -28,6 +25,7 @@ public class Game {
         this.winCoefficient = winCoefficient;
         this.playerIsDealer = playerIsDealer;
         this.time = time;
+        this.points = points;
     }
 
     public int getGameId() {
@@ -78,20 +76,20 @@ public class Game {
         this.playerIsDealer = playerIsDealer;
     }
 
-    public LocalDateTime getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(LocalDateTime time) {
+    public void setTime(String time) {
         this.time = time;
     }
 
-    public ArrayList<Integer> getPoins() {
-        return poins;
+    public int getPoints() {
+        return points;
     }
 
-    public void setPoins(ArrayList<Integer> poins) {
-        this.poins = poins;
+    public void setPoints(int points) {
+        this.points = points;
     }
 
     @Override

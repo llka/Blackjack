@@ -103,6 +103,30 @@ public enum CommandType {
             this.role = EnumSet.of(Visitor.Role.ADMIN);
         }
     },
+    CHECKFORINSURANCE{
+        {
+            this.command = new CheckForInsuranceCommand();
+            this.role = EnumSet.of(Visitor.Role.ADMIN, Visitor.Role.USER);
+        }
+    },
+    INSUREBET{
+        {
+            this.command = new InsureBetCommand();
+            this.role = EnumSet.of(Visitor.Role.ADMIN, Visitor.Role.USER);
+        }
+    },
+    HITCARD{
+        {
+            this.command = new HitCardCommand();
+            this.role = EnumSet.of(Visitor.Role.ADMIN, Visitor.Role.USER);
+        }
+    },
+    SHOWACTIONBTN{
+        {
+            this.command = new ShowActionBtnCommand();
+            this.role = EnumSet.of(Visitor.Role.ADMIN, Visitor.Role.USER);
+        }
+    },
     DEALCARDS{
         {
             this.command = new DealCardsCommand();
