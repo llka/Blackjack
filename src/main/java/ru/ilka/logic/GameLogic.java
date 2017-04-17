@@ -86,7 +86,7 @@ public class GameLogic {
         }
     }
 
-    public void hitCard(int betPlace, Deal deal,Account account,StringBuilder writer){
+    public void hitCard(int betPlace, Deal deal, Account account, StringBuilder writer){
         try {
             LogicResult card = dealCard(alreadyUsed);
             deal.getCards().get(betPlace).add(card);
@@ -99,6 +99,10 @@ public class GameLogic {
         } catch (LogicException e) {
             logger.error("Error while hitting new card " + e);
         }
+    }
+
+    public void stand(int betPlace, Deal deal, Account account, StringBuilder writer){
+
     }
 
     public ArrayList<Integer> countPoints(ArrayList<ArrayList<LogicResult>> cards){
@@ -158,6 +162,28 @@ public class GameLogic {
             }
         } catch (LogicException e) {
             logger.error("Error while checking for Bust "+ e);
+        }
+    }
+
+    public void calculateGameResult(int betPlace, Deal deal, Account account){
+        int handPoints = deal.getPoints().get(betPlace);
+        int dealerPoints = deal.getPoints().get(0);
+        ArrayList<Double> bets = deal.getBets();
+
+        try {
+            if(dealerPoints == 21 ){
+                if(deal.getInsuredBets()[betPlace-1]) {
+                    bets.set(betPlace-1,0.0);
+                    deal.setBets(bets);
+                    concludeGame(betPlace, LogicResult.DRAW, deal, account);
+                }else{
+                    bets.set(betPlace-1,bets.get(betPlace-1)/2);
+                    deal.setBets(bets);
+                    concludeGame(betPlace, LogicResult.DRAW, deal, account);
+                }
+            }/*if else()*/
+        }catch (LogicException e) {
+            logger.error("Error while calculating game result "+ e);
         }
     }
 

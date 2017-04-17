@@ -7,18 +7,14 @@
 <!-- Footer jsp fragment -->
 <footer>
     <div class = "footer">
-        <!--<div class="buttonNavigate">
-            <input type="button" onclick="history.back();" value="Назад"/>
-            <input type="button" onclick="history.go(1);" value="Вперёд"/>
-        </div>-->
         <div class="language">
             <h3><fmt:message key="label.language"/> </h3>
             <ul>
                 <li>
-                    <a href="/controller?command=changelanguage&locale=en_US"><img src="../../image/lang_en.png"></a>
+                    <a id="languageEn" href="/controller?command=changelanguage&locale=en_US"><img src="../../image/lang_en.png"></a>
                 </li>
                 <li>
-                    <a href="/controller?command=changelanguage&locale=ru_RU"><img src="../../image/lang_ru.png"></a>
+                    <a id="languageRu" href="/controller?command=changelanguage&locale=ru_RU"><img src="../../image/lang_ru.png"></a>
                 </li>
             </ul>
         </div>

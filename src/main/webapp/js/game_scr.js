@@ -35,6 +35,9 @@ function validateBetForm() {
   }
   else {
       $(document).ready(function () {
+          $('#languageEn').attr("href","#");
+          $('#languageRu').attr("href","#");
+          $('.footer').attr("title","Unavailable to change language while playing");
           $.ajax({
               url: '/Ajax',
               data: {
@@ -176,6 +179,8 @@ function stand(handId) {
                 betPlace: handId
             },
             success: function (responseText) {
+                $('#cards').append(responseText);
+                showActionButtons();
             }
         });
     });
