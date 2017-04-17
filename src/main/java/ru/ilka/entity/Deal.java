@@ -3,15 +3,15 @@ package ru.ilka.entity;
 import ru.ilka.logic.LogicResult;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Here could be your advertisement +375 29 3880490
  */
-/* 1 Раздача */
 public class Deal {
     private static final int BETS_QNT = 3;
     private ArrayList<ArrayList<LogicResult>> cards;
-    private ArrayList<Integer> bets;
+    private ArrayList<Double> bets;
     private ArrayList<Integer> points;
     private boolean[] insuredBets;
 
@@ -19,7 +19,7 @@ public class Deal {
         this.insuredBets = new boolean[BETS_QNT];
     }
 
-    public Deal(ArrayList<ArrayList<LogicResult>> cards, ArrayList<Integer> bets, ArrayList<Integer> points) {
+    public Deal(ArrayList<ArrayList<LogicResult>> cards, ArrayList<Double> bets, ArrayList<Integer> points) {
         this.cards = cards;
         this.bets = bets;
         this.points = points;
@@ -34,11 +34,11 @@ public class Deal {
         this.cards = cards;
     }
 
-    public ArrayList<Integer> getBets() {
+    public ArrayList<Double> getBets() {
         return bets;
     }
 
-    public void setBets(ArrayList<Integer> bets) {
+    public void setBets(ArrayList<Double> bets) {
         this.bets = bets;
     }
 
@@ -67,7 +67,8 @@ public class Deal {
 
         if (!cards.equals(deal.cards)) return false;
         if (!bets.equals(deal.bets)) return false;
-        return points.equals(deal.points);
+        if (!points.equals(deal.points)) return false;
+        return Arrays.equals(insuredBets, deal.insuredBets);
     }
 
     @Override
@@ -75,6 +76,7 @@ public class Deal {
         int result = cards.hashCode();
         result = 31 * result + bets.hashCode();
         result = 31 * result + points.hashCode();
+        result = 31 * result + Arrays.hashCode(insuredBets);
         return result;
     }
 }

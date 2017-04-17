@@ -20,6 +20,7 @@ public enum LogicResult {
     LOOSE,
     WIN,
     BJ_WIN,
+    DRAW,
 
     CARD_2_H, //hearts
     CARD_2_C, //clubs

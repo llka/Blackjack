@@ -103,6 +103,12 @@ public enum CommandType {
             this.role = EnumSet.of(Visitor.Role.ADMIN);
         }
     },
+    NEWGAME{
+        {
+            this.command = new NewGameCommand();
+            this.role = EnumSet.of(Visitor.Role.ADMIN, Visitor.Role.USER);
+        }
+    },
     CHECKFORINSURANCE{
         {
             this.command = new CheckForInsuranceCommand();

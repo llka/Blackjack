@@ -30,6 +30,7 @@
     <title><fmt:message key="application.title"/></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link type="text/css" rel="stylesheet" href="${context}/css/common.css"/>
+    <link type="text/css" rel="stylesheet" href="${context}/css/cards.css"/>
     <link type="text/css" rel="stylesheet" href="${context}/css/game.css"/>
     <%-- icon --%>
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/image/bj_icon.ico"/>
@@ -88,6 +89,10 @@
                     </div>
                 </form>
                 <div class="gameButtons" id="gameButtons">
+                </div>
+                <div class="balanceRow">
+                    <div></div>
+                    <div class="balanceVal"> <fmt:message key="game.balance"/> <fmt:formatNumber value="${account.balance}" type="currency" /></div>
                 </div>
             </div>
         </div>

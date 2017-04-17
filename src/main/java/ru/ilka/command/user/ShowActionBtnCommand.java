@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import static ru.ilka.controller.ControllerConstants.GAME_DEAL_KEY;
+import static ru.ilka.controller.ControllerConstants.IN_GAME_KEY;
 
 /**
  * Here could be your advertisement +375 29 3880490
@@ -22,8 +23,13 @@ public class ShowActionBtnCommand implements ActionCommand {
         Deal deal = (Deal) session.getAttribute(GAME_DEAL_KEY);
         GameLogic gameLogic = new GameLogic();
 
+        boolean inGame = gameLogic.isUserInGame(deal);
+        session.setAttribute(IN_GAME_KEY, inGame);
         StringBuilder result = new StringBuilder();
         gameLogic.suggestActionButtons(deal,result);
+        if(!inGame){
+            gameLogic.suggestNewGame(result);
+        }
         return result.toString();
     }
 }

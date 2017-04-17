@@ -204,6 +204,15 @@ public class AccountLogic {
             Account account = accountDao.getAccountById(accountId);
             accountDao.updateBalance(accountId, account.getBalance().add(amount));
         } catch (DBException e) {
+            throw new LogicException("Error while adding some money to balance" + e);
+        }
+    }
+
+    public void changeBalance(int accountId, BigDecimal balance) throws LogicException{
+        AccountDao accountDao = new AccountDao();
+        try {
+            accountDao.updateBalance(accountId, balance);
+        } catch (DBException e) {
             throw new LogicException("Error while updating balance" + e);
         }
     }
@@ -271,6 +280,15 @@ public class AccountLogic {
             accountDao.updateAdminRole(accountId,isAdmin);
         } catch (DBException e) {
             throw new LogicException("Error while updating admin role " + e);
+        }
+    }
+
+    public void changeStatistics(int accountId, int played, int handsWon, BigDecimal moneySpend, BigDecimal moneyWon, int rating) throws LogicException {
+        AccountDao accountDao = new AccountDao();
+        try {
+            accountDao.updateStatistics(accountId,played,handsWon,moneySpend,moneyWon,rating);
+        } catch (DBException e) {
+            throw new LogicException("Error while updating statistics " + e);
         }
     }
 

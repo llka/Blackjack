@@ -37,12 +37,12 @@ public class DealCardsCommand implements ActionCommand {
         Account account = (Account) session.getAttribute(ACCOUNT_KEY);
         GameSettings settings = (GameSettings) servletContext.getAttribute(SETTINGS_KEY);
         GameLogic gameLogic = new GameLogic();
-        ArrayList<Integer> bets = new ArrayList<>(PLACES_FOR_BETS_QNT);
+        ArrayList<Double> bets = new ArrayList<>(PLACES_FOR_BETS_QNT);
         boolean[] hands = new boolean[PLACES_FOR_BETS_QNT + 1];
 
-        bets.add(Integer.parseInt(request.getParameter(PARAM_BET_1)));
-        bets.add(Integer.parseInt(request.getParameter(PARAM_BET_2)));
-        bets.add(Integer.parseInt(request.getParameter(PARAM_BET_3)));
+        bets.add(Double.parseDouble(request.getParameter(PARAM_BET_1)));
+        bets.add(Double.parseDouble(request.getParameter(PARAM_BET_2)));
+        bets.add(Double.parseDouble(request.getParameter(PARAM_BET_3)));
 
         int betSumm = 0;
         hands[DEALER_HAND] = true;
@@ -81,6 +81,7 @@ public class DealCardsCommand implements ActionCommand {
             }
             Deal deal = new Deal(cards,bets,points);
             session.setAttribute(GAME_DEAL_KEY,deal);
+            session.setAttribute(IN_GAME_KEY,true);
         }else {
             result.append("<div class=\"error\">Bets are bigger than your balance, try bet less!</div>");
         }

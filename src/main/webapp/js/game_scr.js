@@ -35,22 +35,21 @@ function validateBetForm() {
   }
   else {
       $(document).ready(function () {
-          //$('#dealBtn').blur(function () {
-              $.ajax({
-                  url: '/Ajax',
-                  data: {
-                      command: $('#command').val(),
-                      bet1: $('#bet1input').val(),
-                      bet2: $('#bet2input').val(),
-                      bet3: $('#bet3input').val()
-                  },
-                  success: function (responseText) {
-                      $('#cards').html(responseText);
-                      inGame = true;
-                      showDealButton();
-                      checkForInsurance();
-                  }
-              });
+          $.ajax({
+              url: '/Ajax',
+              data: {
+                  command: $('#command').val(),
+                  bet1: $('#bet1input').val(),
+                  bet2: $('#bet2input').val(),
+                  bet3: $('#bet3input').val()
+              },
+              success: function (responseText) {
+                  $('#cards').html(responseText);
+                  inGame = true;
+                  showDealButton();
+                  checkForInsurance();
+              }
+          });
       });
   }
 }
@@ -152,10 +151,8 @@ function showActionButtons() {
 }
 
 function hit(handId) {
-    var points =  document.getElementById("points" + handId);
-    points.style.display = "none";
-
     $(document).ready(function () {
+        $("#points" + handId).remove();
         $.ajax({
             url: '/Ajax',
             data: {

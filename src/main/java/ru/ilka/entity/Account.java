@@ -20,6 +20,7 @@ public class Account {
     private boolean admin;
     private boolean ban;
     private BigDecimal balance;
+
     private int handsPlayed;
     private int handsWon;
     private BigDecimal moneySpend;

@@ -1,12 +1,11 @@
 package ru.ilka.entity;
-import java.util.ArrayList;
 
 /**
  * Here could be your advertisement +375 29 3880490
  */
 public class Game {
     private int gameId;
-    private int bet;
+    private double bet;
     private int playerAccountId;
     private boolean playerWin;
     private double winCoefficient;
@@ -36,11 +35,11 @@ public class Game {
         this.gameId = gameId;
     }
 
-    public int getBet() {
+    public double getBet() {
         return bet;
     }
 
-    public void setBet(int bet) {
+    public void setBet(double bet) {
         this.bet = bet;
     }
 
@@ -100,11 +99,12 @@ public class Game {
         Game game = (Game) o;
 
         if (gameId != game.gameId) return false;
-        if (bet != game.bet) return false;
+        if (Double.compare(game.bet, bet) != 0) return false;
         if (playerAccountId != game.playerAccountId) return false;
         if (playerWin != game.playerWin) return false;
         if (Double.compare(game.winCoefficient, winCoefficient) != 0) return false;
         if (playerIsDealer != game.playerIsDealer) return false;
+        if (points != game.points) return false;
         return time.equals(game.time);
     }
 
@@ -113,13 +113,15 @@ public class Game {
         int result;
         long temp;
         result = gameId;
-        result = 31 * result + bet;
+        temp = Double.doubleToLongBits(bet);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
         result = 31 * result + playerAccountId;
         result = 31 * result + (playerWin ? 1 : 0);
         temp = Double.doubleToLongBits(winCoefficient);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         result = 31 * result + (playerIsDealer ? 1 : 0);
         result = 31 * result + time.hashCode();
+        result = 31 * result + points;
         return result;
     }
 

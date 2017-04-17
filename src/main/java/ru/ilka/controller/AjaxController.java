@@ -5,14 +5,19 @@ import org.apache.logging.log4j.Logger;
 import ru.ilka.command.ActionCommand;
 import ru.ilka.command.ActionFactory;
 import ru.ilka.exception.CommandException;
+import ru.ilka.manager.ConfigurationManager;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+
+import static ru.ilka.controller.ControllerConstants.IN_GAME_KEY;
 
 /**
  * Here could be your advertisement +375 29 3880490
@@ -23,6 +28,7 @@ public class AjaxController extends HttpServlet {
 
     private static final long serialVersionUID = 905242440943999308L;
     private static final String CONTENT_TYPE = "text/html";
+    private static final String PAGE_GAME = "path.page.game";
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {

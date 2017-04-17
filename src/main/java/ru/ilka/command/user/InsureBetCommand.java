@@ -24,7 +24,7 @@ public class InsureBetCommand implements ActionCommand {
         HttpSession session = request.getSession();
         Deal deal = (Deal) session.getAttribute(GAME_DEAL_KEY);
         boolean[] insuredBets = deal.getInsuredBets();
-        insuredBets[(Integer.parseInt(request.getParameter(PARAM_BET_PLACE)))] = true;
+        insuredBets[(Integer.parseInt(request.getParameter(PARAM_BET_PLACE)))-1] = true;
         deal.setInsuredBets(insuredBets);
         session.setAttribute(GAME_DEAL_KEY,deal);
         for (int i = 0; i < insuredBets.length; i++) {

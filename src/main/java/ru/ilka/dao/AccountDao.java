@@ -44,6 +44,7 @@ public class AccountDao {
     private static final String UPDATE_AVATAR= "UPDATE `users` SET `avatar` = ?  WHERE `account_id` = ?";
     private static final String UPDATE_BAN_STATUS= "UPDATE `users` SET `ban` = ?  WHERE `account_id` = ?";
     private static final String UPDATE_ADMIN_ROLE= "UPDATE `users` SET `is_admin` = ?  WHERE `account_id` = ?";
+    private static final String UPDATE_STATISTICS= "UPDATE `users` SET `played` = ?, `hands_won` = ?, `money_spend` = ?, `money_won` = ?, `rating` = ?  WHERE `account_id` = ?";
 
 
     private static final String COLUMN_ACCOUNT_ID = "account_id";
@@ -357,7 +358,7 @@ public class AccountDao {
 
     public void updateBanStatus(int accountId, boolean ban) throws DBException{
         try(Connection connection = ConnectionPool.getInstance().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_BAN_STATUS)) {
+                PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_BAN_STATUS)) {
             preparedStatement.setBoolean(1,ban);
             preparedStatement.setInt(2, accountId);
             preparedStatement.execute();
@@ -368,12 +369,27 @@ public class AccountDao {
 
     public void updateAdminRole(int accountId, boolean isAdmin) throws DBException{
         try(Connection connection = ConnectionPool.getInstance().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_ADMIN_ROLE)) {
+                PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_ADMIN_ROLE)) {
             preparedStatement.setBoolean(1,isAdmin);
             preparedStatement.setInt(2, accountId);
             preparedStatement.execute();
         } catch (SQLException e) {
             throw new DBException("Error while updating admin role in account № " + accountId + " " + e);
+        }
+    }
+
+    public void updateStatistics(int accountId, int played, int handsWon, BigDecimal moneySpend, BigDecimal moneyWon, int rating) throws DBException {
+        try(Connection connection = ConnectionPool.getInstance().getConnection();
+                PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_STATISTICS)) {
+            preparedStatement.setInt(1,played);
+            preparedStatement.setInt(2,handsWon);
+            preparedStatement.setBigDecimal(3,moneySpend);
+            preparedStatement.setBigDecimal(4,moneyWon);
+            preparedStatement.setInt(5,rating);
+            preparedStatement.setInt(6,accountId);
+            preparedStatement.execute();
+        } catch (SQLException e) {
+            throw new DBException("Error while updating statistics in account № " + accountId + " " + e);
         }
     }
 }
