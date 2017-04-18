@@ -127,6 +127,18 @@ public enum CommandType {
             this.role = EnumSet.of(Visitor.Role.ADMIN, Visitor.Role.USER);
         }
     },
+    STAND{
+        {
+            this.command = new StandCommand();
+            this.role = EnumSet.of(Visitor.Role.ADMIN, Visitor.Role.USER);
+        }
+    },
+    IMMEDIATEBJWIN{
+        {
+            this.command = new ImmediateBjWin();
+            this.role = EnumSet.of(Visitor.Role.ADMIN, Visitor.Role.USER);
+        }
+    },
     SHOWACTIONBTN{
         {
             this.command = new ShowActionBtnCommand();

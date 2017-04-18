@@ -195,7 +195,8 @@ function immediateBjWin(handId) {
                 betPlace: handId
             },
             success: function (responseText) {
-
+                $('#cards').append(responseText);
+                showActionButtons();
             }
         });
     });
@@ -206,11 +207,12 @@ function waitBjWin(handId) {
         $.ajax({
             url: '/Ajax',
             data: {
-                command: "WaitForBjWin",
+                command: "Stand",
                 betPlace: handId
             },
             success: function (responseText) {
-
+                $('#cards').append(responseText);
+                showActionButtons();
             }
         });
     });

@@ -24,23 +24,26 @@ public class GameLogic {
 
     private static final int CARDS_QUANTITY = 52;
     private static final int DECKS_QUANTITY = 6;
+    private static final int BJ_POINTS = 21;
+    private static final int DEALER_LOWER_LIMIT_POINTS = 17;
     private static final String DATE_TIME_REGEX = "yyyy-MM-dd HH:mm:ss";
     private ArrayList<Integer> alreadyUsed;
+    private LogicResult[] dealReport;
 
     public GameLogic() {
         alreadyUsed = new ArrayList<>();
+        dealReport = new LogicResult[4];
     }
 
     public ArrayList<ArrayList<LogicResult>> dealCards(boolean[] hands){
 
         ArrayList<ArrayList<LogicResult>> cards = new ArrayList<>(hands.length);
-        //ArrayList<Integer> usedCards = new ArrayList<>();
         for (int i = 0; i < hands.length; i++) {
             ArrayList<LogicResult> hand = new ArrayList<>(4);
             if(hands[i]) {
                 if(i == 0){
                     int dealerPoints = 0;
-                    while (dealerPoints < 17){
+                    while (dealerPoints < DEALER_LOWER_LIMIT_POINTS){
                         try {
                             hand.add(dealCard(alreadyUsed));
                             dealerPoints = countPointsInHand(hand);
@@ -91,6 +94,8 @@ public class GameLogic {
             LogicResult card = dealCard(alreadyUsed);
             deal.getCards().get(betPlace).add(card);
             deal.setPoints(countPoints(deal.getCards()));
+            logger.debug("hit cards" + deal.getCards());
+            logger.debug("hit points" + deal.getPoints());
             writer.append("<div class=\"card" + betPlace + deal.getCards().get(betPlace).size() + "\">\n");
             writeCard(card,writer);
             writePoints(deal.getPoints().get(betPlace),betPlace,writer);
@@ -99,10 +104,6 @@ public class GameLogic {
         } catch (LogicException e) {
             logger.error("Error while hitting new card " + e);
         }
-    }
-
-    public void stand(int betPlace, Deal deal, Account account, StringBuilder writer){
-
     }
 
     public ArrayList<Integer> countPoints(ArrayList<ArrayList<LogicResult>> cards){
@@ -129,7 +130,7 @@ public class GameLogic {
             }
         }
 
-        while (handPoints > 21 && aces > 0){
+        while (handPoints > BJ_POINTS && aces > 0){
             handPoints -= 10;
             --aces;
         }
@@ -142,17 +143,17 @@ public class GameLogic {
         int dealerPoints = deal.getPoints().get(0);
         ArrayList<Double> bets = deal.getBets();
         try {
-            if(handPoints > 21){
+            if(handPoints > BJ_POINTS){
                 logger.info("Bust in " + betPlace);
                 concludeGame(betPlace, LogicResult.BUST, deal, account);
-            }else if(handPoints == 21 && dealerPoints != 21){
+            }else if(handPoints == BJ_POINTS && dealerPoints != BJ_POINTS){
                 logger.info("Win in " + betPlace);
                 if(deal.getInsuredBets()[betPlace-1]){
                     bets.set(betPlace-1,bets.get(betPlace-1)/2);
                     deal.setBets(bets);
                 }
                 concludeGame(betPlace, LogicResult.WIN, deal, account);
-            }else if(handPoints == 21 && dealerPoints == 21){
+            }else if(handPoints == BJ_POINTS && dealerPoints == BJ_POINTS){
                 logger.info("Draw in " + betPlace);
                 if(!deal.getInsuredBets()[betPlace-1]){
                     bets.set(betPlace-1,0.0);
@@ -169,19 +170,107 @@ public class GameLogic {
         int handPoints = deal.getPoints().get(betPlace);
         int dealerPoints = deal.getPoints().get(0);
         ArrayList<Double> bets = deal.getBets();
+        boolean insuranceSuggested = false;
+        boolean insured = deal.getInsuredBets()[betPlace-1];
+        boolean bjAvailable = deal.getCards().get(betPlace).size() == 2 ? true : false;
+        try {
+            insuranceSuggested = findCardRank(deal.getCards().get(0).get(1)) == 11 ? true : false;
+        } catch (LogicException e) {
+            logger.error("Error while finding card rank in dealer's first card " + e);
+        }
 
         try {
-            if(dealerPoints == 21 ){
-                if(deal.getInsuredBets()[betPlace-1]) {
-                    bets.set(betPlace-1,0.0);
-                    deal.setBets(bets);
-                    concludeGame(betPlace, LogicResult.DRAW, deal, account);
-                }else{
-                    bets.set(betPlace-1,bets.get(betPlace-1)/2);
-                    deal.setBets(bets);
-                    concludeGame(betPlace, LogicResult.DRAW, deal, account);
+            if(dealerPoints == BJ_POINTS && insuranceSuggested ){
+                if(handPoints == BJ_POINTS){
+                    if(insured) {
+                        concludeGame(betPlace, LogicResult.WIN, deal, account);
+                    }else{
+                        concludeGame(betPlace, LogicResult.DRAW, deal, account);
+                    }
+                }else {
+                    if (insured) {
+                        concludeGame(betPlace, LogicResult.DRAW, deal, account);
+                    } else {
+                        concludeGame(betPlace, LogicResult.LOOSE, deal, account);
+                    }
                 }
-            }/*if else()*/
+            }else if(dealerPoints < BJ_POINTS && insuranceSuggested){
+                if(handPoints < dealerPoints || handPoints > BJ_POINTS){
+                    if(insured) {
+                        bets.set(betPlace-1,bets.get(betPlace-1) * 1.5);
+                        deal.setBets(bets);
+                        concludeGame(betPlace, LogicResult.LOOSE, deal, account);
+                    }else {
+                        concludeGame(betPlace, LogicResult.LOOSE, deal, account);
+                    }
+                }else if (handPoints == dealerPoints){
+                    if(insured) {
+                        bets.set(betPlace-1,bets.get(betPlace-1) * 0.5);
+                        deal.setBets(bets);
+                        concludeGame(betPlace, LogicResult.LOOSE, deal, account);
+                    }else {
+                        concludeGame(betPlace, LogicResult.DRAW, deal, account);
+                    }
+                }else if(handPoints == BJ_POINTS && bjAvailable){
+                    if(insured){
+                        bets.set(betPlace-1,bets.get(betPlace-1) * 0.5);
+                        deal.setBets(bets);
+                        concludeGame(betPlace, LogicResult.WIN, deal, account);
+                    }else {
+                        concludeGame(betPlace, LogicResult.BJ_WIN, deal, account);
+                    }
+                }else if(handPoints > dealerPoints && handPoints <= BJ_POINTS){
+                    if (insured){
+                        bets.set(betPlace-1,bets.get(betPlace-1) * 0.5);
+                        deal.setBets(bets);
+                        concludeGame(betPlace, LogicResult.WIN, deal, account);
+                    }else {
+                        concludeGame(betPlace, LogicResult.WIN, deal, account);
+                    }
+                }
+            }else if(dealerPoints > BJ_POINTS && insuranceSuggested){
+                if(handPoints == BJ_POINTS && bjAvailable){
+                    if(insured){
+                        bets.set(betPlace-1,bets.get(betPlace-1) * 0.5);
+                        deal.setBets(bets);
+                        concludeGame(betPlace, LogicResult.WIN, deal, account);
+                    }else {
+                        concludeGame(betPlace, LogicResult.BJ_WIN, deal, account);
+                    }
+                }else if(handPoints <= BJ_POINTS){
+                    if(insured){
+                        bets.set(betPlace-1,bets.get(betPlace-1) * 0.5);
+                        deal.setBets(bets);
+                        concludeGame(betPlace, LogicResult.WIN, deal, account);
+                    }else {
+                        concludeGame(betPlace, LogicResult.WIN, deal, account);
+                    }
+                }else{
+                    if(insured){
+                        bets.set(betPlace-1,bets.get(betPlace-1) * 1.5);
+                        deal.setBets(bets);
+                        concludeGame(betPlace, LogicResult.LOOSE, deal, account);
+                    }else {
+                        concludeGame(betPlace, LogicResult.LOOSE, deal, account);
+                    }
+                }
+            }else if(dealerPoints <= BJ_POINTS && !insuranceSuggested){
+                if (handPoints < dealerPoints || handPoints > BJ_POINTS){
+                    concludeGame(betPlace, LogicResult.LOOSE, deal, account);
+                }else if(handPoints == dealerPoints) {
+                    concludeGame(betPlace, LogicResult.DRAW, deal, account);
+                }else if(handPoints == BJ_POINTS && bjAvailable){
+                    concludeGame(betPlace,LogicResult.BJ_WIN,deal,account);
+                }else if(handPoints > dealerPoints && handPoints <= BJ_POINTS) {
+                    concludeGame(betPlace, LogicResult.WIN, deal, account);
+                }
+            }else if(dealerPoints > BJ_POINTS && !insuranceSuggested){
+                if (handPoints > BJ_POINTS){
+                    concludeGame(betPlace, LogicResult.LOOSE, deal, account);
+                }else {
+                    concludeGame(betPlace, LogicResult.WIN, deal, account);
+                }
+            }
         }catch (LogicException e) {
             logger.error("Error while calculating game result "+ e);
         }
@@ -205,22 +294,26 @@ public class GameLogic {
         DateTimeFormatter format = DateTimeFormatter.ofPattern(DATE_TIME_REGEX);
         String currentTime = now.format(format);
         game.setTime(currentTime);
-        game.setBet(deal.getBets().get(betPlace-1));
+        game.setBet(deal.getBets().get(betPlace - 1));
         game.setPoints(deal.getPoints().get(betPlace));
         game.setPlayerAccountId(account.getAccountId());
         game.setPlayerIsDealer(false);
-        switch (result){
+        switch (result) {
             case BUST:
                 game.setWinCoefficient(-1);
                 game.setPlayerWin(false);
                 moneySpend = moneySpend.add(new BigDecimal(game.getBet()));
                 balance = balance.subtract(new BigDecimal(game.getBet()));
+                dealReport[betPlace] = LogicResult.BUST;
+                logger.debug("deal report" + dealReport[betPlace]);
                 break;
             case LOOSE:
                 game.setWinCoefficient(-1);
                 game.setPlayerWin(false);
                 moneySpend = moneySpend.add(new BigDecimal(game.getBet()));
                 balance = balance.subtract(new BigDecimal(game.getBet()));
+                dealReport[betPlace] = LogicResult.LOOSE;
+                logger.debug("deal report" + dealReport[betPlace]);
                 break;
             case WIN:
                 game.setWinCoefficient(1);
@@ -228,6 +321,8 @@ public class GameLogic {
                 moneyWon = moneyWon.add(new BigDecimal(game.getBet()));
                 balance = balance.add(new BigDecimal(game.getBet()));
                 handsWon++;
+                dealReport[betPlace] = LogicResult.WIN;
+                logger.debug("deal report" + dealReport[betPlace]);
                 break;
             case BJ_WIN:
                 game.setWinCoefficient(1.5);
@@ -235,10 +330,12 @@ public class GameLogic {
                 moneyWon = moneyWon.add(new BigDecimal(game.getBet() * 1.5));
                 balance = balance.add(new BigDecimal(game.getBet() * 1.5));
                 handsWon++;
+                dealReport[betPlace] = LogicResult.BJ_WIN;
                 break;
             case DRAW:
                 game.setWinCoefficient(0);
                 game.setPlayerWin(false);
+                dealReport[betPlace] = LogicResult.DRAW;
                 break;
             default:
                 throw new LogicException("Unknown game result");
@@ -251,28 +348,38 @@ public class GameLogic {
         rating = statisticsLogic.calculateRating(account);
         account.setRating(rating);
 
-        deal.getBets().set(betPlace-1,0.0);
-        deal.getCards().set(betPlace,new ArrayList<>());
-        deal.getPoints().set(betPlace,0);
-        deal.getInsuredBets()[betPlace-1] = false;
+        deal.getBets().set(betPlace - 1, 0.0);
+        deal.getCards().set(betPlace, new ArrayList<>());
+        deal.getPoints().set(betPlace, 0);
+        deal.getInsuredBets()[betPlace - 1] = false;
 
         try {
-            gameDao.registerGame(account.getAccountId(),game);
+            gameDao.registerGame(account.getAccountId(), game);
         } catch (DBException e) {
             throw new LogicException("Error in game registration" + e);
         }
-        accountLogic.changeStatistics(accountId, handsPlayed, handsWon, moneySpend, moneyWon, rating);
-        accountLogic.changeBalance(accountId, balance);
+        try {
+            accountLogic.changeStatistics(accountId, handsPlayed, handsWon, moneySpend, moneyWon, rating);
+        } catch (LogicException e) {
+            throw new LogicException("Error in changing statistics" + e);
+        }
+        try {
+            accountLogic.changeBalance(accountId, balance);
+        } catch (LogicException e) {
+            throw new LogicException("Error in changing balance" + e);
+        }
     }
 
     public boolean isUserInGame(Deal deal){
         boolean inGame = false;
         ArrayList<Double> bets = deal.getBets();
         for (int i = 0; i < bets.size(); i++) {
+
             if(bets.get(i) > 0){
                 inGame = true;
             }
         }
+        logger.debug("isUserInGame " + inGame);
         return inGame;
     }
 
@@ -309,17 +416,18 @@ public class GameLogic {
 
     public void suggestActionButtons(Deal deal, StringBuilder writer){
         ArrayList<Integer> points = deal.getPoints();
+        ArrayList<ArrayList<LogicResult>> cards = deal.getCards();
         writer.append("<div class=\"actionButtonsRow\">\n");
         for (int i = 1; i < points.size(); i++) {
-            if(points.get(i) > 0 && points.get(i) < 21){
+            if(points.get(i) > 0 && points.get(i) < BJ_POINTS){
                 writer.append("<div class=\"actionButtons\"  id=\"actionButtons"+ i +"\">\n");
                 writer.append("<button class=\"gameButton\" onclick=\"hit(" + i + ")\" id=\"hit"+ i +"\">Hit</button>\n");
                 writer.append("<button class=\"gameButton\" onclick=\"stand(" + i + ")\" id=\"stand"+ i +"\">Stand</button>\n");
                 writer.append("</div>\n");
-            }else if(points.get(i) == 21){
-                writer.append("<div class=\"actionButtons\" id=\"actionButtons"+ i +"\">\n");
-                writer.append("<button class=\"gameButton\" onclick=\"immediateBjWin(" + i + ")\" id=\"insuredBjWin"+ i +"\">Insured Win 1/1</button>\n");
-                writer.append("<button class=\"gameButton\" onclick=\"waitBjWin(" + i + ")\" id=\"waitBjWin"+ i +"\">Wait for Win 3/2</button>\n");
+            }else if(points.get(i) == BJ_POINTS && cards.get(i).size() == 2) {
+                writer.append("<div class=\"actionButtons\" id=\"actionButtons" + i + "\">\n");
+                writer.append("<button class=\"gameButton\" onclick=\"immediateBjWin(" + i + ")\" id=\"insuredBjWin" + i + "\">Insured Win 1/1</button>\n");
+                writer.append("<button class=\"gameButton\" onclick=\"waitBjWin(" + i + ")\" id=\"waitBjWin" + i + "\">Wait for Win 3/2</button>\n");
                 writer.append("</div>\n");
             }else {
                 writer.append("<div class=\"actionButtons\" style=\"visibility: hidden\" id=\"actionButtons"+ i +"\">\n");
@@ -352,6 +460,41 @@ public class GameLogic {
                 writer.append("</div>");
             }
         }
+
+        /*writer.append("<div class=\"dealReport\">\n");
+        for (int i = 1; i < 4; i++) {
+            String betClass;
+            String message;
+            switch (dealReport[i]){
+                case LOOSE:
+                    betClass = "betLoose";
+                    message = "Loss";
+                    break;
+                case DRAW:
+                    betClass = "betDraw";
+                    message = "Draw";
+                    break;
+                case WIN:
+                    betClass = "betWin";
+                    message = "Win!";
+                    break;
+                case BJ_WIN:
+                    betClass = "betWin";
+                    message = "Black Jack!";
+                    break;
+                case BUST:
+                    betClass = "betLoose";
+                    message = "Bust";
+                    break;
+                default:
+                    betClass = "betDraw";
+                    message = "";
+            }
+            writer.append("<div class=\"" + betClass + "\">");
+            writer.append(message);
+            writer.append("</div>");
+        }
+        writer.append("</div>\n");*/
     }
 
     public void writeCard(LogicResult resultCard, StringBuilder writer){

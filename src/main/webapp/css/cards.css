@@ -21,7 +21,7 @@
     position: absolute;
     left: 48%;
     top: 81%;
-    z-index: 5;
+    z-index: 6;
     background: white;
     height: 70px;
     width: 47px;
@@ -35,7 +35,7 @@
     position: absolute;
     left: 50%;
     top: 81.5%;
-    z-index: 5;
+    z-index: 7;
     background: white;
     height: 70px;
     width: 47px;
@@ -47,7 +47,7 @@
     position: absolute;
     left: 52%;
     top: 82%;
-    z-index: 5;
+    z-index: 8;
     background: white;
     height: 70px;
     width: 47px;
@@ -59,7 +59,7 @@
     position: absolute;
     left: 54%;
     top: 82.5%;
-    z-index: 5;
+    z-index: 9;
     background: white;
     height: 70px;
     width: 47px;
@@ -71,7 +71,7 @@
     position: absolute;
     left: 56%;
     top: 83%;
-    z-index: 5;
+    z-index: 10;
     background: white;
     height: 70px;
     width: 47px;
@@ -83,7 +83,7 @@
     position: absolute;
     left: 58%;
     top: 83.5%;
-    z-index: 5;
+    z-index: 11;
     background: white;
     height: 70px;
     width: 47px;
@@ -95,7 +95,7 @@
     position: absolute;
     left: 60%;
     top: 84%;
-    z-index: 5;
+    z-index: 12;
     background: white;
     height: 70px;
     width: 47px;

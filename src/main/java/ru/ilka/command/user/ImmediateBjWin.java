@@ -4,7 +4,9 @@ import ru.ilka.command.ActionCommand;
 import ru.ilka.entity.Account;
 import ru.ilka.entity.Deal;
 import ru.ilka.exception.CommandException;
+import ru.ilka.exception.LogicException;
 import ru.ilka.logic.GameLogic;
+import ru.ilka.logic.LogicResult;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,7 +19,7 @@ import static ru.ilka.controller.ControllerConstants.IN_GAME_KEY;
 /**
  * Here could be your advertisement +375 29 3880490
  */
-public class StandCommand implements ActionCommand {
+public class ImmediateBjWin implements ActionCommand {
 
     private static final String PARAM_BET_PLACE = "betPlace";
 
@@ -31,8 +33,11 @@ public class StandCommand implements ActionCommand {
         int betPlace = Integer.parseInt(request.getParameter(PARAM_BET_PLACE));
 
         StringBuilder result = new StringBuilder();
-        gameLogic.calculateGameResult(betPlace,deal,account);
-
+        try {
+            gameLogic.concludeGame(betPlace, LogicResult.WIN, deal, account);
+        } catch (LogicException e) {
+            throw new CommandException("Error while getting immediate win with bj 1/1 " + e);
+        }
         boolean inGame = gameLogic.isUserInGame(deal);
         session.setAttribute(IN_GAME_KEY,inGame);
         if (!inGame){
