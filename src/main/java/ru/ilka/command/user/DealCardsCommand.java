@@ -33,7 +33,6 @@ public class DealCardsCommand implements ActionCommand {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws CommandException {
         ServletContext servletContext = request.getServletContext();
         HttpSession session = request.getSession();
-        Visitor visitor = (Visitor) session.getAttribute(VISITOR_KEY);
         Account account = (Account) session.getAttribute(ACCOUNT_KEY);
         GameSettings settings = (GameSettings) servletContext.getAttribute(SETTINGS_KEY);
         GameLogic gameLogic = new GameLogic();

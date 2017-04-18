@@ -14,9 +14,11 @@ public class Deal {
     private ArrayList<Double> bets;
     private ArrayList<Integer> points;
     private boolean[] insuredBets;
+    private LogicResult[] dealReport;
 
     public Deal(){
         this.insuredBets = new boolean[BETS_QNT];
+        dealReport = new LogicResult[BETS_QNT + 1];
     }
 
     public Deal(ArrayList<ArrayList<LogicResult>> cards, ArrayList<Double> bets, ArrayList<Integer> points) {
@@ -24,6 +26,7 @@ public class Deal {
         this.bets = bets;
         this.points = points;
         this.insuredBets = new boolean[BETS_QNT];
+        this.dealReport = new LogicResult[BETS_QNT + 1];
     }
 
     public ArrayList<ArrayList<LogicResult>> getCards() {
@@ -56,6 +59,14 @@ public class Deal {
 
     public void setInsuredBets(boolean[] insuredBets) {
         this.insuredBets = insuredBets;
+    }
+
+    public LogicResult[] getDealReport() {
+        return dealReport;
+    }
+
+    public void setDealReport(LogicResult[] dealReport) {
+        this.dealReport = dealReport;
     }
 
     @Override

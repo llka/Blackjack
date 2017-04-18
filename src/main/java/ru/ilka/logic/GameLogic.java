@@ -28,11 +28,9 @@ public class GameLogic {
     private static final int DEALER_LOWER_LIMIT_POINTS = 17;
     private static final String DATE_TIME_REGEX = "yyyy-MM-dd HH:mm:ss";
     private ArrayList<Integer> alreadyUsed;
-    private LogicResult[] dealReport;
 
     public GameLogic() {
         alreadyUsed = new ArrayList<>();
-        dealReport = new LogicResult[4];
     }
 
     public ArrayList<ArrayList<LogicResult>> dealCards(boolean[] hands){
@@ -280,6 +278,7 @@ public class GameLogic {
         GameDao gameDao = new GameDao();
         AccountLogic accountLogic = new AccountLogic();
         StatisticsLogic statisticsLogic = new StatisticsLogic();
+        LogicResult[] dealReport = deal.getDealReport();
         Game game = new Game();
 
         int accountId = account.getAccountId();
@@ -352,6 +351,7 @@ public class GameLogic {
         deal.getCards().set(betPlace, new ArrayList<>());
         deal.getPoints().set(betPlace, 0);
         deal.getInsuredBets()[betPlace - 1] = false;
+        deal.setDealReport(dealReport);
 
         try {
             gameDao.registerGame(account.getAccountId(), game);
@@ -454,14 +454,15 @@ public class GameLogic {
         writer.append("</div>\n");
 
         if(cards.get(0).size() > 2) {
-            for (int i = 2; i < cards.get(0).size(); i++) {
+            for (int i = 3; i < cards.get(0).size() + 1; i++) {
                 writer.append("<div class=\"DealerCard" + i + "\">\n");
-                writeCard(cards.get(0).get(i), writer);
+                writeCard(cards.get(0).get(i-1), writer);
                 writer.append("</div>");
             }
         }
 
-        /*writer.append("<div class=\"dealReport\">\n");
+        LogicResult[] dealReport = deal.getDealReport();
+        writer.append("<div class=\"dealReport\">\n");
         for (int i = 1; i < 4; i++) {
             String betClass;
             String message;
@@ -494,7 +495,7 @@ public class GameLogic {
             writer.append(message);
             writer.append("</div>");
         }
-        writer.append("</div>\n");*/
+        writer.append("</div>\n");
     }
 
     public void writeCard(LogicResult resultCard, StringBuilder writer){
