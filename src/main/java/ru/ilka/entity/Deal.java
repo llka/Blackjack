@@ -15,10 +15,14 @@ public class Deal {
     private ArrayList<Integer> points;
     private boolean[] insuredBets;
     private LogicResult[] dealReport;
+    private ArrayList<Integer> alreadyUsedCards;
 
     public Deal(){
         this.insuredBets = new boolean[BETS_QNT];
-        dealReport = new LogicResult[BETS_QNT + 1];
+        this.dealReport = new LogicResult[BETS_QNT + 1];
+        for (int i = 0; i < BETS_QNT + 1; i++) {
+            this.dealReport[i] = LogicResult.EMPTY_BET;
+        }
     }
 
     public Deal(ArrayList<ArrayList<LogicResult>> cards, ArrayList<Double> bets, ArrayList<Integer> points) {
@@ -27,6 +31,9 @@ public class Deal {
         this.points = points;
         this.insuredBets = new boolean[BETS_QNT];
         this.dealReport = new LogicResult[BETS_QNT + 1];
+        for (int i = 0; i < BETS_QNT + 1; i++) {
+            this.dealReport[i] = LogicResult.EMPTY_BET;
+        }
     }
 
     public ArrayList<ArrayList<LogicResult>> getCards() {
@@ -67,6 +74,14 @@ public class Deal {
 
     public void setDealReport(LogicResult[] dealReport) {
         this.dealReport = dealReport;
+    }
+
+    public ArrayList<Integer> getAlreadyUsedCards() {
+        return alreadyUsedCards;
+    }
+
+    public void setAlreadyUsedCards(ArrayList<Integer> alreadyUsedCards) {
+        this.alreadyUsedCards = alreadyUsedCards;
     }
 
     @Override

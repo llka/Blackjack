@@ -26,6 +26,7 @@ public class DealCardsCommand implements ActionCommand {
     private static final String PARAM_BET_1 = "bet1";
     private static final String PARAM_BET_2 = "bet2";
     private static final String PARAM_BET_3 = "bet3";
+    private static final boolean IS_USER_IN_GAME = true;
     private static final int PLACES_FOR_BETS_QNT = 3;
     private static final int DEALER_HAND = 0;
 
@@ -57,30 +58,12 @@ public class DealCardsCommand implements ActionCommand {
             ArrayList<ArrayList<LogicResult>> cards = gameLogic.dealCards(hands);
             ArrayList<Integer> points = gameLogic.countPoints(cards);
 
-            result.append("<div class=\"DealerCard1\">\n");
-            result.append("<div class=\"cardBack\">");
-            result.append("</div>\n");
-            result.append("</div>\n");
-
-            result.append("<div class=\"DealerCard2\">\n");
-            gameLogic.writeCard(cards.get(DEALER_HAND).get(1), result);
-            result.append("</div>");
-
-            for (int i = 1; i < cards.size(); i++) {
-                if (!cards.get(i).isEmpty()) {
-                    for (int j = 1; j < 3; j++) {
-                        result.append("<div class=\"card" + i + j + "\">\n");
-                        gameLogic.writeCard(cards.get(i).get(j - 1), result);
-                        if (j == 2) {
-                            gameLogic.writePoints(points.get(i),i,result);
-                        }
-                        result.append("</div>");
-                    }
-                }
-            }
             Deal deal = new Deal(cards,bets,points);
+            deal.setAlreadyUsedCards(gameLogic.getAlreadyUsed());
+            gameLogic.showFirstCards(deal,result);
+
             session.setAttribute(GAME_DEAL_KEY,deal);
-            session.setAttribute(IN_GAME_KEY,true);
+            session.setAttribute(IN_GAME_KEY,IS_USER_IN_GAME);
         }else {
             result.append("<div class=\"error\">Bets are bigger than your balance, try bet less!</div>");
         }

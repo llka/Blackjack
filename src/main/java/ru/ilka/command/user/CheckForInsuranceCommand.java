@@ -4,7 +4,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.ilka.command.ActionCommand;
 import ru.ilka.entity.Deal;
-import ru.ilka.exception.CommandException;
 import ru.ilka.logic.GameLogic;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +19,7 @@ public class CheckForInsuranceCommand implements ActionCommand {
     static Logger logger = LogManager.getLogger(CheckForInsuranceCommand.class);
 
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws CommandException {
+    public String execute(HttpServletRequest request, HttpServletResponse response){
         HttpSession session = request.getSession();
         Deal deal = (Deal) session.getAttribute(GAME_DEAL_KEY);
         GameLogic gameLogic = new GameLogic();

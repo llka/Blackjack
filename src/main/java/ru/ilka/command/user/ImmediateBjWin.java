@@ -38,11 +38,17 @@ public class ImmediateBjWin implements ActionCommand {
         } catch (LogicException e) {
             throw new CommandException("Error while getting immediate win with bj 1/1 " + e);
         }
+
         boolean inGame = gameLogic.isUserInGame(deal);
         session.setAttribute(IN_GAME_KEY,inGame);
         if (!inGame){
-            gameLogic.writeDealerCards(deal,result);
+            try {
+                gameLogic.writeDealerCards(deal,result);
+            } catch (LogicException e) {
+                throw new CommandException("Can not show dealer cards and report " + e);
+            }
         }
+
         return result.toString();
     }
 }

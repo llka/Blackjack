@@ -18,7 +18,7 @@ import static ru.ilka.controller.ControllerConstants.IN_GAME_KEY;
 public class ShowActionBtnCommand implements ActionCommand {
 
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws CommandException {
+    public String execute(HttpServletRequest request, HttpServletResponse response){
         HttpSession session = request.getSession();
         Deal deal = (Deal) session.getAttribute(GAME_DEAL_KEY);
         GameLogic gameLogic = new GameLogic();

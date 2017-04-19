@@ -4,6 +4,7 @@ import ru.ilka.command.ActionCommand;
 import ru.ilka.entity.Account;
 import ru.ilka.entity.Deal;
 import ru.ilka.exception.CommandException;
+import ru.ilka.exception.LogicException;
 import ru.ilka.logic.GameLogic;
 
 import javax.servlet.http.HttpServletRequest;
@@ -26,16 +27,21 @@ public class HitCardCommand implements ActionCommand {
         HttpSession session = request.getSession();
         Account account = (Account) session.getAttribute(ACCOUNT_KEY);
         Deal deal = (Deal) session.getAttribute(GAME_DEAL_KEY);
-        GameLogic gameLogic = new GameLogic();
+        GameLogic gameLogic = new GameLogic(deal.getAlreadyUsedCards());
 
         int betPlace = Integer.parseInt(request.getParameter(PARAM_BET_PLACE));
 
         StringBuilder result = new StringBuilder();
         gameLogic.hitCard(betPlace,deal,account,result);
+
         boolean inGame = gameLogic.isUserInGame(deal);
         session.setAttribute(IN_GAME_KEY,inGame);
         if (!inGame){
-            gameLogic.writeDealerCards(deal,result);
+            try {
+                gameLogic.writeDealerCards(deal,result);
+            } catch (LogicException e) {
+                throw new CommandException("Can not show dealer cards and report " + e);
+            }
         }
         return result.toString();
     }

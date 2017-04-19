@@ -21,7 +21,7 @@ public class NewGameCommand implements ActionCommand {
     private static final String PAGE_GAME = "path.page.game";
 
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws CommandException {
+    public String execute(HttpServletRequest request, HttpServletResponse response){
         String page = ConfigurationManager.getProperty(PAGE_GAME);
         HttpSession session = request.getSession();
         session.setAttribute(IN_GAME_KEY,false);

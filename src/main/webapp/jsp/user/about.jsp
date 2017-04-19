@@ -37,7 +37,7 @@
                         <li>
                             <h3><fmt:message key="about.FAQ.1q"/></h3>
                             <ul>
-                                <li><fmt:message key="about.FAQ.1a1"/> ${settings.minBet * 6} <fmt:message key="about.FAQ.1a2"/></li>
+                                <li><fmt:message key="about.FAQ.1a1"/> <fmt:formatNumber value="${settings.minBet * 6}" type="currency" /> <fmt:message key="about.FAQ.1a2"/></li>
                             </ul>
                         </li>
                         <li>

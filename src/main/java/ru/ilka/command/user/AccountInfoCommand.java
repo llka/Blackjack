@@ -124,7 +124,7 @@ public class AccountInfoCommand implements ActionCommand {
             }
         }
         if(password != null) {
-            if (!account.getPassword().equals(password) && password != null) {
+            if (!account.getPassword().equals(password)) {
                 try {
                     logicResult = accountLogic.changePassword(account.getAccountId(), password);
                 } catch (LogicException e) {
