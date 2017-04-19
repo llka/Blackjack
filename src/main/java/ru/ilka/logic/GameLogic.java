@@ -1,6 +1,5 @@
 package ru.ilka.logic;
 
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.ilka.dao.GameDao;
@@ -23,19 +22,21 @@ public class GameLogic {
     static Logger logger = LogManager.getLogger(GameLogic.class);
 
     private static final int CARDS_QUANTITY = 52;
-    private static final int DECKS_QUANTITY = 1;
     private static final int BJ_POINTS = 21;
     private static final int DEALER_LOWER_LIMIT_POINTS = 17;
     private static final String DATE_TIME_REGEX = "yyyy-MM-dd HH:mm:ss";
-    private ArrayList<Integer> alreadyUsed;
 
-    public GameLogic() {
+    private ArrayList<Integer> alreadyUsed;
+    private int numberOfDecks;
+
+    public GameLogic(int numberOfDecks) {
         this.alreadyUsed = new ArrayList<>();
+        this.numberOfDecks = numberOfDecks;
     }
 
-    public GameLogic(ArrayList<Integer> alreadyUsed) {
+    public GameLogic(ArrayList<Integer> alreadyUsed, int numberOfDecks) {
         this.alreadyUsed = alreadyUsed;
-        logger.debug("GameLogic alreadyUsed : " + alreadyUsed);
+        this.numberOfDecks = numberOfDecks;
     }
 
     public ArrayList<ArrayList<LogicResult>> dealCards(boolean[] hands){
@@ -72,11 +73,11 @@ public class GameLogic {
     }
 
     public LogicResult dealCard(ArrayList<Integer> usedCards) throws LogicException {
-        int card = ThreadLocalRandom.current().nextInt(CARDS_QUANTITY * DECKS_QUANTITY);
+        int card = ThreadLocalRandom.current().nextInt(CARDS_QUANTITY * numberOfDecks);
         if (!usedCards.isEmpty()) {
             for (int k = 0; k < usedCards.size(); k++) {
                 if (card == usedCards.get(k)) {
-                    card = ThreadLocalRandom.current().nextInt(CARDS_QUANTITY * DECKS_QUANTITY);
+                    card = ThreadLocalRandom.current().nextInt(CARDS_QUANTITY * numberOfDecks);
                     k = 0;
                 }
             }

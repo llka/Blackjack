@@ -36,7 +36,7 @@ public class DealCardsCommand implements ActionCommand {
         HttpSession session = request.getSession();
         Account account = (Account) session.getAttribute(ACCOUNT_KEY);
         GameSettings settings = (GameSettings) servletContext.getAttribute(SETTINGS_KEY);
-        GameLogic gameLogic = new GameLogic();
+        GameLogic gameLogic = new GameLogic(settings.getNumberOfDecks());
         ArrayList<Double> bets = new ArrayList<>(PLACES_FOR_BETS_QNT);
         boolean[] hands = new boolean[PLACES_FOR_BETS_QNT + 1];
 

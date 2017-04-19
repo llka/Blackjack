@@ -17,13 +17,14 @@ public class InsureBetCommand implements ActionCommand {
     static Logger logger = LogManager.getLogger(InsureBetCommand.class);
 
     private static final String PARAM_BET_PLACE = "betPlace";
+    private static final boolean INSURED_BET = true;
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response){
         HttpSession session = request.getSession();
         Deal deal = (Deal) session.getAttribute(GAME_DEAL_KEY);
         boolean[] insuredBets = deal.getInsuredBets();
-        insuredBets[(Integer.parseInt(request.getParameter(PARAM_BET_PLACE)))-1] = true;
+        insuredBets[(Integer.parseInt(request.getParameter(PARAM_BET_PLACE)))-1] = INSURED_BET;
         deal.setInsuredBets(insuredBets);
         session.setAttribute(GAME_DEAL_KEY,deal);
         for (int i = 0; i < insuredBets.length; i++) {

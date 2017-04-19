@@ -6,13 +6,20 @@ package ru.ilka.entity;
 public class GameSettings {
     private int minBet;
     private int maxBet;
+    private int numberOfDecks;
+
+    public GameSettings() {
+    }
 
     public GameSettings(int minBet, int maxBet) {
         this.minBet = minBet;
         this.maxBet = maxBet;
     }
 
-    public GameSettings() {
+    public GameSettings(int minBet, int maxBet, int numberOfDecks) {
+        this.minBet = minBet;
+        this.maxBet = maxBet;
+        this.numberOfDecks = numberOfDecks;
     }
 
     public int getMinBet() {
@@ -31,6 +38,14 @@ public class GameSettings {
         this.maxBet = maxBet;
     }
 
+    public int getNumberOfDecks() {
+        return numberOfDecks;
+    }
+
+    public void setNumberOfDecks(int numberOfDecks) {
+        this.numberOfDecks = numberOfDecks;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -39,13 +54,15 @@ public class GameSettings {
         GameSettings settings = (GameSettings) o;
 
         if (minBet != settings.minBet) return false;
-        return maxBet == settings.maxBet;
+        if (maxBet != settings.maxBet) return false;
+        return numberOfDecks == settings.numberOfDecks;
     }
 
     @Override
     public int hashCode() {
         int result = minBet;
         result = 31 * result + maxBet;
+        result = 31 * result + numberOfDecks;
         return result;
     }
 }

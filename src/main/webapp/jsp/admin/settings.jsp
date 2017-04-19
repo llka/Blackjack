@@ -41,13 +41,19 @@
                         <tr class="bordered">
                             <td><fmt:message key="settings.minBet"/></td>
                             <td>
-                                <input type="number" name="minBet" pattern="[1-9]+[0-9}?" min="1" value="${settings.minBet}" autofocus required title="<fmt:message key="settings.minBet.title"/>">
+                                <input type="number" name="minBet" pattern="[1-9]+[0-9]?" min="1" value="${settings.minBet}" autofocus required title="<fmt:message key="settings.minBet.title"/>">
                             </td>
                         </tr>
                         <tr class="bordered">
                             <td><fmt:message key="settings.maxBet"/></td>
                             <td>
-                                <input type="number" name="maxBet" pattern="[1-9]+[0-9}?" min="1" value="${settings.maxBet}" required title="<fmt:message key="settings.maxBet.title"/>">
+                                <input type="number" name="maxBet" pattern="[1-9]+[0-9]?" min="1" value="${settings.maxBet}" required title="<fmt:message key="settings.maxBet.title"/>">
+                            </td>
+                        </tr>
+                        <tr class="bordered">
+                            <td><fmt:message key="settings.decks"/></td>
+                            <td>
+                                <input type="number" name="decks" pattern="[1-8]{1}" min="1" max="8" value="${settings.numberOfDecks}" required title="<fmt:message key="settings.decks.title"/>">
                             </td>
                         </tr>
                         <tr class ="submit">
@@ -63,7 +69,7 @@
     </div>
 
     <%-- Footer --%>
-    <div class="row" id="bottom">
+    <div class="row">
         <c:set var="path" value="path.page.settings" scope="session"/>
         <c:import url="${context}/WEB-INF/jspf/footer.jsp"/>
     </div>
