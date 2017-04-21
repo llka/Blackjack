@@ -19,6 +19,7 @@ public class AccountDao {
     static  Logger logger = LogManager.getLogger(AccountDao.class);
     
     private static final String FIND_LOGIN = "SELECT `login` FROM `users` WHERE `login` = ?";
+    private static final String FIND_ID_BY_LOGIN = "SELECT `account_id` FROM `users` WHERE `login` = ?";
     private static final String FIND_EMAIL = "SELECT `email_address` FROM `users` WHERE `email_address` = ?";
     private static final String FIND_DATE_FROM_AUTHORIZE = "SELECT `birth_date` FROM `users` WHERE (`login` = ? OR `email_address` = ?)";
     private static final String AUTHORIZE_CHECK = "SELECT `login` FROM `users` WHERE ((`login` = ? OR `email_address` = ?) AND `password` = ?)";
@@ -34,6 +35,8 @@ public class AccountDao {
             " `gender`, `avatar`, `invite_code`, `is_admin`, `ban`, `balance`, `played`, `hands_won`, `money_spend`, `money_won`, `rating` FROM `users` WHERE `account_id` = ?";
     private static final String LOAD_ALL_ACCOUNTS = "SELECT `account_id`, `email_address`,`login`," +
             " `invite_code`, `is_admin`, `ban`, `balance`, `played`, `hands_won`, `money_spend`, `money_won`, `rating` FROM `users` WHERE `account_id` != ?";
+    private static final String LOAD_ALL_ADMINS = "SELECT `account_id`, `email_address`,`login`," +
+            " `invite_code`, `is_admin`, `ban`, `balance`, `played`, `hands_won`, `money_spend`, `money_won`, `rating` FROM `users` WHERE `account_id` != ? AND `is_admin` = 1";
 
     private static final String UPDATE_FIRST_NAME = "UPDATE `users` SET `first_name` = ?  WHERE `account_id` = ?";
     private static final String UPDATE_LAST_NAME = "UPDATE `users` SET `last_name` = ?  WHERE `account_id` = ?";
@@ -143,6 +146,21 @@ public class AccountDao {
             return  !resultSet.next();
         } catch (SQLException e) {
             throw new DBException("Error while checking email Uniqueness in database." + e);
+        }
+    }
+
+    public int loadIdByLogin(String login) throws DBException {
+        try(Connection connection = ConnectionPool.getInstance().getConnection();
+                PreparedStatement preparedStatement = connection.prepareStatement(FIND_ID_BY_LOGIN)){
+            preparedStatement.setString(1,login);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()) {
+                return resultSet.getInt(COLUMN_ACCOUNT_ID);
+            }else {
+                throw new DBException("Error while finding accountId by login " + login);
+            }
+        } catch (SQLException e) {
+            throw new DBException("Error while finding accountId by login " + login + " " + e);
         }
     }
 
@@ -272,10 +290,37 @@ public class AccountDao {
                 account.setRating(resultSet.getInt(COLUMN_RATING));
                 accounts.add(account);
             }
-            //return Collections.unmodifiableList(accounts);
             return accounts;
         }catch(SQLException e) {
             throw new DBException("Error while loading all accounts from database." + e);
+        }
+    }
+
+    public List<Account> loadAllAdmins(int accountId) throws DBException {
+        try(Connection connection = ConnectionPool.getInstance().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(LOAD_ALL_ADMINS)) {
+            preparedStatement.setInt(1,accountId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            List<Account> admins = new ArrayList<>();
+            while (resultSet.next()) {
+                Account account = new Account();
+                account.setAccountId(resultSet.getInt(COLUMN_ACCOUNT_ID));
+                account.setEmail(resultSet.getString(COLUMN_EMAIL));
+                account.setLogin(resultSet.getString(COLUMN_LOGIN));
+                account.setInviteCode(resultSet.getString(COLUMN_INVITE_CODE));
+                account.setAdmin(resultSet.getBoolean(COLUMN_IS_ADMIN));
+                account.setBan(resultSet.getBoolean(COLUMN_HAS_BAN));
+                account.setBalance(resultSet.getBigDecimal(COLUMN_BALANCE));
+                account.setHandsPlayed(resultSet.getInt(COLUMN_HANDS_PLAYED));
+                account.setHandsWon(resultSet.getInt(COLUMN_HANDS_WON));
+                account.setMoneySpend(resultSet.getBigDecimal(COLUMN_MONEY_SPEND));
+                account.setMoneyWon(resultSet.getBigDecimal(COLUMN_MONEY_WON));
+                account.setRating(resultSet.getInt(COLUMN_RATING));
+                admins.add(account);
+            }
+            return admins;
+        }catch(SQLException e) {
+            throw new DBException("Error while loading all admins from database." + e);
         }
     }
 

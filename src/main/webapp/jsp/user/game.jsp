@@ -40,8 +40,8 @@
     <script src="${context}/js/common_scr.js"></script>
     <script src="${context}/js/jquery-1.10.2.js"></script>
     <script>balanceModal = document.getElementById('modalNoMoney');</script>
-
 </head>
+
 <body>
     <c:choose>
         <c:when test="${visitor.role eq 'GUEST'}">

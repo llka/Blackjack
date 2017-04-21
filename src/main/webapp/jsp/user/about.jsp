@@ -12,9 +12,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link type="text/css" rel="stylesheet" href="${context}/css/common.css"/>
     <link type="text/css" rel="stylesheet" href="${context}/css/mainpage.css"/>
+    <link type="text/css" rel="stylesheet" href="${context}/css/writeUs.css"/>
     <%-- icon --%>
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/image/bj_icon.ico"/>
     <script src="${context}/js/common_scr.js"></script>
+    <script src="${context}/js/jquery-1.10.2.js"></script>
+    <script src="${context}/js/messages.js"></script>
 </head>
 <body>
     <c:choose>
@@ -62,6 +65,23 @@
                     <h2><fmt:message key="about.developers"/></h2>
                     <p><fmt:message key="about.developers.content"/></p>
                 </div>
+                <div class="contactUs">
+                    <button class="button" onclick="newMessageModal.style.display='block';" id="new"><fmt:message key="about.button.contactUs"/></button>
+                    <div id="id01" class="mask">
+                        <form class="modal animate" name="newMessageForm" method="POST" action="/controller" autocomplete="on">
+                            <input type="hidden" name="command" value="sendUsMessage"/>
+                            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="<fmt:message key="login.close.title"/>">&times;</span>
+                            <div class="newMessage">
+                                <div class="newMessText">
+                                    <textarea id="inputText" name="text" pattern="[a-zA-Z0-9_.,<>+=-]+" required maxlength=398></textarea>
+                                </div>
+                                <div class="sendBtn">
+                                    <input class="button" type="submit" value="<fmt:message key="messages.button.send"/>"/>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="col-1"></div>
@@ -72,6 +92,8 @@
         <c:set var="path" value="path.page.about" scope="session"/>
         <c:import url="${context}/WEB-INF/jspf/footer.jsp"/>
     </div>
+    <script>newMessageModal = document.getElementById('id01');</script>
+    <script>closeModal();</script>
 </body>
 
 </html>

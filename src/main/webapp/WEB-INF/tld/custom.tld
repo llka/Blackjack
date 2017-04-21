@@ -29,4 +29,19 @@
             <rtexprvalue>true</rtexprvalue>
         </attribute>
     </tag>
+    <tag>
+        <name>messages-list</name>
+        <tag-class>ru.ilka.tag.MessagesListTag</tag-class>
+        <body-content>scriptless</body-content>
+        <attribute>
+            <name>messages</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>received</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
 </taglib>

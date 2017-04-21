@@ -19,7 +19,7 @@ import static ru.ilka.controller.ControllerConstants.*;
 /**
  * Here could be your advertisement +375 29 3880490
  */
-public class ImmediateBjWin implements ActionCommand {
+public class ImmediateBjWinCommand implements ActionCommand {
 
     private static final String PARAM_BET_PLACE = "betPlace";
 

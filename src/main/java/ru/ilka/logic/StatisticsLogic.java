@@ -15,11 +15,10 @@ public class StatisticsLogic {
     public int calculateRating(Account account){
         int rating = 0;
         if(account.getHandsPlayed() > 0) {
-            //double moneyWonCoeff = (account.getMoneyWon().divide((account.getMoneySpend()).add(BigDecimal.ONE))).doubleValue();
-            int moneyWonCoeff = account.getMoneyWon().subtract(account.getMoneySpend()).intValue();
+            double moneyWonCoeff = (account.getMoneyWon().divide((account.getMoneySpend()).add(BigDecimal.ONE))).intValue();
+            //int moneyWonCoeff = account.getMoneyWon().subtract(account.getMoneySpend()).intValue();
             rating +=  moneyWonCoeff * 100 * account.getHandsWon()/account.getHandsPlayed();
         }
         return rating;
     }
-
 }

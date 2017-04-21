@@ -121,6 +121,16 @@ public class AccountLogic {
         }
     }
 
+    public List<Account> getAllAdmins(int accountId) throws LogicException {
+        AccountDao accountDao = new AccountDao();
+        try {
+            List<Account> accounts = accountDao.loadAllAdmins(accountId);
+            return accounts;
+        } catch (DBException e) {
+            throw new LogicException("Error while loading all admin accounts from database " + e);
+        }
+    }
+
     public void changeFirstName(int accountId, String name) throws LogicException {
         AccountDao accountDao = new AccountDao();
         try {
@@ -289,6 +299,24 @@ public class AccountLogic {
             accountDao.updateStatistics(accountId,played,handsWon,moneySpend,moneyWon,rating);
         } catch (DBException e) {
             throw new LogicException("Error while updating statistics " + e);
+        }
+    }
+
+    public int getIdByLogin(String login) throws LogicException {
+        AccountDao accountDao = new AccountDao();
+        try {
+            return accountDao.loadIdByLogin(login);
+        } catch (DBException e) {
+            throw new LogicException("Can not get accountId by login" + e);
+        }
+    }
+
+    public boolean checkLoginExistence(String login) throws LogicException {
+        AccountDao accountDao = new AccountDao();
+        try {
+            return !accountDao.isLoginUnique(login);
+        } catch (DBException e) {
+            throw new LogicException("Error while checking if login " + login + " exists. " + e);
         }
     }
 

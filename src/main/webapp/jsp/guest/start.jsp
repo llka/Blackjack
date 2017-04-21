@@ -166,25 +166,17 @@
                         <li>
                             <h3><fmt:message key="start.rules"/></h3>
                             <ul>
-                                <li>The game is played using six decks, which are reshuffled after each hand.</li>
-                                <li>Dealer hits on soft 17.  </li>
-                                <li>Player Blackjack pays 3 to 2.  </li>
-                                <li>Any other winning hand is paid 1 to 1.  </li>
-                                <li>Insurance pays 2 to 1.  </li>
-                                <li>Split up to three hands. </li>
-                                <li>Surrender any first two cards. </li>
-                                <li>Split aces receive only one card. </li>
-                                <li>No re-splitting of aces. </li>
-                                <li>A split ace and a ten-value card is not a Blackjack </li>
+                                <li><fmt:message key="start.rules.1"/></li>
+                                <li><fmt:message key="start.rules.2"/></li>
                             </ul>
                         </li>
                         <li>
                             <h3><fmt:message key="start.betting"/></h3>
                             <ul>
-                                <li>Click on a chip to place a bet.  </li>
-                                <li>Additional clicks on the chip interface will add to the wager. </li>
-                                <li>To remove a bet, click on the chip in the betting circle. </li>
-                                <li class="lastLi">Minimum amount to bet is $1 while the maximum is $500.  </li>
+                                <li><fmt:message key="start.betting.1"/></li>
+                                <li><fmt:message key="start.betting.2"/></li>
+                                <li><fmt:message key="start.betting.3"/></li>
+                                <li class="lastLi"><fmt:message key="start.betting.4"/></li>
                             </ul>
                         </li>
                     </ul>

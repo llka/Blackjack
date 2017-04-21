@@ -78,6 +78,7 @@ body {
         width: 40%;
     }
 }
+
 /*background_line responsive*/
 @media only screen and (max-width: 400px) {
     .q {
@@ -89,6 +90,7 @@ body {
         height: 329px;
     }
 }
+
 /*footer on small pages*/
 @media only screen and (max-width: 440px) {
     #bottom {
@@ -97,6 +99,16 @@ body {
         bottom: 0;
         width: 96%;
         margin: 8px;
+    }
+    .footer .language h3{
+        font-size: 10px;
+    }
+    .footer .language ul{
+        margin-top: -4px;
+    }
+    .footer .language ul li a img{
+        width: 15px;
+        height: 15px;
     }
 }
 @media only screen and (min-width: 440px) {

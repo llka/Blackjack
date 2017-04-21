@@ -185,6 +185,21 @@
                             </tr>
                             <tr>
                                 <td style="width: 60%;">
+                                    <fmt:message key="profile.statistics.winPercent"/>
+                                </td>
+                                <td>
+                                    <c:choose>
+                                        <c:when test="${account.handsPlayed == 0}">
+                                            -
+                                        </c:when>
+                                        <c:when test="${account.handsPlayed > 0}">
+                                            <fmt:formatNumber type="number" pattern="###.###%" value="${account.handsWon/account.handsPlayed}" />
+                                        </c:when>
+                                    </c:choose>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 60%;">
                                     <fmt:message key="profile.statistics.money.won"/>
                                 </td>
                                 <td>
@@ -213,20 +228,6 @@
         </div>
         <div class="col-3">
             <div class="description">
-                <h3><fmt:message key="profile.h3.settings"/></h3>
-                <form class="settings" name="profileSetingsForm" method="POST" action="/controller">
-                    <input type="hidden" name="command" value="ProfileSettings"/>
-                    <input type="radio" name="currency" value="euro" checked> <fmt:message key="profile.settings.euro"/><br>
-                    <input type="radio" name="currency" value="dollar"> <fmt:message key="profile.settings.dollar"/><br>
-                    <input type="radio" name="currency" value="byr"> <fmt:message key="profile.settings.rub"/><br>
-                    <input type="checkbox" name="tips" value="good" checked> <fmt:message key="profile.settings.help"/><br>
-                    <div class="submit">
-                        <input class="button" type="submit" value="<fmt:message key="profile.button.save"/>">
-                    </div>
-                </form>
-            </div>
-
-            <div class="description bal">
                 <a name="notEnoughMoney"></a>
                 <h3><fmt:message key="profile.balance"/></h3>
                 <form  name="balanceForm"  method="POST" action="/controller">

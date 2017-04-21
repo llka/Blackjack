@@ -135,7 +135,7 @@ public enum CommandType {
     },
     IMMEDIATEBJWIN{
         {
-            this.command = new ImmediateBjWin();
+            this.command = new ImmediateBjWinCommand();
             this.role = EnumSet.of(Visitor.Role.ADMIN, Visitor.Role.USER);
         }
     },
@@ -149,6 +149,30 @@ public enum CommandType {
         {
             this.command = new DealCardsCommand();
             this.role = EnumSet.of(Visitor.Role.ADMIN, Visitor.Role.USER);
+        }
+    },
+    SHOWMESSAGES{
+        {
+            this.command = new ShowMessagesCommand();
+            this.role = EnumSet.of(Visitor.Role.ADMIN);
+        }
+    },
+    MANAGEMESSAGES{
+        {
+            this.command = new ManageMessagesCommand();
+            this.role = EnumSet.of(Visitor.Role.ADMIN,Visitor.Role.USER);
+        }
+    },
+    SENDUSMESSAGE{
+        {
+            this.command = new SendUsMessageCommand();
+            this.role = EnumSet.of(Visitor.Role.ADMIN,Visitor.Role.USER);
+        }
+    },
+    SENDMESSAGE{
+        {
+            this.command = new SendMessageCommand();
+            this.role = EnumSet.of(Visitor.Role.ADMIN,Visitor.Role.USER);
         }
     };
 

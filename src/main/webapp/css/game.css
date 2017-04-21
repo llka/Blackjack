@@ -132,6 +132,14 @@
     }
 }
 @media screen and (max-width: 330px) {
+    .description .DealerCard1{
+        left: 46%;
+        top: 56.5%;
+    }
+    .description .DealerCard2{
+        left: 48%;
+        top: 55%;
+    }
     .description .card11{
         left: 28%;
         top: 66%;
@@ -168,6 +176,24 @@
         left: 62%;
         top: 66%;
     }
+    .description .bet input {
+        width: 20px;
+        border-radius: 3px;
+        font-size: 8px;
+    }
+    .description .gameButton{
+        font-size: 8px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+        width: initial;
+        margin: 2px;
+    }
+    .description .actionButtons{
+        width: 62px;
+    }
+    .description .balanceRow .balanceVal{
+        font-size: 8px;
+    }
 }
 
 .table{
@@ -181,6 +207,31 @@
     text-align: center;
     font-size: 12px;
     padding-top: 7px;
+}
+#points0{
+    position: absolute;
+    left: 49%;
+    top: 90%;
+    z-index: 5;
+    font-weight: bold;
+}
+#points1{
+    position: absolute;
+    left: 32%;
+    top: 101%;
+    z-index: 5;
+}
+#points2{
+    position: absolute;
+    left: 49%;
+    top: 112%;
+    z-index: 5;
+}
+#points3{
+    position: absolute;
+    left: 66%;
+    top: 101%;
+    z-index: 5;
 }
 
 .bets{

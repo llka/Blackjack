@@ -77,6 +77,8 @@ public class GameLogic {
         if (!usedCards.isEmpty()) {
             for (int k = 0; k < usedCards.size(); k++) {
                 if (card == usedCards.get(k)) {
+                    logger.debug("used: " + usedCards);
+                    logger.debug("hit used card " + card);
                     card = ThreadLocalRandom.current().nextInt(CARDS_QUANTITY * numberOfDecks);
                     k = 0;
                 }
@@ -100,8 +102,8 @@ public class GameLogic {
             deal.setPoints(countPoints(deal.getCards()));
             writer.append("<div class=\"card" + betPlace + deal.getCards().get(betPlace).size() + "\">\n");
             writeCard(card,writer);
-            writePoints(deal.getPoints().get(betPlace),betPlace,writer);
             writer.append("</div>");
+            writePoints(deal.getPoints().get(betPlace),betPlace,writer);
             checkForBust(betPlace,deal,account);
         } catch (LogicException e) {
             logger.error("Error while hitting new card " + e);
@@ -146,17 +148,14 @@ public class GameLogic {
         ArrayList<Double> bets = deal.getBets();
         try {
             if(handPoints > BJ_POINTS){
-                logger.info("Bust in " + betPlace);
                 concludeGame(betPlace, LogicResult.BUST, deal, account);
             }else if(handPoints == BJ_POINTS && dealerPoints != BJ_POINTS){
-                logger.info("Win in " + betPlace);
                 if(deal.getInsuredBets()[betPlace-1]){
                     bets.set(betPlace-1,bets.get(betPlace-1)/2);
                     deal.setBets(bets);
                 }
                 concludeGame(betPlace, LogicResult.WIN, deal, account);
             }else if(handPoints == BJ_POINTS && dealerPoints == BJ_POINTS){
-                logger.info("Draw in " + betPlace);
                 if(!deal.getInsuredBets()[betPlace-1]){
                     bets.set(betPlace-1,0.0);
                     deal.setBets(bets);
@@ -173,7 +172,6 @@ public class GameLogic {
         int dealerPoints = deal.getPoints().get(0);
         ArrayList<Double> bets = deal.getBets();
         double bet = bets.get(betPlace-1);
-        double winCoefficient;
         boolean insuranceSuggested = false;
         boolean insured = deal.getInsuredBets()[betPlace-1];
         boolean bjAvailable = deal.getCards().get(betPlace).size() == 2 ? true : false;
@@ -385,7 +383,7 @@ public class GameLogic {
                 inGame = true;
             }
         }
-        logger.debug("isUserInGame " + inGame);
+        logger.debug("inGame - "+inGame);
         return inGame;
     }
 
@@ -456,8 +454,8 @@ public class GameLogic {
         ArrayList<ArrayList<LogicResult>> cards = deal.getCards();
         writer.append("<div class=\"DealerCard1\">\n");
         writeCard(cards.get(0).get(0), writer);
-        writePoints(deal.getPoints().get(0),0,writer);
         writer.append("</div>\n");
+        writePoints(deal.getPoints().get(0),0,writer);
 
         if(cards.get(0).size() > 2) {
             for (int i = 3; i < cards.get(0).size() + 1; i++) {
@@ -525,11 +523,12 @@ public class GameLogic {
                 for (int j = 1; j < 3; j++) {
                     writer.append("<div class=\"card" + i + j + "\">\n");
                     writeCard(cards.get(i).get(j - 1), writer);
-                    if (j == 2) {
+                    /*if (j == 2) {
                         writePoints(points.get(i),i,writer);
-                    }
+                    }*/
                     writer.append("</div>");
                 }
+                writePoints(points.get(i),i,writer);
             }
         }
     }

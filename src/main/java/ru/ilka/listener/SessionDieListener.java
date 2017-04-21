@@ -4,15 +4,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.ilka.entity.Account;
 import ru.ilka.entity.Visitor;
-
 import javax.servlet.ServletContext;
-
-import javax.servlet.http.HttpSession;
-import javax.servlet.http.HttpSessionEvent;
-import javax.servlet.http.HttpSessionListener;
+import javax.servlet.http.*;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentSkipListSet;
-
 import static ru.ilka.controller.ControllerConstants.ACCOUNT_KEY;
 import static ru.ilka.controller.ControllerConstants.ONLINE_USERS_KEY;
 import static ru.ilka.controller.ControllerConstants.VISITOR_KEY;
@@ -39,7 +33,8 @@ public class SessionDieListener implements HttpSessionListener {
         ConcurrentHashMap<Integer,Account> onlineUsers = (ConcurrentHashMap<Integer,Account>) servletContext.getAttribute(ONLINE_USERS_KEY);
         onlineUsers.remove(account.getAccountId());
         servletContext.setAttribute(ONLINE_USERS_KEY,onlineUsers);
-        logger.debug("SessionDieListener " + account.getLogin() + " is offline now");
+
+        logger.debug("User  " + account.getLogin() + " is offline now");
         logger.debug("Online users : " + onlineUsers);
     }
 }
