@@ -240,24 +240,30 @@
                 </div>
             </bjtag:new-messages>
             <div id="id01" class="mask">
-                <form class="modal animate" name="newMessageForm" method="POST" action="/controller" autocomplete="on">
-                    <input type="hidden" name="command" value="manageNewMessage"/>
+                <div class="modal animate">
                     <span onclick="document.getElementById('id01').style.display='none'" class="close" title="<fmt:message key="login.close.title"/>">&times;</span>
                     <div class="newMessage">
                         <div class="messageRow">
-                            From: ${receivedFrom}
+                            <fmt:message key="profile.newmessage.from"/> ${receivedFrom}
                         </div>
                         <div class="messageNewText">
                             <textarea id="inputText" readonly>${receivedText}</textarea>
                         </div>
-                        <div class="messageRow">
-                            Mark as read <input type="checkbox" value="read"/>
-                        </div>
-                        <div class="messageRow">
-                            <input class="button" type="submit" value="Delete"/>
+                        <%--<div class="messageRow">--%>
+                            <%--<fmt:message key="profile.newmessage.read"/> <input type="checkbox" value="read"/>--%>
+                        <%--</div>--%>
+                        <div class="messageRow" style="display: flex; justify-content: space-around">
+                            <form name="deleteMessageForm" method="POST" action="/controller" autocomplete="on">
+                                <input type="hidden" name="command" value="deleteMessage"/>
+                                <input class="button" type="submit" value="<fmt:message key="profile.newmessage.btn.delete"/>"/>
+                            </form>
+                            <form name="markMessageForm" method="POST" action="/controller" autocomplete="on">
+                                <input type="hidden" name="command" value="markMessage"/>
+                                <input class="button" type="submit" title="<fmt:message key="profile.newmessage.btn.read.title"/>" value="<fmt:message key="profile.newmessage.btn.read"/>"/>
+                            </form>
                         </div>
                     </div>
-                </form>
+                </div>
             </div>
 
             <div class="description">

@@ -32,7 +32,9 @@ public class NewMessageTag extends TagSupport{
         String senderLogin = "";
         try {
             received = messageLogic.findNewMessages(accountId);
-            senderLogin = messageLogic.findSenderLogin(received.get(0).getMessageId());
+            if(!received.isEmpty()) {
+                senderLogin = messageLogic.findSenderLogin(received.get(0).getMessageId());
+            }
         } catch (LogicException e) {
             logger.error("Error while trying to get received messages " + e);
         }

@@ -169,6 +169,18 @@ public enum CommandType {
             this.role = EnumSet.of(Visitor.Role.ADMIN,Visitor.Role.USER);
         }
     },
+    MARKMESSAGE{
+        {
+            this.command = new MarkMessageCommand();
+            this.role = EnumSet.of(Visitor.Role.ADMIN,Visitor.Role.USER);
+        }
+    },
+    DELETEMESSAGE{
+        {
+            this.command = new DeleteMessageCommand();
+            this.role = EnumSet.of(Visitor.Role.ADMIN,Visitor.Role.USER);
+        }
+    },
     SENDMESSAGE{
         {
             this.command = new SendMessageCommand();
