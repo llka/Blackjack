@@ -21,6 +21,7 @@ public class MessageDao {
 
     private static final String LOAD_RECEIVED = "SELECT DISTINCT `message_id`, `text`, `time`, `sender_id`, `receiver_id`, `read_mark` FROM `users` JOIN `messages` ON `receiver_id` = ? GROUP BY `time` DESC";
     private static final String LOAD_SENT = "SELECT DISTINCT `message_id`, `text`, `time`, `sender_id`, `receiver_id`, `read_mark` FROM `users` JOIN `messages` ON `sender_id` = ? GROUP BY `time` DESC";
+    private static final String LOAD_NEW_MESSAGES = "SELECT DISTINCT `message_id`, `text`, `time`, `sender_id`, `receiver_id`, `read_mark` FROM `users` JOIN `messages` ON `receiver_id` = ? WHERE `read_mark` = 0 GROUP BY `time` DESC";
     private static final String UPDATE_READ_MARK = "UPDATE `messages` SET `read_mark`= ? WHERE `message_id`= ?";
     private static final String DELETE_MESSAGE = "DELETE FROM `messages` WHERE `message_id`= ?";
     private static final String FIND_RECEIVER_LOGIN = "SELECT `login` FROM `users` INNER JOIN `messages` ON `receiver_id` = `account_id` WHERE `message_id` = ?";
@@ -80,6 +81,28 @@ public class MessageDao {
             return sent;
         } catch (SQLException e) {
             throw new DBException("Error in sent messages loading " + e);
+        }
+    }
+
+    public ArrayList<Message> loadNewMessages(int accountId) throws DBException {
+        try(Connection connection = ConnectionPool.getInstance().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(LOAD_NEW_MESSAGES)){
+            preparedStatement.setInt(1,accountId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            ArrayList<Message> received = new ArrayList<>();
+            while (resultSet.next()){
+                Message message = new Message();
+                message.setMessageId(resultSet.getInt(COLUMN_MESSAGE_ID));
+                message.setText(resultSet.getString(COLUMN_TEXT));
+                message.setSendTime(resultSet.getString(COLUMN_TIME));
+                message.setSenderId(resultSet.getInt(COLUMN_SENDER_ID));
+                message.setReceiverId(resultSet.getInt(COLUMN_RECEIVER_ID));
+                message.setReadMark(resultSet.getBoolean(COLUMN_READ_MARK));
+                received.add(message);
+            }
+            return received;
+        } catch (SQLException e) {
+            throw new DBException("Error in new messages loading " + e);
         }
     }
 

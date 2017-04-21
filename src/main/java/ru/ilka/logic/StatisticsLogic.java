@@ -9,15 +9,18 @@ import java.math.BigDecimal;
  */
 public class StatisticsLogic {
 
+    private static final int MONEY_COEFF = 11;
+    private static final int PERCENTS = 100;
+
     public StatisticsLogic() {
     }
 
     public int calculateRating(Account account){
         int rating = 0;
         if(account.getHandsPlayed() > 0) {
-            double moneyWonCoeff = (account.getMoneyWon().divide((account.getMoneySpend()).add(BigDecimal.ONE))).intValue();
+            double moneyWonCoeff = MONEY_COEFF * account.getMoneyWon().doubleValue() / (account.getMoneySpend().doubleValue()+1);
             //int moneyWonCoeff = account.getMoneyWon().subtract(account.getMoneySpend()).intValue();
-            rating +=  moneyWonCoeff * 100 * account.getHandsWon()/account.getHandsPlayed();
+            rating +=  moneyWonCoeff * PERCENTS * account.getHandsWon()/account.getHandsPlayed();
         }
         return rating;
     }

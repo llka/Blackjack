@@ -42,6 +42,15 @@ public class MessageLogic {
         }
     }
 
+    public ArrayList<Message> findNewMessages(int accountId) throws LogicException {
+        MessageDao messageDao = new MessageDao();
+        try {
+            return messageDao.loadNewMessages(accountId);
+        } catch (DBException e) {
+            throw new LogicException("Can not get new messages" + e);
+        }
+    }
+
     public void markMessageRead(int messageId, boolean isRead) throws LogicException {
         MessageDao messageDao = new MessageDao();
         try {

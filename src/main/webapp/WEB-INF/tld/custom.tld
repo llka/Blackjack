@@ -44,4 +44,14 @@
             <rtexprvalue>true</rtexprvalue>
         </attribute>
     </tag>
+    <tag>
+        <name>new-messages</name>
+        <tag-class>ru.ilka.tag.NewMessageTag</tag-class>
+        <body-content>scriptless</body-content>
+        <attribute>
+            <name>accountId</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
 </taglib>

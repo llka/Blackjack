@@ -379,7 +379,7 @@ public class GameLogic {
         ArrayList<Double> bets = deal.getBets();
         for (int i = 0; i < bets.size(); i++) {
 
-            if(bets.get(i) > 0){
+            if(bets.get(i) > 0.1){
                 inGame = true;
             }
         }

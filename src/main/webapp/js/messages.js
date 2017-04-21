@@ -42,10 +42,3 @@ function showSent() {
         $("#receivedMessages").css("display","none");
     });
 }
-
-function showReceived() {
-    $(document).ready(function(){
-        $("#sentMessages").css("display","none");
-        $("#receivedMessages").css("display","block");
-    });
-}

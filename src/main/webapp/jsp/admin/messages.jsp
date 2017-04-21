@@ -42,7 +42,7 @@
                     ${errorReceiverLogin}
                 </div>
                 <div class="messageNavRow">
-                    <button class="button" onclick="showReceived()" id="received"><fmt:message key="messages.button.received"/></button>
+                    <a class="button" href="/controller?command=showMessages" id="received"><fmt:message key="messages.button.received"/></a>
                     <button class="button"  onclick="showSent()" id="sent"><fmt:message key="messages.button.sent"/></button>
                     <button class="button" onclick="newMessageModal.style.display='block';" id="new"><fmt:message key="messages.button.new"/></button>
                 </div>

@@ -54,7 +54,6 @@ public class ManageMessagesCommand implements ActionCommand {
             if(!toRemove.isEmpty()){
                 receivedMessages.removeAll(toRemove);
             }
-            logger.debug("receivedMessages after remove" + receivedMessages);
             request.setAttribute(ATTRIBUTE_RECEIVED,receivedMessages);
             request.setAttribute(ATTRIBUTE_SENT,sentMessages);
         } catch (LogicException e) {

@@ -2,9 +2,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib uri="bjtags" prefix="bjtag" %>
 <fmt:setLocale value="${visitor.locale}" scope="session"/>
 <fmt:setBundle basename="properties.content"/>
 <jsp:useBean id="account" class="ru.ilka.entity.Account" scope="session" />
+<jsp:useBean id="receivedText" class="java.lang.String" scope="page"/>
+<jsp:useBean id="receivedFrom" class="java.lang.String" scope="page"/>
 <c:set var="context" scope="page" value="${pageContext.request.contextPath}"/>
 
 <html>
@@ -227,6 +230,36 @@
             </div>
         </div>
         <div class="col-3">
+
+            <bjtag:new-messages accountId="${account.accountId}">
+                <div class="description" id="newMessageReceived">
+                    <div class="newMessageLabel"><h3>New Message Received</h3></div>
+                    <div class="messageRow">
+                        <button class="button" onclick="newMessageModal.style.display='block';" id="new">Show</button>
+                    </div>
+                </div>
+            </bjtag:new-messages>
+            <div id="id01" class="mask">
+                <form class="modal animate" name="newMessageForm" method="POST" action="/controller" autocomplete="on">
+                    <input type="hidden" name="command" value="manageNewMessage"/>
+                    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="<fmt:message key="login.close.title"/>">&times;</span>
+                    <div class="newMessage">
+                        <div class="messageRow">
+                            From: ${receivedFrom}
+                        </div>
+                        <div class="messageNewText">
+                            <textarea id="inputText" readonly>${receivedText}</textarea>
+                        </div>
+                        <div class="messageRow">
+                            Mark as read <input type="checkbox" value="read"/>
+                        </div>
+                        <div class="messageRow">
+                            <input class="button" type="submit" value="Delete"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
             <div class="description">
                 <a name="notEnoughMoney"></a>
                 <h3><fmt:message key="profile.balance"/></h3>
@@ -270,6 +303,8 @@
         <c:set var="path" value="path.page.profile" scope="session"/>
         <c:import url="${context}/WEB-INF/jspf/footer.jsp"/>
     </div>
+    <script>newMessageModal = document.getElementById('id01');</script>
+    <script>closeModal();</script>
 </body>
 
 </html>
