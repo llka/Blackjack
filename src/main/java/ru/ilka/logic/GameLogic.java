@@ -145,23 +145,45 @@ public class GameLogic {
     public void checkForBust(int betPlace, Deal deal, Account account){
         int handPoints = deal.getPoints().get(betPlace);
         int dealerPoints = deal.getPoints().get(0);
+        boolean insuranceSuggested = false;
+        try {
+            insuranceSuggested = findCardRank(deal.getCards().get(0).get(1)) == 11 ? true : false;
+        } catch (LogicException e) {
+            logger.error("Error while finding card rank in dealer's first card " + e);
+        }
         boolean insured = deal.getInsuredBets()[betPlace-1];
         ArrayList<Double> bets = deal.getBets();
+        double bet = bets.get(betPlace-1);
+
         try {
             if(handPoints > BJ_POINTS){
+                if(insuranceSuggested && insured){
+                    if (dealerPoints == BJ_POINTS){
+                        bets.set(betPlace,bet * 0.5);
+                    }else {
+                        bets.set(betPlace,bet * 1.5);
+                    }
+                    deal.setBets(bets);
+                }
                 concludeGame(betPlace, LogicResult.BUST, deal, account);
             }else if(handPoints == BJ_POINTS && dealerPoints != BJ_POINTS){
-                if(insured){
-                    bets.set(betPlace-1,bets.get(betPlace-1)/2);
-                    deal.setBets(bets);
+                if(insuranceSuggested){
+                    if (insured){
+                        bets.set(betPlace,bet * 0.5);
+                        deal.setBets(bets);
+                    }
                 }
                 concludeGame(betPlace, LogicResult.WIN, deal, account);
             }else if(handPoints == BJ_POINTS && dealerPoints == BJ_POINTS){
-                if(!insured){
-                    bets.set(betPlace-1,0.0);
-                    deal.setBets(bets);
+                if(insuranceSuggested){
+                    if(insured){
+                        concludeGame(betPlace, LogicResult.WIN, deal, account);
+                    }else {
+                        concludeGame(betPlace, LogicResult.DRAW, deal, account);
+                    }
+                }else {
+                    concludeGame(betPlace, LogicResult.DRAW, deal, account);
                 }
-                concludeGame(betPlace, LogicResult.DRAW, deal, account);
             }
         } catch (LogicException e) {
             logger.error("Error while checking for Bust "+ e);
