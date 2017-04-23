@@ -78,7 +78,7 @@ public class GameLogic {
             for (int k = 0; k < usedCards.size(); k++) {
                 if (card == usedCards.get(k)) {
                     logger.debug("used: " + usedCards);
-                    logger.debug("hit used card " + card);
+                    logger.debug("Hit used card " + card);
                     card = ThreadLocalRandom.current().nextInt(CARDS_QUANTITY * numberOfDecks);
                     k = 0;
                 }
@@ -145,18 +145,19 @@ public class GameLogic {
     public void checkForBust(int betPlace, Deal deal, Account account){
         int handPoints = deal.getPoints().get(betPlace);
         int dealerPoints = deal.getPoints().get(0);
+        boolean insured = deal.getInsuredBets()[betPlace-1];
         ArrayList<Double> bets = deal.getBets();
         try {
             if(handPoints > BJ_POINTS){
                 concludeGame(betPlace, LogicResult.BUST, deal, account);
             }else if(handPoints == BJ_POINTS && dealerPoints != BJ_POINTS){
-                if(deal.getInsuredBets()[betPlace-1]){
+                if(insured){
                     bets.set(betPlace-1,bets.get(betPlace-1)/2);
                     deal.setBets(bets);
                 }
                 concludeGame(betPlace, LogicResult.WIN, deal, account);
             }else if(handPoints == BJ_POINTS && dealerPoints == BJ_POINTS){
-                if(!deal.getInsuredBets()[betPlace-1]){
+                if(!insured){
                     bets.set(betPlace-1,0.0);
                     deal.setBets(bets);
                 }
@@ -201,10 +202,8 @@ public class GameLogic {
                     if(insured) {
                         bets.set(betPlace-1,bet * 1.5);
                         deal.setBets(bets);
-                        concludeGame(betPlace, LogicResult.LOOSE, deal, account);
-                    }else {
-                        concludeGame(betPlace, LogicResult.LOOSE, deal, account);
                     }
+                    concludeGame(betPlace, LogicResult.LOOSE, deal, account);
                 }else if (handPoints == dealerPoints){
                     if(insured) {
                         bets.set(betPlace-1,bet * 0.5);
@@ -223,10 +222,8 @@ public class GameLogic {
                     if (insured){
                         bets.set(betPlace-1,bet * 0.5);
                         deal.setBets(bets);
-                        concludeGame(betPlace, LogicResult.WIN, deal, account);
-                    }else {
-                        concludeGame(betPlace, LogicResult.WIN, deal, account);
                     }
+                    concludeGame(betPlace, LogicResult.WIN, deal, account);
                 }
             }else if(dealerPoints > BJ_POINTS && insuranceSuggested){
                 if(handPoints == BJ_POINTS && bjAvailable){
@@ -239,18 +236,14 @@ public class GameLogic {
                     if(insured){
                         bets.set(betPlace-1,bet * 0.5);
                         deal.setBets(bets);
-                        concludeGame(betPlace, LogicResult.WIN, deal, account);
-                    }else {
-                        concludeGame(betPlace, LogicResult.WIN, deal, account);
                     }
+                    concludeGame(betPlace, LogicResult.WIN, deal, account);
                 }else{
                     if(insured){
                         bets.set(betPlace-1,bet * 1.5);
                         deal.setBets(bets);
-                        concludeGame(betPlace, LogicResult.LOOSE, deal, account);
-                    }else {
-                        concludeGame(betPlace, LogicResult.LOOSE, deal, account);
                     }
+                    concludeGame(betPlace, LogicResult.LOOSE, deal, account);
                 }
             }else if(dealerPoints <= BJ_POINTS && !insuranceSuggested){
                 if (handPoints < dealerPoints || handPoints > BJ_POINTS){
@@ -383,7 +376,7 @@ public class GameLogic {
                 inGame = true;
             }
         }
-        logger.debug("inGame - "+inGame);
+        logger.debug("inGame - " + inGame);
         return inGame;
     }
 
@@ -523,9 +516,6 @@ public class GameLogic {
                 for (int j = 1; j < 3; j++) {
                     writer.append("<div class=\"card" + i + j + "\">\n");
                     writeCard(cards.get(i).get(j - 1), writer);
-                    /*if (j == 2) {
-                        writePoints(points.get(i),i,writer);
-                    }*/
                     writer.append("</div>");
                 }
                 writePoints(points.get(i),i,writer);

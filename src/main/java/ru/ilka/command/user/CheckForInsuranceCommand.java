@@ -1,7 +1,5 @@
 package ru.ilka.command.user;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import ru.ilka.command.ActionCommand;
 import ru.ilka.entity.Deal;
 import ru.ilka.entity.GameSettings;
@@ -18,7 +16,6 @@ import static ru.ilka.controller.ControllerConstants.*;
  * Here could be your advertisement +375 29 3880490
  */
 public class CheckForInsuranceCommand implements ActionCommand {
-    static Logger logger = LogManager.getLogger(CheckForInsuranceCommand.class);
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response){

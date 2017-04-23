@@ -47,7 +47,7 @@ public class AccountLogic {
     public LogicResult register(String firstName, String lastName, String email, String login, String password,
                                 String birthDate, String gender, String avatar, String inviteCode) throws LogicException {
         AccountDao accountDao = new AccountDao();
-        LogicResult logicResult = LogicResult.FAILED;
+        LogicResult logicResult;
         if(inviteCode==null){
             inviteCode="1234-1234";
         }

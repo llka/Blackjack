@@ -73,7 +73,7 @@
                             <span onclick="document.getElementById('id01').style.display='none'" class="close" title="<fmt:message key="login.close.title"/>">&times;</span>
                             <div class="newMessage">
                                 <div class="newMessText">
-                                    <textarea id="inputText" name="text" pattern="[a-zA-Z0-9_.,<>+=-]+" required maxlength=398></textarea>
+                                    <textarea id="inputText" name="text" pattern="[a-zA-Z0-9_.,<>+=-]+" placeholder="<fmt:message key="messages.textarea.placeholder"/>" required maxlength=398></textarea>
                                 </div>
                                 <div class="sendBtn">
                                     <input class="button" type="submit" value="<fmt:message key="messages.button.send"/>"/>

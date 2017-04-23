@@ -69,7 +69,7 @@
                                 </tr>
                                 <tr class="bordered">
                                     <td class="fullInput">
-                                        <input type="text" name="firstName" value="${account.firstName}" pattern="[a-zA-Z]+" required maxlength=50>
+                                        <input type="text" name="firstName" value="${account.firstName}" pattern="[a-zA-Z]+" required maxlength=30>
                                     </td>
                                 </tr>
 
@@ -81,7 +81,7 @@
                                 </tr>
                                 <tr class="bordered">
                                     <td class="fullInput">
-                                        <input type="text" name="lastName" value="${account.lastName}" pattern="[a-zA-Z]+" required maxlength=50>
+                                        <input type="text" name="lastName" value="${account.lastName}" pattern="[a-zA-Z]+([ ]{1}[a-zA-Z]+)*" required maxlength=30>
                                     </td>
                                 </tr>
 
@@ -94,7 +94,7 @@
                                 </tr>
                                 <tr class="bordered">
                                     <td class="fullInput">
-                                        <input type="email" name="email" value="${account.email}" pattern="^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$"  title="<fmt:message key="register.email.title"/>" required  maxlength=50>
+                                        <input type="email" name="email" value="${account.email}" pattern="^([a-zA-Z0-9_-]+\.)*[a-zA-Z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$"  title="<fmt:message key="register.email.title"/>" required  maxlength=50>
                                     </td>
                                 </tr>
 
@@ -107,7 +107,7 @@
                                 </tr>
                                 <tr class="bordered">
                                     <td class="fullInput">
-                                        <input type="text" name="login" value="${account.login}" pattern="[a-zA-Z0-9_]{4,50}" title="<fmt:message key="register.userName.title"/>" required  maxlength=50>
+                                        <input type="text" name="login" value="${account.login}" pattern="[a-zA-Z0-9_]{4,50}" title="<fmt:message key="register.userName.title"/>" required  maxlength=45>
                                     </td>
                                 </tr>
 
@@ -233,9 +233,9 @@
 
             <bjtag:new-messages accountId="${account.accountId}">
                 <div class="description" id="newMessageReceived">
-                    <div class="newMessageLabel"><h3>New Message Received</h3></div>
+                    <div class="newMessageLabel"><h3><fmt:message key="profile.newmessage.label"/></h3></div>
                     <div class="messageRow">
-                        <button class="button" onclick="newMessageModal.style.display='block';" id="new">Show</button>
+                        <button class="button" onclick="newMessageModal.style.display='block';" id="new"><fmt:message key="profile.newmessage.btn.show"/></button>
                     </div>
                 </div>
             </bjtag:new-messages>
@@ -249,9 +249,6 @@
                         <div class="messageNewText">
                             <textarea id="inputText" readonly>${receivedText}</textarea>
                         </div>
-                        <%--<div class="messageRow">--%>
-                            <%--<fmt:message key="profile.newmessage.read"/> <input type="checkbox" value="read"/>--%>
-                        <%--</div>--%>
                         <div class="messageRow" style="display: flex; justify-content: space-around">
                             <form name="deleteMessageForm" method="POST" action="/controller" autocomplete="on">
                                 <input type="hidden" name="command" value="deleteMessage"/>

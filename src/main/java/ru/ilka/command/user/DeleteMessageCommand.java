@@ -19,6 +19,7 @@ import static ru.ilka.controller.ControllerConstants.ACCOUNT_KEY;
 public class DeleteMessageCommand implements ActionCommand {
 
     private static final String PAGE_PROFILE = "path.page.profile";
+    private static final int NEWEST_MESSAGE = 0;
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws CommandException {
@@ -28,7 +29,7 @@ public class DeleteMessageCommand implements ActionCommand {
         MessageLogic messageLogic = new MessageLogic();
         int messageId = 0;
         try {
-            messageId = messageLogic.findNewMessages(account.getAccountId()).get(0).getMessageId();
+            messageId = messageLogic.findNewMessages(account.getAccountId()).get(NEWEST_MESSAGE).getMessageId();
             messageLogic.deleateMessage(messageId);
         } catch (LogicException e) {
             throw new CommandException("Can not delete new message - " + messageId + " " + e);

@@ -42,8 +42,8 @@
                     ${errorReceiverLogin}
                 </div>
                 <div class="messageNavRow">
-                    <a class="button" href="/controller?command=showMessages" id="received"><fmt:message key="messages.button.received"/></a>
-                    <button class="button"  onclick="showSent()" id="sent"><fmt:message key="messages.button.sent"/></button>
+                    <a class="button" href="/controller?command=showMessages" id="received" title=""><fmt:message key="messages.button.received"/></a>
+                    <button class="button" onclick="showSent()" id="sent"><fmt:message key="messages.button.sent"/></button>
                     <button class="button" onclick="newMessageModal.style.display='block';" id="new"><fmt:message key="messages.button.new"/></button>
                 </div>
                 <div id="id01" class="mask">
@@ -55,7 +55,7 @@
                                 <fmt:message key="messages.label.receiver"/> <input type="text" name="receiver" pattern="[a-zA-Z0-9_]{4,50}" title="" autofocus  required/>
                             </div>
                             <div class="newMessText">
-                                <textarea id="inputText" name="text" pattern="[a-zA-Z0-9_.,<>+=-]+" required maxlength=398></textarea>
+                                <textarea id="inputText" name="text" pattern="[a-zA-Z0-9_.,<>+=-]+" placeholder="<fmt:message key="messages.textarea.placeholder"/>" required maxlength=398></textarea>
                             </div>
                             <div class="sendBtn">
                                 <input class="button" type="submit" value="<fmt:message key="messages.button.send"/>"/>

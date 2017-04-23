@@ -3,7 +3,6 @@ package ru.ilka.command.user;
 import ru.ilka.command.ActionCommand;
 import ru.ilka.entity.Deal;
 import ru.ilka.entity.GameSettings;
-import ru.ilka.exception.CommandException;
 import ru.ilka.logic.GameLogic;
 
 import javax.servlet.ServletContext;

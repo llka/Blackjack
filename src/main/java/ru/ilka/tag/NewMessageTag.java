@@ -4,7 +4,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.ilka.entity.Message;
 import ru.ilka.exception.LogicException;
-import ru.ilka.logic.AccountLogic;
 import ru.ilka.logic.MessageLogic;
 
 import javax.servlet.jsp.tagext.TagSupport;
@@ -27,18 +26,19 @@ public class NewMessageTag extends TagSupport{
     @Override
     public int doStartTag() {
         MessageLogic messageLogic = new MessageLogic();
-        AccountLogic accountLogic = new AccountLogic();
         ArrayList<Message> received = new ArrayList<>();
         String senderLogin = "";
         try {
             received = messageLogic.findNewMessages(accountId);
-            if(!received.isEmpty()) {
-                senderLogin = messageLogic.findSenderLogin(received.get(0).getMessageId());
-            }
         } catch (LogicException e) {
             logger.error("Error while trying to get received messages " + e);
         }
-        if(!received.isEmpty()){
+        if(!received.isEmpty()) {
+            try {
+                senderLogin = messageLogic.findSenderLogin(received.get(0).getMessageId());
+            } catch (LogicException e) {
+                logger.error("Error while trying to get sender login " + e);
+            }
             pageContext.setAttribute(ATTRIBUTE_RECEIVED_TEXT,received.get(0).getText());
             pageContext.setAttribute(ATTRIBUTE_SENDER_LOGIN,senderLogin);
             return EVAL_BODY_INCLUDE;

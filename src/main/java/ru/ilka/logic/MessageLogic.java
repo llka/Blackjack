@@ -16,7 +16,6 @@ import java.util.ArrayList;
  * Here could be your advertisement +375 29 3880490
  */
 public class MessageLogic {
-    static Logger logger = LogManager.getLogger(MessageLogic.class);
 
     private static final String DATE_TIME_REGEX = "yyyy-MM-dd HH:mm:ss";
 

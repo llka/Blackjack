@@ -45,7 +45,7 @@ public class ChangeAvatarCommand implements ActionCommand {
             fileSaveDir.mkdirs();
         }
 
-        Part filePart = null;
+        Part filePart;
         try {
             filePart = request.getPart(PARAM_AVATAR);
         }catch (IOException | ServletException e) {

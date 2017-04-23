@@ -1,7 +1,5 @@
 package ru.ilka.command.user;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import ru.ilka.command.ActionCommand;
 import ru.ilka.entity.Visitor;
 
@@ -17,7 +15,6 @@ import static ru.ilka.controller.ControllerConstants.VISITOR_KEY;
  * Here could be your advertisement +375 29 3880490
  */
 public class AddBalanceCommand implements ActionCommand {
-    static Logger logger = LogManager.getLogger(AddBalanceCommand.class);
 
     private static final String PAGE_PROFILE = "path.page.profile";
     private static final String PAGE_PAY_CARD = "path.page.payCard";

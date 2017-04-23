@@ -39,7 +39,7 @@
                     <tr class="bordered">
                         <td><fmt:message key="login.emailOrLogin"/></td>
                         <td>
-                            <input type="text" name="emailOrLogin" pattern="(^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$)|([a-zA-Z0-9_]{4,50})" autofocus required title="<fmt:message key="login.emailOrLogin.title"/>" maxlength=50>
+                            <input type="text" name="emailOrLogin" pattern="(^([a-zA-Z0-9_-]+\.)*[a-zA-Z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$)|([a-zA-Z0-9_]{4,50})" autofocus required title="<fmt:message key="login.emailOrLogin.title"/>" maxlength=50>
                         </td>
                     </tr>
                     <tr class="bordered">
@@ -65,25 +65,25 @@
                     <tr class="bordered">
                         <td><fmt:message key="register.firstName"/></td>
                         <td>
-                            <input type="text" name="firstName" pattern="[a-zA-Z]+" autofocus required maxlength=50>
+                            <input type="text" name="firstName" pattern="[a-zA-Z]+" autofocus required maxlength=30>
                         </td>
                     </tr>
                     <tr class="bordered">
                         <td><fmt:message key="register.lastName"/></td>
                         <td>
-                            <input type="text" name="lastName" pattern="[a-zA-Z]+" required  maxlength=50>
+                            <input type="text" name="lastName" pattern="[a-zA-Z]+([ ]{1}[a-zA-Z]+)*" required  maxlength=30>
                         </td>
                     </tr>
                     <tr>
                         <td><fmt:message key="register.email"/></td>
                         <td class="bordered">
-                            <input type="email" name="email" pattern="^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$" required title="<fmt:message key="register.email.title"/>"   maxlength=50>
+                            <input type="email" name="email" pattern="^([a-zA-Z0-9_-]+\.)*[a-zA-Z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$" required title="<fmt:message key="register.email.title"/>"   maxlength=50>
                         </td>
                     </tr>
                     <tr class="bordered">
                         <td><fmt:message key="register.userName"/></td>
                         <td>
-                            <input type="text" name="login" pattern="[a-zA-Z0-9_]{4,50}" title="<fmt:message key="register.userName.title"/>" required  maxlength=50>
+                            <input type="text" name="login" pattern="[a-zA-Z0-9_]{4,50}" title="<fmt:message key="register.userName.title"/>" required  maxlength=45>
                         </td>
                     </tr>
                     <tr class="bordered">

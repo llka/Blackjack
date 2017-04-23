@@ -24,9 +24,7 @@ import javax.servlet.http.Part;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
-import java.util.HashSet;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentSkipListSet;
 
 import static ru.ilka.controller.ControllerConstants.*;
 import static ru.ilka.controller.ControllerConstants.ONLINE_USERS_KEY;
@@ -67,7 +65,7 @@ public class RegisterCommand implements ActionCommand {
         String birthDate = request.getParameter(PARAM_BIRTH_DATE);
         String gender = request.getParameter(PARAM_GENDER);
         String inviteCode = request.getParameter(PARAM_INVITE_CODE);
-        String avatar;
+        String avatar = DEFAULT_AVATAR;
 
         ServletContext servletContext = request.getServletContext();
         HttpSession session = request.getSession();
@@ -81,12 +79,9 @@ public class RegisterCommand implements ActionCommand {
             img = request.getPart(PARAM_AVATAR);
         } catch (IOException | ServletException e) {
             logger.error("Can't get img from request " + e);
-            avatar = DEFAULT_AVATAR;
         }
 
         if(img.getSize() > 1) {
-            logger.debug("img.getSize() = " + img.getSize());
-
             String uploadFilePath = AVATAR_DIRECTORY_STATIC;
 
             // creates the save directory if it does not exists
@@ -104,8 +99,6 @@ public class RegisterCommand implements ActionCommand {
                 throw new CommandException("Error while writing file parts " + e);
             }
             avatar = fileName;
-        } else {
-            avatar = DEFAULT_AVATAR;
         }
 
         try {
