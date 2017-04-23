@@ -139,6 +139,48 @@ function insureNot(handId) {
     }
 }
 
+var surrenderTimes = 0;
+function surrender(handId) {
+    surrenderTimes++;
+    $(document).ready(function () {
+        $.ajax({
+            url: '/Ajax',
+            data: {
+                command: "SurrenderBet",
+                betPlace: handId
+            },
+            success: function () {
+                var surrenderButton =  document.getElementById("surrender" + handId);
+                surrenderButton.style.visibility = "hidden";
+                var surrenderButtonNot =  document.getElementById("surrenderNot" + handId);
+                surrenderButtonNot.style.visibility = "hidden";
+
+                if(surrenderTimes == hands){
+                    var surrenderButtonsRow =  document.getElementById("surrenderButtons");
+                    surrenderButtonsRow.style.display = "none";
+                    surrenderTimes = 0;
+                    showActionButtons();
+                }
+            }
+        });
+    });
+}
+
+function surrenderNot(handId) {
+    surrenderTimes++;
+    var surrenderButton =  document.getElementById("surrender" + handId);
+    surrenderButton.style.visibility = "hidden";
+    var surrenderButtonNot =  document.getElementById("surrenderNot" + handId);
+    surrenderButtonNot.style.visibility = "hidden";
+
+    if(surrenderTimes == hands){
+        var surrenderButtonsRow =  document.getElementById("surrenderButtons");
+        surrenderButtonsRow.style.display = "none";
+        surrenderTimes = 0;
+        showActionButtons();
+    }
+}
+
 function showActionButtons() {
     $(document).ready(function () {
         $.ajax({

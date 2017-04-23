@@ -21,6 +21,7 @@ public enum LogicResult {
     WIN,
     BJ_WIN,
     DRAW,
+    SURRENDER,
     EMPTY_BET,
 
     CARD_2_H, //hearts

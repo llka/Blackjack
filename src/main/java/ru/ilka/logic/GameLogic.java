@@ -333,6 +333,14 @@ public class GameLogic {
                 dealReport[betPlace] = LogicResult.DRAW;
                 logger.debug("deal report " + dealReport[betPlace]);
                 break;
+            case SURRENDER:
+                game.setWinCoefficient(-0.5);
+                game.setPlayerWin(false);
+                moneySpend = moneySpend.add(new BigDecimal(game.getBet()*0.5));
+                balance = balance.subtract(new BigDecimal(game.getBet()*0.5));
+                dealReport[betPlace] = LogicResult.SURRENDER;
+                logger.debug("deal report " + dealReport[betPlace]);
+                break;
             default:
                 throw new LogicException("Unknown game result");
         }
@@ -387,14 +395,15 @@ public class GameLogic {
             if(findCardRank(cards.get(0).get(1)) == 11) {
                 suggestInsurance(bets,writer);
             }else {
-                suggestActionButtons(deal,writer);
+                suggestSurrenderButtons(bets,writer);
+                //suggestActionButtons(deal,writer);
             }
         } catch (LogicException e) {
             logger.error("Error while checking if dealer has black jack " + e);
         }
     }
 
-    public void suggestInsurance(ArrayList<Double> bets, StringBuilder writer){
+    private void suggestInsurance(ArrayList<Double> bets, StringBuilder writer){
         writer.append("<div class=\"insuranceButtons\" id = \"insuranceButtons\">\n");
         for (int i = 1; i < bets.size() + 1 ; i++) {
             if(bets.get(i-1) > 0){
@@ -405,6 +414,23 @@ public class GameLogic {
                 writer.append("<div class=\"actionButtons\" style=\"visibility: hidden\">\n");
                 writer.append("<button class=\"gameButton\" style=\"visibility: hidden\" id=\"insure" + i + "\">Insure</button>\n");
                 writer.append("<button class=\"gameButton\" style=\"visibility: hidden\" id=\"insureNot" + i + "\">Do not</button>\n");
+            }
+            writer.append("</div>\n");
+        }
+        writer.append("</div>\n");
+    }
+
+    private void suggestSurrenderButtons(ArrayList<Double> bets, StringBuilder writer){
+        writer.append("<div class=\"insuranceButtons\" id = \"surrenderButtons\">\n");
+        for (int i = 1; i < bets.size() + 1 ; i++) {
+            if(bets.get(i-1) > 0){
+                writer.append("<div class=\"actionButtons\">\n");
+                writer.append("<button class=\"gameButton\" onclick=\"surrender("+ i +")\" id=\"surrender" + i + "\">Surrender</button>\n");
+                writer.append("<button class=\"gameButton\" onclick=\"surrenderNot("+ i +")\" id=\"surrenderNot" + i + "\">Play</button>\n");
+            }else {
+                writer.append("<div class=\"actionButtons\" style=\"visibility: hidden\">\n");
+                writer.append("<button class=\"gameButton\" style=\"visibility: hidden\" id=\"surrender" + i + "\">Surrender</button>\n");
+                writer.append("<button class=\"gameButton\" style=\"visibility: hidden\" id=\"surrenderNot" + i + "\">Play</button>\n");
             }
             writer.append("</div>\n");
         }
@@ -484,6 +510,10 @@ public class GameLogic {
                     betClass = "betLoose";
                     message = "Bust";
                     break;
+                case SURRENDER:
+                    betClass = "betLoose";
+                    message = "Surrender";
+                    break;
                 case EMPTY_BET:
                     betClass = "betDraw";
                     message = "";
@@ -523,7 +553,7 @@ public class GameLogic {
         }
     }
 
-    public void writeCard(LogicResult resultCard, StringBuilder writer){
+    private void writeCard(LogicResult resultCard, StringBuilder writer){
         String card = resultCard.toString();
         char suit = card.charAt(card.length()-1);
         String suitClass;
@@ -560,7 +590,7 @@ public class GameLogic {
         writer.append("</div>\n");
     }
 
-    public void writePoints(int points,int betPlace, StringBuilder writer){
+    private void writePoints(int points,int betPlace, StringBuilder writer){
         writer.append("<div class=\"points\" id=\"points" + betPlace + "\">");
         writer.append(points);
         writer.append("</div>\n");

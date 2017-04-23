@@ -139,6 +139,12 @@ public enum CommandType {
             this.role = EnumSet.of(Visitor.Role.ADMIN, Visitor.Role.USER);
         }
     },
+    SURRENDERBET{
+        {
+            this.command = new SurrenderBetCommand();
+            this.role = EnumSet.of(Visitor.Role.ADMIN, Visitor.Role.USER);
+        }
+    },
     SHOWACTIONBTN{
         {
             this.command = new ShowActionBtnCommand();
