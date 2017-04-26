@@ -3,6 +3,8 @@ package ru.ilka.command.user;
 import ru.ilka.command.ActionCommand;
 import ru.ilka.entity.Deal;
 import ru.ilka.entity.GameSettings;
+import ru.ilka.exception.CommandException;
+import ru.ilka.exception.LogicException;
 import ru.ilka.logic.GameLogic;
 
 import javax.servlet.ServletContext;
@@ -18,7 +20,7 @@ import static ru.ilka.controller.ControllerConstants.*;
 public class CheckForInsuranceCommand implements ActionCommand {
 
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response){
+    public String execute(HttpServletRequest request, HttpServletResponse response) throws CommandException {
         HttpSession session = request.getSession();
         Deal deal = (Deal) session.getAttribute(GAME_DEAL_KEY);
         ServletContext servletContext = request.getServletContext();
@@ -26,7 +28,11 @@ public class CheckForInsuranceCommand implements ActionCommand {
         GameLogic gameLogic = new GameLogic(settings.getNumberOfDecks());
 
         StringBuilder result = new StringBuilder();
-        gameLogic.checkForInsurance(deal,result);
+        try {
+            gameLogic.checkForInsurance(deal,result);
+        } catch (LogicException e) {
+            throw new CommandException("Error while checking fkr insurance " + e);
+        }
 
         return result.toString();
     }

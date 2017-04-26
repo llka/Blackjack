@@ -33,13 +33,13 @@
                         <tr class="bordered">
                             <td><fmt:message key="login.emailOrLogin"/></td>
                             <td>
-                                <input type="text" name="emailOrLogin" pattern="(^([a-zA-Z0-9_-]+\.)*[a-zA-Z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$)|([a-zA-Z0-9_]{4,50})" autofocus required title="<fmt:message key="login.emailOrLogin.title"/>" maxlength=50>
+                                <input type="text" name="emailOrLogin" pattern="(^([a-zA-Z0-9_-]+\.)*[a-zA-Z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*(\.){1}[a-z]{2,6}$)|([a-zA-Z0-9_]{4,50})" autofocus required title="<fmt:message key="login.emailOrLogin.title"/>" maxlength=50>
                             </td>
                         </tr>
                         <tr class="bordered">
                             <td><fmt:message key="login.password"/></td>
                             <td>
-                                <input type="password" name="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" title="<fmt:message key="login.password.title"/>"  required>
+                                <input type="password" name="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s)(?!.*\W).*$" title="<fmt:message key="login.password.title"/>"  required>
                             </td>
                         </tr>
                         <tr>

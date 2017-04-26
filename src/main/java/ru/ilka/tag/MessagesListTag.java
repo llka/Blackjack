@@ -38,7 +38,6 @@ public class MessagesListTag extends TagSupport {
             for (int i = 0; i < messages.size() ; i++) {
                 Message message = messages.get(i);
                 int messageId = message.getMessageId();
-
                 out.write("<div class=\"messageListRow\">");
                 out.write("<div class=\"messageInfo\">");
                 out.write("<div class=\"messageInfoElement\">");

@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="webparsers:war exploded">
-    <output-path>$PROJECT_DIR$/out/artifacts/webparsers_war_exploded</output-path>
+    <output-path>$PROJECT_DIR$/target/web parsers</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
@@ -15,6 +15,8 @@
           <element id="library" level="project" name="Maven: jstl:jstl:1.2" />
           <element id="library" level="project" name="Maven: taglibs:standard:1.1.2" />
           <element id="library" level="project" name="Maven: org.apache.tomcat:tomcat-catalina:9.0.0.M13" />
+          <element id="library" level="project" name="Maven: org.apache.tomcat:tomcat-servlet-api:9.0.0.M13" />
+          <element id="library" level="project" name="Maven: org.apache.tomcat:tomcat-jsp-api:9.0.0.M13" />
           <element id="library" level="project" name="Maven: org.apache.tomcat:tomcat-el-api:9.0.0.M13" />
           <element id="library" level="project" name="Maven: org.apache.tomcat:tomcat-juli:9.0.0.M13" />
           <element id="library" level="project" name="Maven: org.apache.tomcat:tomcat-annotations-api:9.0.0.M13" />
@@ -27,6 +29,9 @@
           <element id="library" level="project" name="Maven: com.google.code.gson:gson:2.8.0" />
           <element id="library" level="project" name="Maven: commons-codec:commons-codec:1.9" />
         </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/target/web parsers/META-INF/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="webparsers/web/Web" />
     </root>

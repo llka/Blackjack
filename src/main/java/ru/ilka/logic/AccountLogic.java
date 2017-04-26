@@ -30,7 +30,6 @@ public class AccountLogic {
             try {
                 String salt = accountDao.getBirthDateByAuthorization(loginOrEmail);
                 password = encodeWithSHA512(password,salt);
-                logger.debug(" login " + loginOrEmail + " sha512 password = " + password);
             }catch (DBException e){
                 return false;
             }
@@ -48,8 +47,8 @@ public class AccountLogic {
                                 String birthDate, String gender, String avatar, String inviteCode) throws LogicException {
         AccountDao accountDao = new AccountDao();
         LogicResult logicResult;
-        if(inviteCode==null){
-            inviteCode="1234-1234";
+        if(inviteCode == null){
+            inviteCode = "1234-1234";
         }
         try {
             if (!AccountValidator.validateEmail(email)) {

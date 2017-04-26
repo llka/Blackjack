@@ -157,12 +157,6 @@ public enum CommandType {
             this.role = EnumSet.of(Visitor.Role.ADMIN, Visitor.Role.USER);
         }
     },
-    SHOWMESSAGES{
-        {
-            this.command = new ShowMessagesCommand();
-            this.role = EnumSet.of(Visitor.Role.ADMIN);
-        }
-    },
     MANAGEMESSAGES{
         {
             this.command = new ManageMessagesCommand();

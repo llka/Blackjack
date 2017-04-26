@@ -19,6 +19,7 @@
             <rtexprvalue>true</rtexprvalue>
         </attribute>
     </tag>
+
     <tag>
         <name>all-users</name>
         <tag-class>ru.ilka.tag.AllUsersTag</tag-class>
@@ -29,6 +30,7 @@
             <rtexprvalue>true</rtexprvalue>
         </attribute>
     </tag>
+
     <tag>
         <name>messages-list</name>
         <tag-class>ru.ilka.tag.MessagesListTag</tag-class>
@@ -54,4 +56,15 @@
             <rtexprvalue>true</rtexprvalue>
         </attribute>
     </tag>
+    <tag>
+        <name>load-messages</name>
+        <tag-class>ru.ilka.tag.LoadMessagesTag</tag-class>
+        <body-content>scriptless</body-content>
+        <attribute>
+            <name>accountId</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+
 </taglib>

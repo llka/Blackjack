@@ -4,10 +4,11 @@
 <%@ taglib uri="bjtags" prefix="bjtag" %>
 <fmt:setLocale value="${visitor.locale}" scope="session"/>
 <fmt:setBundle basename="properties.content"/>
+<jsp:useBean id="account" class="ru.ilka.entity.Account" scope="session" />
 <jsp:useBean id="received" class="ru.ilka.entity.Message" scope="page"/>
 <jsp:useBean id="sent" class="ru.ilka.entity.Message" scope="page"/>
 <c:set var="context" scope="page" value="${pageContext.request.contextPath}"/>
-
+<bjtag:load-messages accountId="${account.accountId}"></bjtag:load-messages>
 <html>
 <head>
     <title><fmt:message key="application.title"/></title>
@@ -42,7 +43,7 @@
                     ${errorReceiverLogin}
                 </div>
                 <div class="messageNavRow">
-                    <a class="button" href="/controller?command=showMessages" id="received" title=""><fmt:message key="messages.button.received"/></a>
+                    <button class="button" onclick="showReceived()" id="received"><fmt:message key="messages.button.received"/></button>
                     <button class="button" onclick="showSent()" id="sent"><fmt:message key="messages.button.sent"/></button>
                     <button class="button" onclick="newMessageModal.style.display='block';" id="new"><fmt:message key="messages.button.new"/></button>
                 </div>
@@ -65,7 +66,7 @@
                 </div>
                 <div id="receivedMessages">
                     <c:choose>
-                        <c:when test="${requestScope.received.size() > 0}">
+                        <c:when test="${received.size() > 0}">
                             <h3><fmt:message key="messages.label.received"/></h3>
                             <form name="receivedMessagesForm" method="POST" action="/controller">
                                 <input type="hidden" name="command" value="manageMessages"/>
@@ -75,29 +76,29 @@
                                     <div class="read"><fmt:message key="messages.column.mark"/></div>
                                     <div class="delete"><fmt:message key="messages.column.delete"/></div>
                                 </div>
-                                <bjtag:messages-list messages="${requestScope.received}" received="${true}"></bjtag:messages-list>
+                                <bjtag:messages-list messages="${received}" received="${true}"></bjtag:messages-list>
                                 <div class="sendBtn">
                                     <input class="button" type="submit" value="<fmt:message key="profile.button.save"/>">
                                 </div>
                             </form>
                         </c:when>
-                        <c:when test="${requestScope.received.size() == 0}">
+                        <c:when test="${received.size() == 0}">
                             <h3><fmt:message key="messages.label.empty.received"/></h3>
                         </c:when>
                     </c:choose>
                 </div>
                 <div id="sentMessages">
                     <c:choose>
-                        <c:when test="${requestScope.sent.size() > 0}">
+                        <c:when test="${sent.size() > 0}">
                             <h3><fmt:message key="messages.label.sent"/></h3>
                             <div class="messageRowHeader">
                                 <div class="from"><fmt:message key="messages.column.to"/></div>
                                 <div class="text"><fmt:message key="messages.column.text"/></div>
                                 <div class="readSent"><fmt:message key="messages.column.mark"/></div>
                             </div>
-                            <bjtag:messages-list messages="${requestScope.sent}" received="${false}"></bjtag:messages-list>
+                            <bjtag:messages-list messages="${sent}" received="${false}"></bjtag:messages-list>
                         </c:when>
-                        <c:when test="${requestScope.sent.size() == 0}">
+                        <c:when test="${sent.size() == 0}">
                             <h3><fmt:message key="messages.label.empty.sent"/></h3>
                         </c:when>
                     </c:choose>

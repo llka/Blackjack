@@ -46,7 +46,7 @@
                         <tr>
                             <td><fmt:message key="register.email"/></td>
                             <td class="bordered">
-                                <input type="email" name="email" pattern="^([a-zA-Z0-9_-]+\.)*[a-zA-Z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$" required title="<fmt:message key="register.email.title"/>"   maxlength=50>
+                                <input type="email" name="email" pattern="^([a-zA-Z0-9_-]+\.)*[a-zA-Z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*(\.){1}[a-z]{2,6}$" required title="<fmt:message key="register.email.title"/>"   maxlength=50>
                             </td>
                         </tr>
                         <tr class="bordered">
@@ -58,7 +58,7 @@
                         <tr class="bordered">
                             <td><fmt:message key="register.password"/></td>
                             <td>
-                                <input type="password" name="password" pattern="(?=^.{6,50}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" title="<fmt:message key="register.password.title"/>"  required maxlength=50>
+                                <input type="password" name="password" pattern="(?=^.{6,50}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s)(?!.*\W).*$" title="<fmt:message key="register.password.title"/>"  required maxlength=50>
                             </td>
                             <td>
                                 <span class="error" id="err-pwd1"></span>
@@ -67,7 +67,7 @@
                         <tr class="bordered">
                             <td><fmt:message key="register.password2"/></td>
                             <td>
-                                <input type="password" name="confPassword" pattern="(?=^.{6,50}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" title="<fmt:message key="register.password2.title"/>"  required maxlength=50>
+                                <input type="password" name="confPassword" pattern="(?=^.{6,50}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s)(?!.*\W).*$" title="<fmt:message key="register.password2.title"/>"  required maxlength=50>
                             </td>
                             <td>
                                 <span class="error" id="err-pwd2"></span>
