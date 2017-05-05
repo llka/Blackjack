@@ -47,7 +47,7 @@ public class ManageMessagesCommand implements ActionCommand {
                     messageLogic.markMessageRead(messageId,true);
                     received.setReadMark(true);
                 }else if(DELETE_CHECKBOX.equals(request.getParameter(DELETE_CHECKBOX + String.valueOf(messageId)))){
-                    messageLogic.deleateMessage(messageId);
+                    messageLogic.deleteMessage(messageId);
                     toRemove.add(received);
                 }
             }

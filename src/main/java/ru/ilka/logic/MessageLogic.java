@@ -59,7 +59,7 @@ public class MessageLogic {
         }
     }
 
-    public void deleateMessage(int messageId) throws LogicException {
+    public void deleteMessage(int messageId) throws LogicException {
         MessageDao messageDao = new MessageDao();
         try {
             messageDao.deleteMessage(messageId);

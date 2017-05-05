@@ -175,6 +175,19 @@ body {
     display: none;
 }
 
+.messageCounter{
+    margin-left: 4px;
+    font-size: 8px;
+    text-align: center;
+    vertical-align: top;
+    background-color: #009f6d;
+    height: 12px;
+    width: 12px;
+    padding: 1px;
+    border: 1px solid #f2f2f2;
+    border-radius: 5px;
+}
+
 .q {
     background: url(../image/background_90.jpg) top fixed;
     background-size: cover;

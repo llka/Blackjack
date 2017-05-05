@@ -30,7 +30,7 @@ public class DeleteMessageCommand implements ActionCommand {
         int messageId = 0;
         try {
             messageId = messageLogic.findNewMessages(account.getAccountId()).get(NEWEST_MESSAGE).getMessageId();
-            messageLogic.deleateMessage(messageId);
+            messageLogic.deleteMessage(messageId);
         } catch (LogicException e) {
             throw new CommandException("Can not delete new message - " + messageId + " " + e);
 

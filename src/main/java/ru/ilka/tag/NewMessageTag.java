@@ -31,7 +31,7 @@ public class NewMessageTag extends TagSupport{
         try {
             received = messageLogic.findNewMessages(accountId);
         } catch (LogicException e) {
-            logger.error("Error while trying to get received messages " + e);
+            logger.error("Error while trying to get new messages " + e);
         }
         if(!received.isEmpty()) {
             try {

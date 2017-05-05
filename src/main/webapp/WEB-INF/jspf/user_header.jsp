@@ -2,6 +2,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <fmt:setLocale value="${visitor.locale}" scope="session"/>
+<jsp:useBean id="account" class="ru.ilka.entity.Account" scope="session" />
 <fmt:setBundle basename="properties.content"/>
 <%@ taglib uri="bjtags" prefix="bjtag" %>
 
@@ -17,7 +18,10 @@
             <a href="/jsp/admin/settings.jsp"><fmt:message key="header.settings"/></a>
             <a href="/jsp/admin/messages.jsp"><fmt:message key="header.messages"/></a>
         </bjtag:admin-nav>
-        <a href="/jsp/user/profile.jsp"><fmt:message key="header.profile"/></a>
+        <a style="display: flex" href="/jsp/user/profile.jsp">
+            <fmt:message key="header.profile"/>
+            <bjtag:count-new-messages accountId="${account.accountId}"></bjtag:count-new-messages>
+        </a>
         <a href="/jsp/user/about.jsp"><fmt:message key="header.about"/></a>
         <a href="/controller?command=logout"><fmt:message key="header.logOut"/></a>
         <a href="javascript:void(0);" class="icon" onclick="responsiveNav()">&#9776;</a>

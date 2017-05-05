@@ -66,5 +66,15 @@
             <rtexprvalue>true</rtexprvalue>
         </attribute>
     </tag>
+    <tag>
+        <name>count-new-messages</name>
+        <tag-class>ru.ilka.tag.MessagesCountTag</tag-class>
+        <body-content>scriptless</body-content>
+        <attribute>
+            <name>accountId</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
 
 </taglib>
