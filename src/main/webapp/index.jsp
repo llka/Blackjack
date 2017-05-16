@@ -6,7 +6,7 @@
 
 <html>
     <head>
-        <title><fmt:message key="title.index"/></title>
+        <title><fmt:message key="application.title"/></title>
     </head>
     <body>
     <jsp:forward page="/jsp/guest/start.jsp"/>
