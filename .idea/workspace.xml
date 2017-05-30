@@ -1,393 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="84015acd-b2b2-47f7-a434-f52239047cc2" name="Default" comment="*">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/webparsers_war2/webparsers_war.war" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/ActionCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/ActionFactory.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/ChangeLocaleCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/CommandType$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/CommandType$10.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/CommandType$11.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/CommandType$12.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/CommandType$13.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/CommandType$14.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/CommandType$15.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/CommandType$16.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/CommandType$17.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/CommandType$18.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/CommandType$19.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/CommandType$2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/CommandType$20.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/CommandType$21.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/CommandType$22.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/CommandType$23.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/CommandType$24.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/CommandType$25.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/CommandType$26.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/CommandType$27.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/CommandType$28.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/CommandType$29.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/CommandType$3.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/CommandType$4.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/CommandType$5.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/CommandType$6.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/CommandType$7.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/CommandType$8.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/CommandType$9.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/CommandType.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/EmptyCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/admin/BanUsersCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/admin/ChangeSettingsCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/admin/GlobalBanCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/admin/ManageMessagesCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/admin/SortByBanStatusCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/admin/SortByHandsWonCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/admin/SortByProfitCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/admin/SortByRatingCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/guest/LogInCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/guest/RegisterCommand$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/guest/RegisterCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/user/AccountInfoCommand$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/user/AccountInfoCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/user/AddBalanceCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/user/ChangeAvatarCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/user/CheckForInsuranceCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/user/CheckPayCardCommand$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/user/CheckPayCardCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/user/DealCardsCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/user/DeleteMessageCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/user/HitCardCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/user/ImmediateBjWinCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/user/InsureBetCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/user/LogOutCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/user/MarkMessageCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/user/NewGameCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/user/SendMessageCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/user/SendUsMessageCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/user/ShowActionBtnCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/user/StandCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/command/user/SurrenderBetCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/comparator/BanComparator.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/comparator/HandsWonComparator.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/comparator/ProfitComparator.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/comparator/RatingComparator.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/controller/AjaxController.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/controller/Controller.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/controller/ControllerConstants.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/controller/LoadImageServlet.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/dao/AccountDao.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/dao/GameDao.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/dao/MessageDao.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/dao/SettingsDao.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/datebase/ConnectionPool.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/datebase/DataBaseInitializer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/datebase/ProxyConnection.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/entity/Account.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/entity/Deal.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/entity/Game.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/entity/GameSettings.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/entity/GenderType.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/entity/Message.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/entity/Visitor$Role.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/entity/Visitor.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/exception/CommandException.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/exception/ConnPoolException.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/exception/DBException.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/exception/LogicException.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/filter/AdminAccessFilter.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/filter/EncodingFilter.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/filter/GuestAccessFilter.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/filter/UserAccessFilter.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/filter/VisitorFilter.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/listener/SessionDieListener.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/logic/AccountLogic.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/logic/GameLogic$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/logic/GameLogic.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/logic/LogicResult.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/logic/MessageLogic.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/logic/SettingsLogic.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/logic/StatisticsLogic.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/manager/ConfigurationManager.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/manager/MessageManager.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/tag/AdminNavTag.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/tag/AllUsersTag.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/tag/LoadMessagesTag.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/tag/MessagesCountTag.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/tag/MessagesListTag.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/tag/NewMessageTag.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/ru/ilka/validator/AccountValidator.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/ru/ilka/logic/StatisticsLogicTest.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/ru/ilka/logic/game/CountPointsTest.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/ru/ilka/logic/game/DealCardTest.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/ru/ilka/logic/game/InGameTest.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/ru/ilka/validator/AccountValidatorTest$TestTarget.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/ru/ilka/validator/AccountValidatorTest.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers.war" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/ActionCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/ActionFactory.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/ChangeLocaleCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/CommandType$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/CommandType$10.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/CommandType$11.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/CommandType$12.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/CommandType$13.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/CommandType$14.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/CommandType$15.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/CommandType$16.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/CommandType$17.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/CommandType$18.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/CommandType$19.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/CommandType$2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/CommandType$20.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/CommandType$21.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/CommandType$22.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/CommandType$23.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/CommandType$24.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/CommandType$25.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/CommandType$26.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/CommandType$27.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/CommandType$28.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/CommandType$29.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/CommandType$3.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/CommandType$4.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/CommandType$5.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/CommandType$6.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/CommandType$7.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/CommandType$8.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/CommandType$9.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/CommandType.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/EmptyCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/admin/BanUsersCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/admin/ChangeSettingsCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/admin/GlobalBanCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/admin/ManageMessagesCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/admin/SortByBanStatusCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/admin/SortByHandsWonCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/admin/SortByProfitCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/admin/SortByRatingCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/guest/LogInCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/guest/RegisterCommand$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/guest/RegisterCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/user/AccountInfoCommand$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/user/AccountInfoCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/user/AddBalanceCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/user/ChangeAvatarCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/user/CheckForInsuranceCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/user/CheckPayCardCommand$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/user/CheckPayCardCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/user/DealCardsCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/user/DeleteMessageCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/user/HitCardCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/user/ImmediateBjWinCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/user/InsureBetCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/user/LogOutCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/user/MarkMessageCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/user/NewGameCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/user/SendMessageCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/user/SendUsMessageCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/user/ShowActionBtnCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/user/StandCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/command/user/SurrenderBetCommand.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/comparator/BanComparator.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/comparator/HandsWonComparator.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/comparator/ProfitComparator.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/comparator/RatingComparator.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/controller/AjaxController.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/controller/Controller.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/controller/ControllerConstants.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/controller/LoadImageServlet.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/dao/AccountDao.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/dao/GameDao.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/dao/MessageDao.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/dao/SettingsDao.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/datebase/ConnectionPool.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/datebase/DataBaseInitializer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/datebase/ProxyConnection.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/entity/Account.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/entity/Deal.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/entity/Game.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/entity/GameSettings.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/entity/GenderType.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/entity/Message.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/entity/Visitor$Role.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/entity/Visitor.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/exception/CommandException.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/exception/ConnPoolException.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/exception/DBException.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/exception/LogicException.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/filter/AdminAccessFilter.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/filter/EncodingFilter.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/filter/GuestAccessFilter.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/filter/UserAccessFilter.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/filter/VisitorFilter.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/listener/SessionDieListener.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/logic/AccountLogic.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/logic/GameLogic$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/logic/GameLogic.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/logic/LogicResult.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/logic/MessageLogic.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/logic/SettingsLogic.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/logic/StatisticsLogic.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/manager/ConfigurationManager.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/manager/MessageManager.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/tag/AdminNavTag.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/tag/AllUsersTag.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/tag/LoadMessagesTag.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/tag/MessagesCountTag.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/tag/MessagesListTag.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/tag/NewMessageTag.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/ru/ilka/validator/AccountValidator.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/lib/commons-codec-1.9.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/lib/gson-2.8.0.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/lib/hamcrest-core-1.3.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/lib/jstl-1.2.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/lib/junit-4.12.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/lib/log4j-api-2.7.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/lib/log4j-core-2.7.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/lib/log4j-web-2.7.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/lib/mysql-connector-java-5.1.6.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/lib/standard-1.1.2.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/lib/tomcat-annotations-api-9.0.0.M13.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/lib/tomcat-api-9.0.0.M13.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/lib/tomcat-catalina-9.0.0.M13.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/lib/tomcat-coyote-9.0.0.M13.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/lib/tomcat-el-api-9.0.0.M13.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/lib/tomcat-jni-9.0.0.M13.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/lib/tomcat-jsp-api-9.0.0.M13.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/lib/tomcat-juli-9.0.0.M13.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/lib/tomcat-servlet-api-9.0.0.M13.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/lib/tomcat-util-9.0.0.M13.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/lib/tomcat-util-scan-9.0.0.M13.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/image/background.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/image/background_90.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/image/bj_icon.ico" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/image/blackjack_table.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/image/blackjack_table_dark.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/image/clubs.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/image/default_avatar.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/image/diamonds.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/image/hearts.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/image/lang_en.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/image/lang_ru.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/image/red_bycicle_back.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/image/spades.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/webparsers_war_exploded/META-INF/MANIFEST.MF" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/ru/ilka/entity/IDatabaseEntity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/log4j2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/properties/configuration.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/properties/content.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/properties/content_en_US.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/properties/content_ru_RU.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/properties/database.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/properties/messages.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/META-INF/MANIFEST.MF" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/log4j2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/properties/configuration.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/properties/content.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/properties/content_en_US.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/properties/content_ru_RU.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/properties/database.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/classes/properties/messages.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/jspf/footer.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/jspf/user_header.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/tld/custom.tld" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/WEB-INF/web.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/css/cards.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/css/common.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/css/game.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/css/login_stylesheet.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/css/mainpage.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/css/messages.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/css/payCard.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/css/profilepage.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/css/startpage.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/css/users.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/css/writeUs.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/index.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/js/common_scr.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/js/game_scr.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/js/jquery-1.10.2.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/js/messages.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/js/profile_scr.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/js/register_scr.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/js/startpage_scr.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/jsp/admin/messages.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/jsp/admin/settings.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/jsp/admin/users.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/jsp/error/400.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/jsp/error/403.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/jsp/error/404.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/jsp/error/error.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/jsp/guest/eula.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/jsp/guest/login.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/jsp/guest/register.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/jsp/guest/start.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/jsp/user/about.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/jsp/user/game.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/jsp/user/main.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/jsp/user/payCard.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/web parsers/jsp/user/profile.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/webparsers/META-INF/MANIFEST.MF" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ilka/command/admin/BanUsersCommand.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ilka/command/admin/BanUsersCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ilka/command/admin/GlobalBanCommand.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ilka/command/admin/GlobalBanCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ilka/command/admin/SortByBanStatusCommand.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ilka/command/admin/SortByBanStatusCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ilka/command/admin/SortByHandsWonCommand.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ilka/command/admin/SortByHandsWonCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ilka/command/admin/SortByProfitCommand.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ilka/command/admin/SortByProfitCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ilka/command/admin/SortByRatingCommand.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ilka/command/admin/SortByRatingCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ilka/command/guest/LogInCommand.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ilka/command/guest/LogInCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ilka/command/guest/RegisterCommand.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ilka/command/guest/RegisterCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ilka/command/user/SendUsMessageCommand.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ilka/command/user/SendUsMessageCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ilka/comparator/BanComparator.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ilka/comparator/BanComparator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ilka/comparator/HandsWonComparator.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ilka/comparator/HandsWonComparator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ilka/comparator/ProfitComparator.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ilka/comparator/ProfitComparator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ilka/comparator/RatingComparator.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ilka/comparator/RatingComparator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ilka/controller/AjaxController.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ilka/controller/AjaxController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ilka/controller/Controller.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ilka/controller/Controller.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ilka/controller/ControllerConstants.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ilka/controller/ControllerConstants.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ilka/controller/LoadImageServlet.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ilka/controller/LoadImageServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ilka/dao/AccountDao.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ilka/dao/AccountDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ilka/dao/GameDao.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ilka/dao/GameDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ilka/dao/MessageDao.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ilka/dao/MessageDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ilka/dao/SettingsDao.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ilka/dao/SettingsDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ilka/datebase/ConnectionPool.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ilka/datebase/ConnectionPool.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ilka/datebase/DataBaseInitializer.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ilka/datebase/DataBaseInitializer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ilka/datebase/ProxyConnection.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ilka/datebase/ProxyConnection.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ilka/entity/Account.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ilka/entity/Account.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ilka/entity/Deal.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ilka/entity/Deal.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ilka/entity/Game.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ilka/entity/Game.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ilka/entity/GameSettings.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ilka/entity/GameSettings.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ilka/entity/GenderType.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ilka/entity/GenderType.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ilka/entity/Message.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ilka/entity/Message.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ilka/entity/Visitor.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ilka/entity/Visitor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ilka/exception/CommandException.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ilka/exception/CommandException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ilka/exception/ConnPoolException.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ilka/exception/ConnPoolException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ilka/exception/DBException.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ilka/exception/DBException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ilka/exception/LogicException.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ilka/exception/LogicException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ilka/filter/AdminAccessFilter.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ilka/filter/AdminAccessFilter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ilka/filter/EncodingFilter.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ilka/filter/EncodingFilter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ilka/filter/GuestAccessFilter.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ilka/filter/GuestAccessFilter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ilka/filter/UserAccessFilter.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ilka/filter/UserAccessFilter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ilka/filter/VisitorFilter.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ilka/filter/VisitorFilter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ilka/listener/SessionDieListener.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ilka/listener/SessionDieListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ilka/logic/AccountLogic.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ilka/logic/AccountLogic.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ilka/logic/GameLogic.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ilka/logic/GameLogic.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ilka/logic/LogicResult.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ilka/logic/LogicResult.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ilka/logic/MessageLogic.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ilka/logic/MessageLogic.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ilka/logic/SettingsLogic.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ilka/logic/SettingsLogic.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ilka/logic/StatisticsLogic.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ilka/logic/StatisticsLogic.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ilka/manager/ConfigurationManager.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ilka/manager/ConfigurationManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ilka/manager/MessageManager.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ilka/manager/MessageManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ilka/tag/AdminNavTag.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ilka/tag/AdminNavTag.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ilka/tag/AllUsersTag.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ilka/tag/AllUsersTag.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ilka/tag/LoadMessagesTag.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ilka/tag/LoadMessagesTag.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ilka/tag/MessagesCountTag.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ilka/tag/MessagesCountTag.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ilka/tag/MessagesListTag.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ilka/tag/MessagesListTag.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ilka/tag/NewMessageTag.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ilka/tag/NewMessageTag.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ru/ilka/validator/AccountValidator.java" afterPath="$PROJECT_DIR$/src/main/java/ru/ilka/validator/AccountValidator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/log4j2.xml" afterPath="$PROJECT_DIR$/src/main/resources/log4j2.xml" />
+    <list default="true" id="84015acd-b2b2-47f7-a434-f52239047cc2" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -416,8 +31,8 @@
       <file leaf-file-name="ConnectionPool.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/ru/ilka/datebase/ConnectionPool.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="21" column="15" lean-forward="true" selection-start-line="21" selection-start-column="15" selection-end-line="21" selection-end-column="15" />
+            <state relative-caret-position="313">
+              <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -2006,7 +1621,7 @@
       <workItem from="1496054317549" duration="1211000" />
       <workItem from="1496059982986" duration="315000" />
       <workItem from="1496084238922" duration="6261000" />
-      <workItem from="1496135850890" duration="7425000" />
+      <workItem from="1496135850890" duration="7786000" />
     </task>
     <task id="LOCAL-00001" summary="1st">
       <created>1491393513263</created>
@@ -2225,7 +1840,14 @@
       <option name="project" value="LOCAL" />
       <updated>1494938445216</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="documentation">
+      <created>1496143574676</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1496143574676</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -2261,11 +1883,11 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="749339000" />
+    <option name="totallyTimeSpent" value="749700000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -2289,7 +1911,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5294118" sideWeight="0.4871407" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32792208" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32753405" sideWeight="0.5" order="7" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32753405" sideWeight="0.5" order="7" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36928105" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -2373,7 +1995,8 @@
     <MESSAGE value="bust result" />
     <MESSAGE value="message counter" />
     <MESSAGE value="*" />
-    <option name="LAST_COMMIT_MESSAGE" value="*" />
+    <MESSAGE value="documentation" />
+    <option name="LAST_COMMIT_MESSAGE" value="documentation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2823,8 +2446,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/ilka/datebase/ConnectionPool.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="21" column="15" lean-forward="true" selection-start-line="21" selection-start-column="15" selection-end-line="21" selection-end-column="15" />
+        <state relative-caret-position="313">
+          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
           <folding />
         </state>
       </provider>
