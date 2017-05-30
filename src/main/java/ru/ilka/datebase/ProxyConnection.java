@@ -13,13 +13,6 @@ import java.util.concurrent.Executor;
  */
 public class ProxyConnection implements Connection {
     private Connection connection;
-//    private ConcurrentHashMap<String, PreparedStatement> statements = new ConcurrentHashMap<>();
-//    PreparedStatement statement = statements.get(sql);
-//            if (statement == null) {
-//        statement = connection.prepareStatement(sql);
-//        statements.put(sql, statement);
-//    }
-//            return statement;
 
     ProxyConnection(Connection connection) {
         this.connection = connection;
