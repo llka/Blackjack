@@ -4,9 +4,12 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 /**
- * Here could be your advertisement +375 29 3880490
+ * Account is a class that describes every user of this system
+ * @see Visitor
+ * @since %G%
+ * @version %I%
  */
-public class Account {
+public class Account implements IDatabaseEntity {
     private int accountId;
     private String firstName;
     private String lastName;

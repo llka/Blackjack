@@ -1,7 +1,9 @@
 package ru.ilka.exception;
 
 /**
- * Here could be your advertisement +375 29 3880490
+ * Signals that operation with data base failed.
+ * @since %G%
+ * @version %I%
  */
 public class DBException extends Exception {
     public DBException() {

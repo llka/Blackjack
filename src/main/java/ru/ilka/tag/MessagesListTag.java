@@ -12,7 +12,9 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * Here could be your advertisement +375 29 3880490
+ * MessagesListTag displays all messages in one table.
+ * @since %G%
+ * @version %I%
  */
 public class MessagesListTag extends TagSupport {
     static Logger logger = LogManager.getLogger(MessagesListTag.class);

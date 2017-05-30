@@ -13,7 +13,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Here could be your advertisement +375 29 3880490
+ * AccountDao class is responsible for sending requests to the database and processing received answers.
+ * @since %G%
+ * @version %I%
  */
 public class AccountDao {
     static  Logger logger = LogManager.getLogger(AccountDao.class);

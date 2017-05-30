@@ -1,8 +1,7 @@
 package ru.ilka.logic;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import ru.ilka.dao.MessageDao;
+import ru.ilka.entity.Deal;
 import ru.ilka.entity.Message;
 import ru.ilka.exception.DBException;
 import ru.ilka.exception.LogicException;
@@ -13,7 +12,10 @@ import java.util.ArrayList;
 
 
 /**
- * Here could be your advertisement +375 29 3880490
+ * MessageLogic class provides functionality for users communication
+ * @see Message
+ * @since %G%
+ * @version %I%
  */
 public class MessageLogic {
 
@@ -23,6 +25,12 @@ public class MessageLogic {
 
     }
 
+    /**
+     * Finds all messages that this user receive.
+     * @param accountId user's account id
+     * @return list of messages
+     * @throws LogicException if DBException occurred.
+     */
     public ArrayList<Message> findReceivedMessages(int accountId) throws LogicException {
         MessageDao messageDao = new MessageDao();
         try {
@@ -32,6 +40,12 @@ public class MessageLogic {
         }
     }
 
+    /**
+     * Finds all messages that this user has already sent.
+     * @param accountId user's account id
+     * @return list of messages
+     * @throws LogicException if DBException occurred.
+     */
     public ArrayList<Message> findSentMessages(int accountId) throws LogicException {
         MessageDao messageDao = new MessageDao();
         try {
@@ -41,6 +55,12 @@ public class MessageLogic {
         }
     }
 
+    /**
+     * Finds all messages that this user has not already read or marked.
+     * @param accountId user's account id
+     * @return list of messages
+     * @throws LogicException if DBException occurred.
+     */
     public ArrayList<Message> findNewMessages(int accountId) throws LogicException {
         MessageDao messageDao = new MessageDao();
         try {
@@ -50,6 +70,12 @@ public class MessageLogic {
         }
     }
 
+    /**
+     * Sets new message already read status
+     * @param messageId message id
+     * @param isRead true if message is already read, false otherwise
+     * @throws LogicException if DBException occurred.
+     */
     public void markMessageRead(int messageId, boolean isRead) throws LogicException {
         MessageDao messageDao = new MessageDao();
         try {
@@ -59,6 +85,11 @@ public class MessageLogic {
         }
     }
 
+    /**
+     * Removes message from data base.
+     * @param messageId message id
+     * @throws LogicException if DBException occurred.
+     */
     public void deleteMessage(int messageId) throws LogicException {
         MessageDao messageDao = new MessageDao();
         try {
@@ -68,6 +99,12 @@ public class MessageLogic {
         }
     }
 
+    /**
+     * Finds receiver login.
+     * @param messageId message id
+     * @return receiver login
+     * @throws LogicException if DBException occurred.
+     */
     public String findReceiverLogin(int messageId) throws LogicException {
         MessageDao messageDao = new MessageDao();
         try {
@@ -77,6 +114,12 @@ public class MessageLogic {
         }
     }
 
+    /**
+     * Finds sender login.
+     * @param messageId message id
+     * @return sender login
+     * @throws LogicException if DBException occurred.
+     */
     public String findSenderLogin(int messageId) throws LogicException {
         MessageDao messageDao = new MessageDao();
         try {
@@ -86,6 +129,13 @@ public class MessageLogic {
         }
     }
 
+    /**
+     * Sends message and registers it in data base.
+     * @param text message text
+     * @param receiverLogin receiver login
+     * @param accountId sender's account id
+     * @throws LogicException if there is no receiver with such login or DBException occurred.
+     */
     public void sendMessage(String text, String receiverLogin, int accountId) throws LogicException {
         LocalDateTime now = LocalDateTime.now();
         DateTimeFormatter format = DateTimeFormatter.ofPattern(DATE_TIME_REGEX);
@@ -94,7 +144,7 @@ public class MessageLogic {
         AccountLogic accountLogic = new AccountLogic();
         int receiverId;
         try {
-            receiverId = accountLogic.getIdByLogin(receiverLogin);
+            receiverId = accountLogic.findIdByLogin(receiverLogin);
         } catch (LogicException e) {
             throw new LogicException("Error while finding receiverId" + e);
         }

@@ -8,7 +8,9 @@ import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
 /**
- * Here could be your advertisement +375 29 3880490
+ * ConfigurationManager class provides functionality for getting properties strings.
+ * @since %G%
+ * @version %I%
  */
 public class ConfigurationManager {
     static Logger logger = LogManager.getLogger(ConfigurationManager.class);
@@ -26,6 +28,11 @@ public class ConfigurationManager {
         }
     }
 
+    /**
+     * Gets string from configuration properties file.
+     * @param key property key
+     * @return property value
+     */
     public static String getProperty(String key) {
         return configurationManager.resourceBundle.getString(key);
     }

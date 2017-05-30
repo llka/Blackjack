@@ -17,13 +17,25 @@ import java.math.BigDecimal;
 import java.util.List;
 
 /**
- * Here could be your advertisement +375 29 3880490
+ * AccountLogic class provides functionality for Account class.
+ * @see Account
+ * @since %G%
+ * @version %I%
  */
 public class AccountLogic {
     static Logger logger = LogManager.getLogger(AccountLogic.class);
 
     public AccountLogic() {}
 
+    /**
+     * Checks if there is account in data base with this params.
+     * @param loginOrEmail login or email
+     * @param password password
+     * @return <code>true</code> if loginOrEmail and password
+     *         are correct appropriate account exists;
+     *         <code>false</code> otherwise.
+     * @throws LogicException If a DBException occurred.
+     */
     public boolean checkLogIn(String loginOrEmail, String password) throws LogicException {
         AccountDao accountDao = new AccountDao();
         if (AccountValidator.validateAuthorization(loginOrEmail, password)) {
@@ -43,6 +55,24 @@ public class AccountLogic {
         }
     }
 
+    /**
+     * Inserts new user in data base.
+     * @param firstName visitor's name
+     * @param lastName visitor's surname
+     * @param email visitor's unique email address
+     * @param login visitor's unique login
+     * @param password visitor's password
+     * @param birthDate visitor's real birth date
+     * @param gender visitor's gender type
+     * @param avatar path to avatar file
+     * @param inviteCode invite code
+     * @return <code>LogicResult.OK</code> if all params are correct;
+     *         <code>LogicResult.EMAIL_UNUNIQUE</code> if this email was already used;
+     *         <code>LogicResult.LOGIN_UNUNIQUE</code> if this login was already used;
+     *         <code>LogicResult.REGISTER_INVITE_WRONG</code> if this invite code do not exists;
+     *         <code>LogicResult.FAILED</code> otherwise.
+     * @throws LogicException If a DBException occurred.
+     */
     public LogicResult register(String firstName, String lastName, String email, String login, String password,
                                 String birthDate, String gender, String avatar, String inviteCode) throws LogicException {
         AccountDao accountDao = new AccountDao();
@@ -80,7 +110,13 @@ public class AccountLogic {
         return logicResult;
     }
 
-    public Account getAccountByAuthorization(String loginOrEmail) throws LogicException {
+    /**
+     * Loads an account from data base using loginOrEmail.
+     * @param loginOrEmail visitor's unique email or login
+     * @return account
+     * @throws LogicException If a DBException occurred.
+     */
+    public Account loadAccountByAuthorization(String loginOrEmail) throws LogicException {
         AccountDao accountDao = new AccountDao();
         try {
             Account account = accountDao.getAccountByAuthorization(loginOrEmail);
@@ -90,7 +126,13 @@ public class AccountLogic {
         }
     }
 
-    public Account getAccountByLogin(String login) throws LogicException {
+    /**
+     * Loads an account from data base using login.
+     * @param login visitor's unique login
+     * @return account
+     * @throws LogicException If a DBException occurred.
+     */
+    public Account loadAccountByLogin(String login) throws LogicException {
         AccountDao accountDao = new AccountDao();
         try {
             Account account = accountDao.getAccountByLogin(login);
@@ -100,7 +142,13 @@ public class AccountLogic {
         }
     }
 
-    public Account getAccountById(int id) throws LogicException {
+    /**
+     * Loads an account from data base using id.
+     * @param id account id number
+     * @return account
+     * @throws LogicException If a DBException occurred.
+     */
+    public Account loadAccountById(int id) throws LogicException {
         AccountDao accountDao = new AccountDao();
         try {
             Account account = accountDao.getAccountById(id);
@@ -110,7 +158,13 @@ public class AccountLogic {
         }
     }
 
-    public List<Account> getAllAccounts(int accountId) throws LogicException {
+    /**
+     * Loads all accounts except account with this id from data base.
+     * @param accountId admin id
+     * @return accounts list
+     * @throws LogicException If a DBException occurred.
+     */
+    public List<Account> loadAllAccounts(int accountId) throws LogicException {
         AccountDao accountDao = new AccountDao();
         try {
             List<Account> accounts = accountDao.loadAllAccounts(accountId);
@@ -120,7 +174,13 @@ public class AccountLogic {
         }
     }
 
-    public List<Account> getAllAdmins(int accountId) throws LogicException {
+    /**
+     * Loads all accounts with admin role except account with this id
+     * @param accountId admin id
+     * @return account list
+     * @throws LogicException If a DBException occurred.
+     */
+    public List<Account> loadAllAdmins(int accountId) throws LogicException {
         AccountDao accountDao = new AccountDao();
         try {
             List<Account> accounts = accountDao.loadAllAdmins(accountId);
@@ -130,6 +190,12 @@ public class AccountLogic {
         }
     }
 
+    /**
+     * Changes user's first name.
+     * @param accountId user account id number
+     * @param name new name
+     * @throws LogicException If a DBException occurred.
+     */
     public void changeFirstName(int accountId, String name) throws LogicException {
         AccountDao accountDao = new AccountDao();
         try {
@@ -139,6 +205,12 @@ public class AccountLogic {
         }
     }
 
+    /**
+     * Changes user's last name.
+     * @param accountId user account id number
+     * @param name new last name
+     * @throws LogicException If a DBException occurred.
+     */
     public void changeLastName(int accountId, String name) throws LogicException {
         AccountDao accountDao = new AccountDao();
         try {
@@ -148,6 +220,15 @@ public class AccountLogic {
         }
     }
 
+    /**
+     * Changes user's email address.
+     * @param accountId user account id number
+     * @param email new email address
+     * @return <code>INVALID_EMAIL</code> if new email has invalid symbols;
+     *         <code>EMAIL_UNUNIQUE</code> if new email is already used;
+     *         <code>OK</code> otherwise.
+     * @throws LogicException If a DBException occurred.
+     */
     public LogicResult changeEmail(int accountId, String email) throws LogicException {
         AccountDao accountDao = new AccountDao();
         try {
@@ -164,6 +245,15 @@ public class AccountLogic {
         }
     }
 
+    /**
+     * Changes user's login.
+     * @param accountId user account id number
+     * @param login new unique login
+     * @return <code>INVALID_LOGIN</code> if new login has invalid symbols;
+     *         <code>LOGIN_UNUNIQUE</code> if new login is already used;
+     *         <code>OK</code> otherwise.
+     * @throws LogicException If a DBException occurred.
+     */
     public LogicResult changeLogin(int accountId, String login) throws LogicException {
         AccountDao accountDao = new AccountDao();
         try {
@@ -180,6 +270,14 @@ public class AccountLogic {
         }
     }
 
+    /**
+     * Changes user's password.
+     * @param accountId user account id number
+     * @param password new password
+     * @return <code>INVALID_PASSWORD</code> if new password has invalid symbols;
+     *         <code>OK</code> otherwise.
+     * @throws LogicException If a DBException occurred.
+     */
     public LogicResult changePassword(int accountId, String password) throws LogicException {
         AccountDao accountDao = new AccountDao();
         try {
@@ -195,6 +293,15 @@ public class AccountLogic {
         }
     }
 
+    /**
+     * Verifies this pay card.
+     * @param account user's account object
+     * @param name name and surname as on the pay card
+     * @param timeLeft month number
+     * @return <code>WRONG_NAME</code> if name is wrong;
+     *         <code>UNAVALIABLE_CARD</code> if month number is below one;
+     *         <code>OK</code> otherwise.
+     */
     public LogicResult checkPayCard(Account account, String name, int timeLeft){
         String realName = account.getFirstName() + " " + account.getLastName();
         if(!name.toUpperCase().equals(realName.toUpperCase())){
@@ -207,6 +314,12 @@ public class AccountLogic {
         }
     }
 
+    /**
+     * Adds amount to user's balance.
+     * @param accountId user account id number
+     * @param amount money to add
+     * @throws LogicException If a DBException occurred.
+     */
     public void addToBalance(int accountId, BigDecimal amount) throws LogicException {
         AccountDao accountDao = new AccountDao();
         try {
@@ -217,6 +330,12 @@ public class AccountLogic {
         }
     }
 
+    /**
+     * Sets new balance value
+     * @param accountId user account id number
+     * @param balance new balance size
+     * @throws LogicException If a DBException occurred.
+     */
     public void changeBalance(int accountId, BigDecimal balance) throws LogicException{
         AccountDao accountDao = new AccountDao();
         try {
@@ -226,6 +345,12 @@ public class AccountLogic {
         }
     }
 
+    /**
+     * Changes avatar image
+     * @param accountId user account id number
+     * @param img path to new image
+     * @throws LogicException If a DBException occurred.
+     */
     public void changeAvatar(int accountId, String img) throws LogicException {
         AccountDao accountDao = new AccountDao();
         try {
@@ -235,30 +360,52 @@ public class AccountLogic {
         }
     }
 
+    /**
+     * Sorts accounts by the amount of the lost money - money, that casino has won.
+     * @param accounts list of accounts to sort
+     */
     public void sortByProfit(List<Account> accounts){
         accounts.sort(new ProfitComparator().
                 thenComparing(new HandsWonComparator().
                         thenComparing(new RatingComparator())));
     }
 
+    /**
+     * Sorts accounts by their rating increase
+     * @param accounts list of accounts to sort
+     */
     public void sortByRating(List<Account> accounts){
         accounts.sort(new RatingComparator().
                 thenComparing(new ProfitComparator().
                         thenComparing(new HandsWonComparator())));
     }
 
+    /**
+     * Sorts accounts by hand won quantity increase
+     * @param accounts list of accounts to sort
+     */
     public void sortByHandsWon(List<Account> accounts){
         accounts.sort(new HandsWonComparator().
                 thenComparing(new ProfitComparator().
                         thenComparing(new RatingComparator())));
     }
 
+    /**
+     * Sorts accounts so, that first accounts with ban status.
+     * @param accounts list of accounts to sort
+     */
     public void sortByBanStatus(List<Account> accounts){
         accounts.sort(new BanComparator().
                 thenComparing(new ProfitComparator().
                         thenComparing(new RatingComparator())));
     }
 
+    /**
+     * Updates ban status of this user
+     * @param accountId user account id number
+     * @param isBanned new ban status
+     * @throws LogicException If a DBException occurred.
+     */
     public void banAccount(int accountId, boolean isBanned) throws LogicException{
         AccountDao accountDao = new AccountDao();
         try {
@@ -268,6 +415,11 @@ public class AccountLogic {
         }
     }
 
+    /**
+     * Bans every user, who wins more money than loose.
+     * @param accounts list of all accounts
+     * @throws LogicException If a DBException occurred.
+     */
     public void globalBan(List<Account> accounts) throws LogicException {
         AccountDao accountDao = new AccountDao();
         for (Account account : accounts) {
@@ -283,6 +435,12 @@ public class AccountLogic {
         }
     }
 
+    /**
+     * Updates admin status
+     * @param accountId user account id number
+     * @param isAdmin new admin status of this account
+     * @throws LogicException If a DBException occurred.
+     */
     public void setAdminRole(int accountId, boolean isAdmin) throws LogicException{
         AccountDao accountDao = new AccountDao();
         try {
@@ -292,6 +450,16 @@ public class AccountLogic {
         }
     }
 
+    /**
+     * Updates user's statistics.
+     * @param accountId user account id number
+     * @param played number of games played
+     * @param handsWon number of games won
+     * @param moneySpend amount of money was loosed
+     * @param moneyWon amount of money was won
+     * @param rating new rating
+     * @throws LogicException If a DBException occurred.
+     */
     public void changeStatistics(int accountId, int played, int handsWon, BigDecimal moneySpend, BigDecimal moneyWon, int rating) throws LogicException {
         AccountDao accountDao = new AccountDao();
         try {
@@ -301,7 +469,13 @@ public class AccountLogic {
         }
     }
 
-    public int getIdByLogin(String login) throws LogicException {
+    /**
+     * Loads user's account id number.
+     * @param login user's login
+     * @return user account id number
+     * @throws LogicException if a DBException occurred.
+     */
+    public int findIdByLogin(String login) throws LogicException {
         AccountDao accountDao = new AccountDao();
         try {
             return accountDao.loadIdByLogin(login);
@@ -310,6 +484,13 @@ public class AccountLogic {
         }
     }
 
+    /**
+     * Checks if there is an account with such login
+     * @param login login of account to check
+     * @return <code>true</code> account was found successfully;
+     *         <code>false</code> otherwise.
+     * @throws LogicException if a DBException occurred.
+     */
     public boolean checkLoginExistence(String login) throws LogicException {
         AccountDao accountDao = new AccountDao();
         try {

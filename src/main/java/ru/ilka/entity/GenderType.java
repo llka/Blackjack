@@ -1,7 +1,10 @@
 package ru.ilka.entity;
 
 /**
- * Here could be your advertisement +375 29 3880490
+ * Enumerates basic human gender types
+ * @see Account
+ * @since %G%
+ * @version %I%
  */
 public enum GenderType {
     MALE,

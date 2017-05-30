@@ -123,7 +123,7 @@ public class RegisterCommand implements ActionCommand {
                 page = ConfigurationManager.getProperty(PAGE_MAIN);
                 Account account;
                 try {
-                    account = accountLogic.getAccountByLogin(login);
+                    account = accountLogic.loadAccountByLogin(login);
                 } catch (LogicException e) {
                     throw new CommandException("Error in register command with account loading " + e);
                 }

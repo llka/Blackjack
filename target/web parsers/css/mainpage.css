@@ -1,0 +1,33 @@
+@media only screen and (max-width: 500px) {
+    .buttonCenter button{
+        border-radius: 3px;
+        font-size: 10px;
+        padding: 5px;
+        width: auto;
+    }
+}
+
+.buttonCenter{
+    text-align: center;
+    margin-bottom: 2%;
+}
+.buttonCenter a{
+    text-decoration: none;
+    display: block;
+    margin: auto;
+}
+
+.description h2{
+    padding: 10px;
+    text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+p{
+    padding-left: 25px;
+    padding-right: 25px;
+}
+.lastLi{
+    padding-bottom: 20px;
+}
+

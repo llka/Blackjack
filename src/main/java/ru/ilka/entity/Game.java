@@ -1,9 +1,12 @@
 package ru.ilka.entity;
 
 /**
- * Here could be your advertisement +375 29 3880490
+ * Game is a base class for all card games with bets
+ * @see Deal
+ * @since %G%
+ * @version %I%
  */
-public class Game {
+public class Game implements IDatabaseEntity {
     private int gameId;
     private double bet;
     private int playerAccountId;

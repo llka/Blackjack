@@ -17,11 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentSkipListSet;
 
 import static ru.ilka.controller.ControllerConstants.*;
 
@@ -54,7 +50,7 @@ public class LogInCommand implements ActionCommand {
             if(accountLogic.checkLogIn(emailOrLogin, password)) {
                 Account account = null;
                 try {
-                    account = accountLogic.getAccountByAuthorization(emailOrLogin);
+                    account = accountLogic.loadAccountByAuthorization(emailOrLogin);
                 } catch (LogicException e) {
                     logger.error("Error in login command with account loading " + e);
                 }

@@ -14,7 +14,9 @@ import java.io.IOException;
 import static ru.ilka.controller.ControllerConstants.VISITOR_KEY;
 
 /**
- * Here could be your advertisement +375 29 3880490
+ * Filter that forbids unregistered visitors use this system.
+ * @since %G%
+ * @version %I%
  */
 @WebFilter(filterName = "GuestAccessFilter", urlPatterns = {"/jsp/guest/*"}, dispatcherTypes = {DispatcherType.FORWARD, DispatcherType.REQUEST})
 public class GuestAccessFilter implements Filter {
@@ -35,7 +37,6 @@ public class GuestAccessFilter implements Filter {
         Visitor visitor = (Visitor) request.getSession().getAttribute(VISITOR_KEY);
 
         if(!visitor.getRole().equals(Visitor.Role.GUEST)){
-            logger.debug("GuestAccessFilter " + visitor);
             String page = ConfigurationManager.getProperty(PAGE_MAIN);
             ServletContext servletContext = filterConfig.getServletContext();
             RequestDispatcher dispatcher = servletContext.getRequestDispatcher(page);

@@ -3,7 +3,9 @@ package ru.ilka.logic;
 import ru.ilka.entity.Account;
 
 /**
- * Here could be your advertisement +375 29 3880490
+ * StatisticsLogic class provides functionality for calculating static's params.
+ * @since %G%
+ * @version %I%
  */
 public class StatisticsLogic {
 
@@ -13,6 +15,11 @@ public class StatisticsLogic {
     public StatisticsLogic() {
     }
 
+    /**
+     * Calculates player's rating according to his achievements.
+     * @param account player's account.
+     * @return rating number.
+     */
     public int calculateRating(Account account){
         int rating = 0;
         if(account.getHandsPlayed() > 0) {

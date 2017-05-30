@@ -10,7 +10,9 @@ import javax.servlet.jsp.tagext.TagSupport;
 import java.util.ArrayList;
 
 /**
- * Here could be your advertisement +375 29 3880490
+ * NewMessageTag loads newest message to be displayed if visitor wants.
+ * @since %G%
+ * @version %I%
  */
 public class NewMessageTag extends TagSupport{
     static Logger logger = LogManager.getLogger(NewMessageTag.class);

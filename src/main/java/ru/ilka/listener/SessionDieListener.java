@@ -12,12 +12,10 @@ import static ru.ilka.controller.ControllerConstants.ONLINE_USERS_KEY;
 import static ru.ilka.controller.ControllerConstants.VISITOR_KEY;
 
 /**
- * Here could be your advertisement +375 29 3880490
+ * Shows when user logs out or is inactive too long.
  */
 public class SessionDieListener implements HttpSessionListener {
     static Logger logger = LogManager.getLogger(SessionDieListener.class);
-
-    private static final String PAGE_LOGIN = "path.page.login";
 
     @Override
     public void sessionCreated(HttpSessionEvent event) {

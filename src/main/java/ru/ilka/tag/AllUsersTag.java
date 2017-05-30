@@ -11,7 +11,9 @@ import java.math.BigDecimal;
 import java.util.List;
 
 /**
- * Here could be your advertisement +375 29 3880490
+ * AllUsersTag displays all accounts in one table.
+ * @since %G%
+ * @version %I%
  */
 public class AllUsersTag extends TagSupport {
     static Logger logger = LogManager.getLogger(AllUsersTag.class);

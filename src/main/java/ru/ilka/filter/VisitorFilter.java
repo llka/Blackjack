@@ -17,7 +17,9 @@ import java.util.List;
 import static ru.ilka.controller.ControllerConstants.*;
 
 /**
- * Here could be your advertisement +375 29 3880490
+ * Checks if visitor has appropriate role in this system.
+ * @since %G%
+ * @version %I%
  */
 @WebFilter(filterName = "VisitorFilter", urlPatterns = { "/*" })
 public class VisitorFilter implements Filter {

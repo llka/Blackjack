@@ -28,7 +28,9 @@ import java.sql.SQLException;
 import static ru.ilka.controller.ControllerConstants.CANCEL_TIMER_FIELD;
 
 /**
- * Here could be your advertisement +375 29 3880490
+ * Responsible for processing system events.
+ * @since %G%
+ * @version %I%
  */
 @WebServlet(urlPatterns = "/controller", name = "Controller")
 @MultipartConfig(
@@ -79,8 +81,8 @@ public class Controller extends HttpServlet {
             refer to classes loaded by the that webapp's ClassLoader. This prevents the ClassLoader from being
             garbage collected, and hence all the class definitions remain in memory.
 
-            The statement cancellation timer is implemented as a static attribute of type java.util.
-            Timer within the ConnectionImpl class. When this class gets loaded the timer is initialized via a static
+            The statement cancellation timer is implemented as a static attribute of type java.util.Timer
+            within the ConnectionImpl class. When this class gets loaded the timer is initialized via a static
             initialization block. Behind the scenes the JVM starts a thread to service timer tasks.
 
             When you unload your webapp, the cancellation timer thread does not terminate.
@@ -93,7 +95,7 @@ public class Controller extends HttpServlet {
                 f.setAccessible(true);
                 Timer timer = (Timer) f.get(null);
                 timer.cancel();
-            } catch (NoSuchFieldException  | IllegalAccessException e) {
+            } catch (NoSuchFieldException | IllegalAccessException e) {
                 logger.error("Error in MySQL Statement Cancellation Timer closing" + e);
             }
         }

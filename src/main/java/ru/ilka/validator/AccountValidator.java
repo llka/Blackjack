@@ -1,7 +1,9 @@
 package ru.ilka.validator;
 
 /**
- * Here could be your advertisement +375 29 3880490
+ * AccountValidator class provides functionality for validating strings which take part in account creating.
+ * @since %G%
+ * @version %I%
  */
 public class AccountValidator {
     private static final String LOGIN_REGEX = "[a-zA-Z0-9_]{4,45}";

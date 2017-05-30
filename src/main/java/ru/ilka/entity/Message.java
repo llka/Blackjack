@@ -1,9 +1,12 @@
 package ru.ilka.entity;
 
 /**
- * Here could be your advertisement +375 29 3880490
+ * Message object encapsulates the state information needed for users communicating
+ * @see Account
+ * @since %G%
+ * @version %I%
  */
-public class Message {
+public class Message implements IDatabaseEntity {
     private int messageId;
     private int senderId;
     private int receiverId;

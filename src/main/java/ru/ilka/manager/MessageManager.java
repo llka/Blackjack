@@ -10,7 +10,9 @@ import java.util.ResourceBundle;
 import static ru.ilka.controller.ControllerConstants.DEFAULT_LOCALE;
 
 /**
- * Here could be your advertisement +375 29 3880490
+ * MessageManager class provides functionality for getting properties strings from properties.messages .
+ * @since %G%
+ * @version %I%
  */
 public class MessageManager {
     static Logger logger = LogManager.getLogger(MessageManager.class);
@@ -28,6 +30,12 @@ public class MessageManager {
         }
     }
 
+     /**
+     * Gets string from messages properties file.
+     * @param key property key
+     * @param locale current locale
+     * @return property value
+     */
     public static String getProperty(String key, Locale locale) {
         if (locale != null) {
             if (!messageManager.currentLocale.equals(locale)) {

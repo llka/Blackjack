@@ -12,7 +12,9 @@ import java.util.Collections;
 
 
 /**
- * Here could be your advertisement +375 29 3880490
+ * LoadMessagesTag loads received and sent messages to be displayed if visitor wants.
+ * @since %G%
+ * @version %I%
  */
 public class LoadMessagesTag extends TagSupport {
     static Logger logger = LogManager.getLogger(TagSupport.class);

@@ -34,7 +34,7 @@ public class BanUsersCommand implements ActionCommand {
         Account selfAccount = (Account) session.getAttribute(ACCOUNT_KEY);
         AccountLogic accountLogic = new AccountLogic();
         try {
-            List<Account> accounts = accountLogic.getAllAccounts(selfAccount.getAccountId());
+            List<Account> accounts = accountLogic.loadAllAccounts(selfAccount.getAccountId());
             for (Account account : accounts) {
                 if(BAN_CHECKBOX.equals(request.getParameter(String.valueOf(account.getAccountId()))) && !account.isBan()){
                     accountLogic.banAccount(account.getAccountId(),true);

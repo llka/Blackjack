@@ -1,7 +1,9 @@
 package ru.ilka.exception;
 
 /**
- * Here could be your advertisement +375 29 3880490
+ * Thrown to indicate that operation in logic layer failed.
+ * @since %G%
+ * @version %I%
  */
 public class LogicException extends Exception{
     public LogicException() {

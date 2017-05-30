@@ -1,0 +1,358 @@
+@media screen and (max-width: 600px) {
+    .description .table {
+        height: 233px;
+    }
+    .description .button {
+        border-radius: 2px;
+        font-size: 10px;
+        padding: 5px;
+        width: auto;
+        margin: 5px;
+    }
+    .description .bet input{
+        width: 35px;
+        border-radius: 3px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .description .card11{
+        left: 29%;
+        top: 62%;
+        height: 54px;
+        width: 36px;
+    }
+    .description .card12{
+        left: 30%;
+        top: 62%;
+        height: 54px;
+        width: 36px;
+    }
+    .description .card13{
+        left: 31%;
+        top: 62%;
+        height: 54px;
+        width: 36px;
+    }
+    .description .card21{
+        left: 46%;
+        top: 66%;
+        height: 54px;
+        width: 36px;
+    }
+    .description .card22{
+        left: 47%;
+        top: 66%;
+        height: 54px;
+        width: 36px;
+    }
+    .description .card23{
+        left: 48%;
+        top: 66%;
+        height: 54px;
+        width: 36px;
+    }
+    .description .card31{
+        left: 64%;
+        top: 62%;
+        height: 54px;
+        width: 36px;
+    }
+    .description .card32{
+        left: 65%;
+        top: 62%;
+        height: 54px;
+        width: 36px;
+    }
+    .description .card33{
+        left: 66%;
+        top: 62%;
+        height: 54px;
+        width: 36px;
+    }
+    .description .cardNumber {
+        font-size: 12px;
+    }
+    .description .cardNumberDown {
+        font-size: 12px;
+    }
+    .description .cardSuit .spades {
+        height: 20px;
+    }
+    .description .cardSuit .clubs{
+        height: 20px;
+    }
+    .description .cardSuit .hearts{
+        height: 20px;
+    }
+    .description .cardSuit .diamonds{
+        height: 20px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .description .table {
+        height: 150px;
+    }
+    .description .card11{
+        left: 28%;
+        top: 56%;
+        height: 54px;
+        width: 36px;
+    }
+    .description .card21{
+        left: 45%;
+        top: 60%;
+        height: 54px;
+        width: 36px;
+    }
+    .description .card31{
+        left: 62%;
+        top: 56%;
+        height: 54px;
+        width: 36px;
+    }
+    .description .cardNumber {
+        font-size: 12px;
+    }
+    .description .cardNumberDown {
+        font-size: 12px;
+    }
+    .description .cardSuit .spades {
+        height: 20px;
+    }
+    .description .cardSuit .clubs{
+        height: 20px;
+    }
+    .description .cardSuit .hearts{
+        height: 20px;
+    }
+    .description .cardSuit .diamonds{
+        height: 20px;
+    }
+}
+@media screen and (max-width: 330px) {
+    .description .DealerCard1{
+        left: 46%;
+        top: 56.5%;
+    }
+    .description .DealerCard2{
+        left: 48%;
+        top: 55%;
+    }
+    .description .card11{
+        left: 28%;
+        top: 66%;
+    }
+    .description .card12{
+        left: 28%;
+        top: 66%;
+    }
+    .description .card13{
+        left: 28%;
+        top: 66%;
+    }
+    .description .card21{
+        left: 45%;
+        top: 69%;
+    }
+    .description .card22{
+        left: 45%;
+        top: 69%;
+    }
+    .description .card23{
+        left: 45%;
+        top: 69%;
+    }
+    .description .card31{
+        left: 62%;
+        top: 66%;
+    }
+    .description .card32{
+        left: 62%;
+        top: 66%;
+    }
+    .description .card33{
+        left: 62%;
+        top: 66%;
+    }
+    .description .bet input {
+        width: 20px;
+        border-radius: 3px;
+        font-size: 8px;
+    }
+    .description .gameButton{
+        font-size: 8px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+        width: initial;
+        margin: 2px;
+    }
+    .description .actionButtons{
+        width: 62px;
+    }
+    .description .balanceRow .balanceVal{
+        font-size: 8px;
+    }
+}
+
+.table{
+    height: 461px;
+    background: url(../image/blackjack_table_dark.png) center no-repeat;
+    background-size: contain;
+    z-index: 1;
+}
+
+.points{
+    text-align: center;
+    font-size: 12px;
+    padding-top: 7px;
+}
+#points0{
+    position: absolute;
+    left: 49%;
+    top: 90%;
+    z-index: 5;
+    font-weight: bold;
+}
+#points1{
+    position: absolute;
+    left: 32%;
+    top: 101%;
+    z-index: 5;
+}
+#points2{
+    position: absolute;
+    left: 49%;
+    top: 112%;
+    z-index: 5;
+}
+#points3{
+    position: absolute;
+    left: 66%;
+    top: 101%;
+    z-index: 5;
+}
+
+.bets{
+    display: flex;
+    justify-content: space-between;
+    z-index: 3;
+    width: 76%;
+    padding-left: 6%;
+    padding-right: 6%;
+    margin: auto;
+}
+.bet{
+    display: flex;
+    justify-content: space-between;
+}
+.bet input{
+    width: 45px;
+    border-radius: 5px;
+}
+.betForm{
+    margin-top: 10px;
+    width: 100%;
+}
+.error{
+    margin-top: 5px;
+    text-align: center;
+    color: #ff0b0b;
+    font-weight: 500;
+}
+.submit{
+    width: 70%;
+    margin: auto;
+    text-align: center;
+}
+.noMoney{
+    width: 100%;
+    text-align: center;
+}
+.noMoney a{
+    text-decoration: none;
+}
+
+.gameButtons{
+    width: 100%;
+}
+.insuranceButtons{
+    width: 76%;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+}
+.actionButtonsRow{
+    width: 76%;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+}
+.actionButtons{
+    display: flex;
+    justify-content: space-between;
+    width: 165px;
+}
+.balanceRow{
+    width: 100%;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+.balanceVal{
+    color: #f2f2f2;
+    font-size: 14px;
+    padding: 5px;
+    width: 20%;
+    text-align: center;
+}
+.newGameRow{
+
+}
+
+.dealReport{
+    padding-left: 18%;
+    padding-right: 18%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.betWin{
+    /*color: #2bf2ff;*/
+    color: #12d2fc;
+    font-size: 14px;
+    padding: 5px;
+}
+.betLoose{
+    color: #f9394f;
+    font-size: 14px;
+    padding: 5px;
+}
+.betDraw{
+    color: #f2f2f2;
+    font-size: 14px;
+    padding: 5px;
+    width: 46px;
+}
+
+.gameButton {
+    border-radius: 4px;
+    background-color: #009f6d;
+    border: none;
+    color: #F2F2F2;
+    text-align: center;
+    font-size: 14px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    width: 80px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+}
+.gameButton:active {
+    background-color: #04533d;
+}
+.gameButton:hover{
+    background-color: #04533d;
+}

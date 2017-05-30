@@ -22,7 +22,9 @@ import static ru.ilka.controller.ControllerConstants.AVATAR_DIRECTORY_STATIC;
 import static ru.ilka.controller.ControllerConstants.DEFAULT_AVATAR_DIRECTORY;
 
 /**
- * Here could be your advertisement +375 29 3880490
+ * Responsible for loading showing images
+ * @since %G%
+ * @version %I%
  */
 @WebServlet(urlPatterns = "/imageLoader", name = "LoadImageServlet")
 @MultipartConfig(

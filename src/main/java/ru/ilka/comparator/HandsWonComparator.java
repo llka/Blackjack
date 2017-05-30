@@ -5,7 +5,7 @@ import ru.ilka.entity.Account;
 import java.util.Comparator;
 
 /**
- * Here could be your advertisement +375 29 3880490
+ * Compares accounts by hands won quantity
  */
 public class HandsWonComparator implements Comparator<Account> {
     @Override

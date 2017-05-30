@@ -3,11 +3,28 @@ package ru.ilka.entity;
 import java.util.Locale;
 
 /**
- * Here could be your advertisement +375 29 3880490
+ * A Visitor object encapsulates the state information of random system visitor independently of his role
+ * @see Account
+ * @since %G%
+ * @version %I%
  */
 public class Visitor {
+    /**
+     * Roles that can be used
+     */
     public enum Role {
-        ADMIN, USER, GUEST
+        /**
+         * administrator is the most influential role
+         */
+        ADMIN,
+        /**
+         * ordinary registered visitor, all functions available
+         */
+        USER,
+        /**
+         * not registered visitor, can stay only on greeting page
+         */
+        GUEST
     }
 
     private Role role;

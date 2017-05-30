@@ -1,9 +1,12 @@
 package ru.ilka.entity;
 
 /**
- * Here could be your advertisement +375 29 3880490
+ * A GameSettings object encapsulates the state information needed for system working
+ * @see Game
+ * @since %G%
+ * @version %I%
  */
-public class GameSettings {
+public class GameSettings implements IDatabaseEntity {
     private int minBet;
     private int maxBet;
     private int numberOfDecks;

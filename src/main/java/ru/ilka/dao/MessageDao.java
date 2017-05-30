@@ -14,7 +14,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- * Here could be your advertisement +375 29 3880490
+ * MessageDao class is responsible for sending requests to the database and processing received answers.
+ * @since %G%
+ * @version %I%
  */
 public class MessageDao {
     static Logger logger = LogManager.getLogger(Message.class);

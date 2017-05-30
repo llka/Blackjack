@@ -10,7 +10,9 @@ import javax.servlet.jsp.tagext.TagSupport;
 import java.io.IOException;
 
 /**
- * Here could be your advertisement +375 29 3880490
+ * MessagesCountTag displays number of new received messages.
+ * @since %G%
+ * @version %I%
  */
 public class MessagesCountTag extends TagSupport {
     static Logger logger = LogManager.getLogger(MessagesCountTag.class);

@@ -11,7 +11,9 @@ import java.io.IOException;
 import static ru.ilka.controller.ControllerConstants.VISITOR_KEY;
 
 /**
- * Here could be your advertisement +375 29 3880490
+ * Filter that allows registered visitors get round this system.
+ * @since %G%
+ * @version %I%
  */
 @WebFilter(filterName = "UserAccessFilter", urlPatterns = { "/jsp/user/*"}, dispatcherTypes = {DispatcherType.FORWARD, DispatcherType.REQUEST})
 public class UserAccessFilter implements Filter {

@@ -1,7 +1,9 @@
 package ru.ilka.exception;
 
 /**
- * Here could be your advertisement +375 29 3880490
+ * Signals that connection pool was not used appropriately.
+ * @since %G%
+ * @version %I%
  */
 public class ConnPoolException extends Exception {
     public ConnPoolException() {

@@ -42,7 +42,7 @@ public class SendUsMessageCommand implements ActionCommand {
 
         List<Account> admins;
         try {
-            admins = accountLogic.getAllAdmins(accountId);
+            admins = accountLogic.loadAllAdmins(accountId);
         } catch (LogicException e) {
             throw new CommandException("Error while getting all admins " + e);
         }

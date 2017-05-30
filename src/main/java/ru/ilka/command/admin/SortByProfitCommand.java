@@ -33,7 +33,7 @@ public class SortByProfitCommand implements ActionCommand {
 
         List<Account> accounts;
         try {
-            accounts = accountLogic.getAllAccounts(selfAccount.getAccountId());
+            accounts = accountLogic.loadAllAccounts(selfAccount.getAccountId());
             accountLogic.sortByProfit(accounts);
         } catch (LogicException e) {
             throw new CommandException("Can't get all accounts " + e);

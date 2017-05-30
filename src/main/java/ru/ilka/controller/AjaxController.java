@@ -5,22 +5,19 @@ import org.apache.logging.log4j.Logger;
 import ru.ilka.command.ActionCommand;
 import ru.ilka.command.ActionFactory;
 import ru.ilka.exception.CommandException;
-import ru.ilka.manager.ConfigurationManager;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import static ru.ilka.controller.ControllerConstants.IN_GAME_KEY;
-
 /**
- * Here could be your advertisement +375 29 3880490
+ * Responsible for processing asynchronous system events
+ * @since %G%
+ * @version %I%
  */
 @WebServlet(urlPatterns = "/Ajax", name = "AjaxController")
 public class AjaxController extends HttpServlet {
@@ -28,7 +25,6 @@ public class AjaxController extends HttpServlet {
 
     private static final long serialVersionUID = 905242440943999308L;
     private static final String CONTENT_TYPE = "text/html";
-    private static final String PAGE_GAME = "path.page.game";
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
@@ -54,7 +50,7 @@ public class AjaxController extends HttpServlet {
                     printWriter.println(result);
                 }
             } catch (IOException e) {
-                logger.error("Can't write new card in ajax controller " + e);
+                logger.error("Problems in ajax controller " + e);
             }
         } catch (CommandException e) {
             logger.error("Error in command layer " + e);

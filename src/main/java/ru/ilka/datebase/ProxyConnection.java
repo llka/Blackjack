@@ -3,13 +3,23 @@ package ru.ilka.datebase;
 import java.sql.*;
 import java.util.Map;
 import java.util.Properties;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Executor;
 
 /**
- * Here could be your advertisement +375 29 3880490
+ * ProxyConnection class wraps connection and provides connection pool safety.
+ * @since %G%
+ * @version %I%
  */
 public class ProxyConnection implements Connection {
     private Connection connection;
+//    private ConcurrentHashMap<String, PreparedStatement> statements = new ConcurrentHashMap<>();
+//    PreparedStatement statement = statements.get(sql);
+//            if (statement == null) {
+//        statement = connection.prepareStatement(sql);
+//        statements.put(sql, statement);
+//    }
+//            return statement;
 
     ProxyConnection(Connection connection) {
         this.connection = connection;

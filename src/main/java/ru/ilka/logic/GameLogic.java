@@ -16,7 +16,11 @@ import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * Here could be your advertisement +375 29 3880490
+ * GameLogic class provides functionality for blackjack game.
+ * @see Game
+ * @see Deal
+ * @since %G%
+ * @version %I%
  */
 public class GameLogic {
     static Logger logger = LogManager.getLogger(GameLogic.class);
@@ -36,16 +40,30 @@ public class GameLogic {
     private ArrayList<Integer> alreadyUsed;
     private int numberOfDecks;
 
+    /**
+     * Constructor
+     * @param numberOfDecks number of decks playing in one deal
+     */
     public GameLogic(int numberOfDecks) {
         this.alreadyUsed = new ArrayList<>();
         this.numberOfDecks = numberOfDecks;
     }
 
+    /**
+     * Constructor
+     * @param alreadyUsed list of already dealt cards in this game
+     * @param numberOfDecks number of decks playing in one deal
+     */
     public GameLogic(ArrayList<Integer> alreadyUsed, int numberOfDecks) {
         this.alreadyUsed = alreadyUsed;
         this.numberOfDecks = numberOfDecks;
     }
 
+    /**
+     * Deals cards to player and dealer
+     * @param hands boolean array with true on positions, where cards needed
+     * @return list of hands
+     */
     public ArrayList<ArrayList<LogicResult>> dealCards(boolean[] hands){
 
         ArrayList<ArrayList<LogicResult>> cards = new ArrayList<>(hands.length);
@@ -79,6 +97,12 @@ public class GameLogic {
         return cards;
     }
 
+    /**
+     * Generates random card
+     * @param usedCards list of already dealt cards in this game
+     * @return random card
+     * @throws LogicException if card number gets out of bounds.
+     */
     public LogicResult dealCard(ArrayList<Integer> usedCards) throws LogicException {
         int card = ThreadLocalRandom.current().nextInt(CARDS_QUANTITY * numberOfDecks);
         if (!usedCards.isEmpty()) {
@@ -100,6 +124,13 @@ public class GameLogic {
         }
     }
 
+    /**
+     * Adds card to appropriate hand in this deal
+     * @param betPlace hand place
+     * @param deal this deal
+     * @param account player account
+     * @param writer result string
+     */
     public void hitCard(int betPlace, Deal deal, Account account, StringBuilder writer){
         try {
             LogicResult card = dealCard(alreadyUsed);
@@ -115,6 +146,11 @@ public class GameLogic {
         }
     }
 
+    /**
+     * Calculates points each hand has scored
+     * @param cards list of hands with cards
+     * @return list of points for each hand
+     */
     public ArrayList<Integer> countPoints(ArrayList<ArrayList<LogicResult>> cards){
         ArrayList<Integer> points = new ArrayList<>(cards.size());
         for (int i = 0; i < cards.size(); i++) {
@@ -124,6 +160,11 @@ public class GameLogic {
         return points;
     }
 
+    /**
+     * Calculates points this hand has scored
+     * @param hand list with cards
+     * @return number of points
+     */
     public int countPointsInHand(ArrayList<LogicResult> hand){
         int handPoints = 0;
         int aces = 0;
@@ -147,6 +188,12 @@ public class GameLogic {
         return handPoints;
     }
 
+    /**
+     * Checks if player get bust after hitting next card, concludes game if there is bust.
+     * @param betPlace hand number
+     * @param deal this deal
+     * @param account player's account
+     */
     public void checkForBust(int betPlace, Deal deal, Account account){
         ArrayList<ArrayList<LogicResult>> cards = deal.getCards();
         int handPoints = deal.getPoints().get(betPlace);
@@ -204,6 +251,12 @@ public class GameLogic {
         }
     }
 
+    /**
+     * Defines deal result for concrete hand after player decided to stand
+     * @param betPlace hand place
+     * @param deal this deal
+     * @param account player's account
+     */
     public void calculateGameResult(int betPlace, Deal deal, Account account){
         int handPoints = deal.getPoints().get(betPlace);
         int dealerPoints = deal.getPoints().get(0);
@@ -305,6 +358,14 @@ public class GameLogic {
         }
     }
 
+    /**
+     * Saves deal results.
+     * @param betPlace hand place
+     * @param result game result
+     * @param deal this deal
+     * @param account player's account
+     * @throws LogicException if unknown result or DBException occurred.
+     */
     public void concludeGame(int betPlace, LogicResult result, Deal deal, Account account) throws LogicException {
         GameDao gameDao = new GameDao();
         AccountLogic accountLogic = new AccountLogic();
@@ -412,6 +473,12 @@ public class GameLogic {
         }
     }
 
+    /**
+     * checks if game is still not finished
+     * @param deal this deal
+     * @return <code>true</code> if user is playing now
+     *         <code>false</code> otherwise.
+     */
     public boolean isUserInGame(Deal deal){
         boolean inGame = false;
         ArrayList<Double> bets = deal.getBets();
@@ -423,6 +490,12 @@ public class GameLogic {
         return inGame;
     }
 
+    /**
+     * Checks if dealer achieved 21 point and suggests insurance in this case.
+     * @param deal this deal
+     * @param writer result string
+     * @throws LogicException if LogicException occurred.
+     */
     public void checkForInsurance(Deal deal, StringBuilder writer) throws LogicException {
         ArrayList<ArrayList<LogicResult>> cards = deal.getCards();
         ArrayList<Double> bets = deal.getBets();
@@ -437,6 +510,11 @@ public class GameLogic {
         }
     }
 
+    /**
+     * Shows action buttons such as hit or stand.
+     * @param deal this deal
+     * @param writer result string
+     */
     public void suggestActionButtons(Deal deal, StringBuilder writer){
         ArrayList<Integer> points = deal.getPoints();
         ArrayList<ArrayList<LogicResult>> cards = deal.getCards();
@@ -460,6 +538,10 @@ public class GameLogic {
         writer.append("</div>\n");
     }
 
+    /**
+     * Shows new game button.
+     * @param writer result string
+     */
     public void suggestNewGame(StringBuilder writer){
         writer.append("<div class=\"submit\">\n");
         writer.append("<form id=\"newGameForm\" method=\"POST\" action=\"/controller\">\n");
@@ -469,6 +551,12 @@ public class GameLogic {
         writer.append("</div>\n");
     }
 
+    /**
+     * Shows all dealer cards and game result.
+     * @param deal this deal
+     * @param writer result string
+     * @throws LogicException if unknown game result occurred.
+     */
     public void writeDealerCards(Deal deal, StringBuilder writer) throws LogicException {
         ArrayList<ArrayList<LogicResult>> cards = deal.getCards();
         writer.append("<div class=\"DealerCard1\">\n");
@@ -528,6 +616,11 @@ public class GameLogic {
         writer.append("</div>\n");
     }
 
+    /**
+     * Shows first dealt 2 cars for every playing hand.
+     * @param deal this deal
+     * @param writer result string
+     */
     public void showFirstCards(Deal deal, StringBuilder writer){
         ArrayList<ArrayList<LogicResult>> cards = deal.getCards();
         ArrayList<Integer> points = deal.getPoints();
@@ -553,14 +646,27 @@ public class GameLogic {
         }
     }
 
+    /**
+     * Getter for already dealt cards.
+     * @return already dealt cards list
+     */
     public ArrayList<Integer> getAlreadyUsed() {
         return alreadyUsed;
     }
 
+    /**
+     * Sets already dealt cards.
+     * @param alreadyUsed already dealt cards list
+     */
     public void setAlreadyUsed(ArrayList<Integer> alreadyUsed) {
         this.alreadyUsed = alreadyUsed;
     }
 
+    /**
+     * Shows insurance buttons.
+     * @param bets list of bets in this deal
+     * @param writer result string
+     */
     private void suggestInsuranceButtons(ArrayList<Double> bets, StringBuilder writer){
         writer.append("<div class=\"insuranceButtons\" id = \"insuranceButtons\">\n");
         for (int i = 1; i < bets.size() + 1 ; i++) {
@@ -578,6 +684,11 @@ public class GameLogic {
         writer.append("</div>\n");
     }
 
+    /**
+     * Shows surrender buttons.
+     * @param bets list of bets in this deal
+     * @param writer result string
+     */
     private void suggestSurrenderButtons(ArrayList<Double> bets, StringBuilder writer){
         writer.append("<div class=\"insuranceButtons\" id = \"surrenderButtons\">\n");
         for (int i = 1; i < bets.size() + 1 ; i++) {
@@ -595,6 +706,11 @@ public class GameLogic {
         writer.append("</div>\n");
     }
 
+    /**
+     * Shows playing card.
+     * @param resultCard card
+     * @param writer result string
+     */
     private void writeCard(LogicResult resultCard, StringBuilder writer){
         String card = resultCard.toString();
         char suit = card.charAt(card.length()-1);
@@ -632,12 +748,24 @@ public class GameLogic {
         writer.append("</div>\n");
     }
 
+    /**
+     * Shows points hand achieved.
+     * @param points number of points
+     * @param betPlace place of this hand
+     * @param writer result string
+     */
     private void writePoints(int points,int betPlace, StringBuilder writer){
         writer.append("<div class=\"points\" id=\"points" + betPlace + "\">");
         writer.append(points);
         writer.append("</div>\n");
     }
 
+    /**
+     * Calculates card rank.
+     * @param resultCard playing card
+     * @return number of points this card costs.
+     * @throws LogicException if unknown card occurred.
+     */
     private int findCardRank(LogicResult resultCard) throws LogicException {
         String card = resultCard.toString();
         if(card.length() == 9){
@@ -662,6 +790,12 @@ public class GameLogic {
         }
     }
 
+    /**
+     * Finds a card corresponding to a random generated number.
+     * @param number random generated number from 0 to 52
+     * @return playing card LogicResult
+     * @throws LogicException if number is out of bounds.
+     */
     private LogicResult getCard(int number) throws LogicException {
         switch (number){
             case 1:

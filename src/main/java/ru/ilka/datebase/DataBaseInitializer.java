@@ -7,7 +7,9 @@ import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
 /**
- * Here could be your advertisement +375 29 3880490
+ * DataBaseInitializer gets data base properties.
+ * @since %G%
+ * @version %I%
  */
 class DataBaseInitializer {
     static  Logger logger = LogManager.getLogger(DataBaseInitializer.class);
@@ -30,7 +32,7 @@ class DataBaseInitializer {
             if(poolSize > 0){
                 POOL_SIZE = poolSize;
             }else {
-                logger.info("Pool size is less then 1.");
+                logger.info("Pool size is less then 1, default size will be used.");
                 POOL_SIZE = DEFAULT_POOL_SIZE;
                 logger.info("Invalid pool size parameters, now pool size is " + POOL_SIZE);
             }

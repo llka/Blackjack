@@ -3,7 +3,9 @@ package ru.ilka.controller;
 import java.util.Locale;
 
 /**
- * Here could be your advertisement +375 29 3880490
+ * Constants used within whole application
+ * @since %G%
+ * @version %I%
  */
 public class ControllerConstants {
     public static final String VISITOR_KEY = "visitor";

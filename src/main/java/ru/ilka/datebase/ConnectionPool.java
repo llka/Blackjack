@@ -5,7 +5,6 @@ import org.apache.logging.log4j.Logger;
 import ru.ilka.exception.ConnPoolException;
 
 import java.sql.Connection;
-import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.concurrent.ArrayBlockingQueue;
@@ -16,7 +15,11 @@ import java.util.concurrent.locks.ReentrantLock;
 
 
 /**
- * Here could be your advertisement +375 29 3880490
+ * ConnectionPool class controls connections usage and provides connections to the application.
+ * @see ProxyConnection
+ * @see DataBaseInitializer
+ * @since %G%
+ * @version %I%
  */
 public class ConnectionPool {
     static Logger logger = LogManager.getLogger(ConnectionPool.class);
@@ -25,12 +28,15 @@ public class ConnectionPool {
     private static AtomicBoolean poolClosed = new AtomicBoolean(false);
     private static Lock connectionPoolLock = new ReentrantLock(true);
     private static Lock closePoolLock = new ReentrantLock(true);
-    private  static ConnectionPool poolInstance;
+    private static ConnectionPool poolInstance;
     private static int connectionAmount;
 
     private BlockingQueue<ProxyConnection> freeConnections;
     private BlockingQueue<ProxyConnection> takenConnections;
 
+    /**
+     * Registers database driver and initialize connections.
+     */
     private ConnectionPool() {
         DataBaseInitializer dbInitializer = new DataBaseInitializer();
 
@@ -43,25 +49,26 @@ public class ConnectionPool {
             logger.fatal("Registration database driver error" + e);
             throw new RuntimeException("Error while initializing Mysql Driver " + e);
         }
+
         for (int i = 0; i < dbInitializer.POOL_SIZE; i++) {
             try {
                 Connection connection = DriverManager.getConnection(dbInitializer.URL, dbInitializer.LOGIN, dbInitializer.PASSWORD);
                 freeConnections.put(new ProxyConnection(connection));
                 ++connectionAmount;
             }catch (SQLException | InterruptedException e) {
-                logger.error("Can't get connection " + e);
+                logger.error("Can not get connection " + e);
             }
         }
 
         if (connectionAmount < 1) {
-            logger.fatal("Can't initialize connections. No connections are available.");
+            logger.fatal("Can not initialize connections. No connections are available.");
             throw new RuntimeException("Error while initializing connections. No connections are available.");
         }
         logger.info("init " + connectionAmount + " connections where taken.");
 
         /* check if all connections were initialized */
         if (connectionAmount < dbInitializer.POOL_SIZE) {
-            logger.error("Can't initialize expected amount of connections.");
+            logger.error("Can not initialize expected amount of connections.");
             try {
                 while (connectionAmount < dbInitializer.POOL_SIZE){
                     Connection connection = DriverManager.getConnection(dbInitializer.URL, dbInitializer.LOGIN, dbInitializer.PASSWORD);
@@ -75,6 +82,10 @@ public class ConnectionPool {
         }
     }
 
+    /**
+     * Ensures that the class has only one instance and provides a global access point to it.
+     * @return connection pool instance
+     */
     public static ConnectionPool getInstance() {
         if (!poolInstanceCreated.get()) {
             connectionPoolLock.lock();
@@ -90,6 +101,12 @@ public class ConnectionPool {
         return poolInstance;
     }
 
+    /**
+     * Provides connection, wait for the freeConnections queue to become
+     * non-empty when retrieving an element, and wait for space to become available
+     * in the takenConnections queue when storing an element.
+     * @return proxy connection
+     */
     public Connection getConnection(){
         ProxyConnection connection = null;
         if (!poolClosed.get()) {
@@ -103,6 +120,10 @@ public class ConnectionPool {
         return connection;
     }
 
+    /**
+     * Free proxy connection
+     * @param connection proxy connection without work
+     */
     void freeConnection(ProxyConnection connection) {
         if (!poolClosed.get()) {
             takenConnections.remove(connection);
@@ -114,6 +135,10 @@ public class ConnectionPool {
         }
     }
 
+    /**
+     * Closes all connections and sets connection pool closed flag.
+     * @throws ConnPoolException if other thread has already called closePool().
+     */
     public void closePool() throws ConnPoolException {
         if (!poolClosed.get()) {
             closePoolLock.lock();

@@ -1,7 +1,7 @@
 package ru.ilka.logic;
 
 /**
- * Here could be your advertisement +375 29 3880490
+ * Results that can be occurred in Logic layer.
  */
 public enum LogicResult {
     OK,
@@ -24,10 +24,10 @@ public enum LogicResult {
     SURRENDER,
     EMPTY_BET,
 
-    CARD_2_H, //hearts
-    CARD_2_C, //clubs
-    CARD_2_D, //diamonds
-    CARD_2_S, //spades
+    CARD_2_H, /* hearts */
+    CARD_2_C, /* clubs  */
+    CARD_2_D, /* diamonds */
+    CARD_2_S, /* spades */
     CARD_3_H,
     CARD_3_C,
     CARD_3_D,

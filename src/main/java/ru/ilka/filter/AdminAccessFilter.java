@@ -14,7 +14,9 @@ import static ru.ilka.controller.ControllerConstants.VISITOR_KEY;
 
 
 /**
- * Here could be your advertisement +375 29 3880490
+ * Filter that forbids common users using admin functionality.
+ * @since %G%
+ * @version %I%
  */
 @WebFilter(filterName = "AdminAccessFilter", urlPatterns = "/jsp/admin/*", dispatcherTypes = {DispatcherType.FORWARD, DispatcherType.REQUEST})
 public class AdminAccessFilter implements Filter {
@@ -33,7 +35,6 @@ public class AdminAccessFilter implements Filter {
 
         if(!visitor.getRole().equals(Visitor.Role.ADMIN)){
             response.sendError(HttpServletResponse.SC_FORBIDDEN);
-            logger.debug("AdminAccessFilter " + visitor);
         }else {
             filterChain.doFilter(servletRequest,servletResponse);
         }

@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 import java.util.Comparator;
 
 /**
- * Here could be your advertisement +375 29 3880490
+ * Compares accounts by lost money amount
  */
 public class ProfitComparator implements Comparator<Account> {
     @Override

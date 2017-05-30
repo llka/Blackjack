@@ -6,7 +6,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- * Here could be your advertisement +375 29 3880490
+ * Deal is a class describing each card game details
+ * @see Game
+ * @since %G%
+ * @version %I%
  */
 public class Deal {
     private static final int BETS_QNT = 3;
