@@ -8,7 +8,7 @@
                      filePattern="logs/$${date:yyyy-MM}/app-%d{dd-MM-yyyy}-%i.log">
             <PatternLayout pattern="%d{HH:mm:ss} [%-5level] %logger{-3}: %msg%n"/>
             <Policies>
-                <SizeBasedTriggeringPolicy size="10 KB"/>
+                <SizeBasedTriggeringPolicy size="1 MB"/>
             </Policies>
         </RollingFile>
     </Appenders>

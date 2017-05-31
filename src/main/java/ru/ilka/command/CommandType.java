@@ -181,6 +181,12 @@ public enum CommandType {
             this.role = EnumSet.of(Visitor.Role.ADMIN,Visitor.Role.USER);
         }
     },
+    GAMESHISTORY{
+        {
+            this.command = new GamesHistoryCommand();
+            this.role = EnumSet.of(Visitor.Role.ADMIN,Visitor.Role.USER);
+        }
+    },
     SENDMESSAGE{
         {
             this.command = new SendMessageCommand();

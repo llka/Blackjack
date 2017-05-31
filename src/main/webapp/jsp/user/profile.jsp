@@ -227,6 +227,9 @@
                             </tr>
                         </table>
                     </div>
+                <div class="history">
+                    <a style="text-decoration: none;" class="button" href="/controller?command=gamesHistory"><fmt:message key="profile.button.history"/></a>
+                </div>
             </div>
         </div>
         <div class="col-3">

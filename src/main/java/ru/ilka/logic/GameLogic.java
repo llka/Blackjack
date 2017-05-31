@@ -491,6 +491,21 @@ public class GameLogic {
     }
 
     /**
+     * Loads games history
+     * @param accountId user's account id
+     * @return list of user's games
+     * @throws LogicException if if DBException occurred.
+     */
+    public ArrayList<Game> loadGamesHistory(int accountId) throws LogicException {
+        GameDao gameDao = new GameDao();
+        try {
+            return gameDao.loadGamesHistory(accountId);
+        } catch (DBException e) {
+            throw new LogicException("Error while loading games history " + e);
+        }
+    }
+
+    /**
      * Checks if dealer achieved 21 point and suggests insurance in this case.
      * @param deal this deal
      * @param writer result string

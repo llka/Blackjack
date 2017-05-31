@@ -1,0 +1,115 @@
+@media screen and (max-width: 1000px) {
+    div .swPage{
+        width: 760px;
+    }
+}
+@media screen and (max-width: 700px) {
+    div .swPage{
+        width: 590px;
+    }
+}
+@media screen and (max-width: 400px) {
+    div #main {
+        padding: 10px 0 80px;
+    }
+    #holder{
+        padding-left: 10px;
+    }
+    div .swPage{
+        width: 191px;
+        font-size: 10px;
+    }
+    div a.swShowPage{
+        height: 6px;
+        margin: 2px 2px;
+        width: 6px;
+    }
+    div #holder li {
+        padding: 20px 0 20px 0;
+        width: 100%;
+        float: left;
+    }
+}
+.item{
+    display: flex;
+}
+.time{
+    width: 40%;
+    text-align: center;
+}
+.bet{
+    width: 20%;
+    text-align: center;
+}
+.result{
+    width: 40%;
+    text-align: center;
+}
+
+#main{
+    position:relative;
+    padding:10px 25px 90px;
+}
+
+#holder{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    overflow:hidden;
+    position:relative;
+    padding-bottom:10px;
+    border: solid 1px white;
+}
+
+.swPage{
+    float: left;
+    width: 790px;
+}
+.swControls{
+    width: 100%;
+    position:absolute;
+    margin-top:10px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20%;
+    padding-right: 20%;
+}
+
+a.swShowPage{
+    background-color:#444444;
+    float:left;
+    height: 15px;
+    margin:4px 3px;
+    text-indent:-9999px;
+    width:15px;
+
+    border-radius:50%;
+}
+
+a.swShowPage:hover{
+    background-color: #009f6d;
+}
+a.swShowPage.active{
+    background-color:#04533d;
+}
+
+#holder li{
+    list-style:none outside none;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    padding:20px;
+    width: 100%;
+    float:left;
+}
+
+#holder,
+#holder li{
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    border-radius:8px;
+}
+
+.clear{
+    clear:both;
+}

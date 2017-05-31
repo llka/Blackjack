@@ -114,7 +114,7 @@ td{
   color: #F2F2F2;
 }
 .statistics {
-  width: 100%;
+    width: 100%;
     margin-bottom: 15px;
 }
 .statistics table{
@@ -257,4 +257,11 @@ td{
 }
 #newMessageReceived{
     margin-bottom: 15px;
+}
+
+.history{
+    width: 100%;
+    margin-top: 2%;
+    margin-bottom: 3%;
+    text-align: center;
 }
